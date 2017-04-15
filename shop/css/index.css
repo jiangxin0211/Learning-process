@@ -1,15 +1,4 @@
-/*css重置开始*/
-*{
-    margin: 0;
-    padding: 0;
+#header{
+    background: url(../img/banner.jpg) no-repeat center center;
+    height:600px;
 }
-a{
-    text-decoration: none;
-}
-img{
-    border: 0;
-}
-li{
-    list-style: none;
-}
-/*css重置结束*/
