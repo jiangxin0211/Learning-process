@@ -2,3 +2,18 @@
     background: url(../img/banner.jpg) no-repeat center center;
     height:600px;
 }
+#login,#header h1{
+    color:#fff;
+}
+#cart{
+    width: 260px;
+    height: 60px;
+    background: #1b242f;
+    opacity:0.5;
+    filter:alpha(opacity=50);
+    color: white;
+    text-align: center;
+    padding:10px 20px;
+    cursor: pointer;
+
+}
