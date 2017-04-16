@@ -13,7 +13,12 @@
     filter:alpha(opacity=50);
     color: white;
     text-align: center;
+    /*文字居中*/
     padding:10px 20px;
     cursor: pointer;
+    /*小手*/
 
+}
+#header img{
+    vertical-align: middle;
 }

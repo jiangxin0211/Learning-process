@@ -1,0 +1,15 @@
+P自带16像素的上外边距和下外边距
+ctrl+d:复制光标所在一行；
+br换行；bottom按钮；input输入；value：1
+text-indent 文本缩进（不顶头）
+for循环：重复多次；
+默认16个像素 中文不能小于12个像素
+
+Transparent:透明
+定位：position:
+1.relative相对定位:相对定位是相对于自己的初始位置，不空间释放，不脱离文档流。
+2.absolute绝对定位：相对于离他最近的已经定位的祖先元素，脱离文档流。
+3.fixed固定定位：相对于浏览器，不支持于早期浏览器。
+默认值static
+块级元素在块级元素中居中：让父元素让子元素left:50%;top:50% margin-left:-**px;margin-top:-**px;
+aoto：自动
