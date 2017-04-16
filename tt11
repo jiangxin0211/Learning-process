@@ -1,0 +1,73 @@
+1.前端技术体系：
+  组件开发
+模块化开发--require。Js
+jQuery：jQuery基础及应用
+       jQuery源码分析
+常见js 兼容性
+ES5/ES6
+移动端开发：touch事件
+            Zepto.js/jqm
+            Web App/Hybird APP
+            Vue.js
+            MVVM原理
+            构建工具：
+            PHP基础、框架、专题
+2.后端技术体系:Node.js：基础
+                      Express/KOA
+
+              数据库
+              Java
+              前后端数据分离
+3.项目实训体系：H5小游戏：贪吃蛇 俄罗斯方块
+              GIT/GITHUB
+              网上商城
+              前端特效
+              个人网站
+             组件开发
+4.笔试、面试模块化：
+20170408
+欧陆词典
+Web Storm
+GitHub网站 注册账号 不要用QQ 用163  github.com gesster
+网站 库 共享空间
+Web strom
+VCS Commit message 注释commit change
+Check out from ver control
+回溯到以前的状态 显示操作 vcs--push 从本地推送到服务端
+Github:只是网站
+Git/svn\cvs：团队开发用的工具
+Svn网站：svnchina.com  一步commit
+新创建的为橙色不受git管理，ADD后是绿色没传，蓝色已经从本地上传到服务器
+Commit:只存到本地资源库
+Commit and push:存本地也上传
+
+HTML
+Tr表示行；td表示列；colspan跨列；rowspan跨行；
+P标签这是一大段文字；
+行级元素：（inline)span,a,img,:行级元素和行级元素会在一行显示，不能设计宽高，行级元素的宽高是内容展开的。
+块级元素（block）h1~h6\div\p\ul\ol\li\table：可以设置宽高，不设置宽的时候就是充满他的父元素。自己占一行。
+***行级元素不能包含块级元素***
+CSS
+<!--内联样式-->
+这是一个h1标签背景颜色background:red;
+字体颜色：color:white;
+Head里面（内部样式）*RGB：红绿蓝
+CSS选择器：1.元素/标签选择器 h1{} div{}
+            2.id选择器#id{}：速度快，不能重复
+            3.class选择器 .class：速度慢，可以重复
+            4.后代选择器 #div1 div{}
+            5.子代选择器 #div > div{} 有兼容性问题 css hack不支持IE678
+            6.多类选择器  .a a {}.bb{}
+            7.分组选择器：
+            8.伪类选择器：a:hover{} 鼠标移动到链接上
+
+权重值：id:100 class:10 tag:1可叠加
+（外部样式）
+link
+Normalize.css；CSS文件重置
+CSS
+Float:left/right
+浮动：浮动的元素空间释放，脱离文档流
+元素塌陷：子元素脱离文档流，父元素没有高度
+1.给父元素固定高度
+2.给父元素也浮动
