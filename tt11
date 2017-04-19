@@ -64,7 +64,7 @@ CSS选择器：1.元素/标签选择器 h1{} div{}
 权重值：id:100 class:10 tag:1可叠加
 （外部样式）
 link
-Normalize.css；CSS文件重置
+Normalize.css；CSS文件重置歪果仁发明的 常用
 CSS
 Float:left/right
 浮动：浮动的元素空间释放，脱离文档流

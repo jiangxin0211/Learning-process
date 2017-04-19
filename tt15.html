@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .aa{
+            width: 200px;
+            height: 200px;
+            /*float:right;*/
+            /*浮动*/
+        }
+        .div1{
+            background: #ff0000;
+            float: left;
+        }
+        .div2{
+            background: #00ff00;
+            clear: both;
+            /*清除浮动，left/right/both */
+            /*width: 400px;*/
+            /*字是不会被覆盖的，*/
+        }
+        .div3{
+            background: #ffff00;
+        }
+        #div4{
+            /*width: 800px;*/
+            /*height: 600px;*/
+            border:2px solid #000;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="div4">
+<div class="aa div1">div1</div>
+<div class="aa div2">div2</div>
+<div class="aa div3">div3</div>
+
+</div>
+
+</body>
+</html>
