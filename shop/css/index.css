@@ -2,8 +2,18 @@
     background: url(../img/banner.jpg) no-repeat center center;
     height:600px;
 }
+#login:hover{
+    text-decoration:underline;
+
+
+
+}
 #login,#header h1{
     color:#fff;
+    width: 380px;
+}
+#login a{
+    color:#ffffff;
 }
 #cart{
     width: 260px;
@@ -17,6 +27,8 @@
     padding:10px 20px;
     cursor: pointer;
     /*–° ÷*/
+    margin-top: 35px;
+    line-height: 0;
 
 }
 #header img{
@@ -24,4 +36,10 @@
 }
 #header .float{
     float: left;
+}
+#main-header{
+    height: 100px;
+    /*background: #ff0000;*/
+    line-height:100px;
+
 }
