@@ -24,3 +24,6 @@ Transparent:透明
 默认值static
 块级元素在块级元素中居中：让父元素让子元素left:50%;top:50% margin-left:-**px;margin-top:-**px;
 aoto：自动
+
+行级元素浮动以后能设置宽和高，可在一行例如：span
+边框圆角：border-radius

@@ -12,25 +12,61 @@
             <div id="main-header">
                 <div id="login" class="float">
                     <a href="http:www,baidu.com" id="login">登录</a>
-
                 </div>
                 <h1 class="float">我的小店</h1>
                 <div id="cart" class="float">
-                    <span>购物车：$0.00(0件)</span>
-                    <img src="img/cart.png" alt=""/>
+                    <span>购物车：$
+                        <span id="total-price">0.00</span>
+                        (
+                        <span id="total-count"></span>
+                        件）
+                    </span>
+                    <!--<img src="img/cart.png" alt=""/>-->
                 </div>
+                <p>清空购物车</p>
+            </div>
+            <ul id="nav">
+                <li class="selected"><a href="">首页</a></li>
+                <li id="makeup">
+                    <a href="">美妆商城</a>
+                    <div id="submenu">
+
+                    </div>
+
+                </li>
+                <li><a href="">特卖商城</a></li>
+                <li><a href="">新品上市</a></li>
+                <li><a href="">潮人推荐</a></li>
+                <li><a href="">进口免税店</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--<img src="img/banner.jpg" alt=""/>-->
+
+    <div id="new-product">
+        <div class="wrapper">
+            <div class="sale bg1">
+                <h4>特卖专场</h4>
+            </div>
+            <div class="sale bg2">
+                <h4>新品上市</h4>
+            </div>
+            <div class="sale bg3">
+                <h4>进口免税</h4>
             </div>
         </div>
     </div>
-
-
-    <!--<img src="img/banner.jpg" alt=""/>-->
-    <div id="new-product">
+    <div id="product">
         <div class="wrapper">
+            <div class="product-info">
+
+
+            </div>
 
         </div>
+
     </div>
-    <div id="product"></div>
     <div id="problem"></div>
     <div id="footer"></div>
 </body>

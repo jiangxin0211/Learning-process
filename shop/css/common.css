@@ -16,6 +16,6 @@ li{
 .wrapper{
     width: 1140px;
     height: 100%;
-    background: #cccccc;
+    /*background: #cccccc;*/
     margin:0 auto;
 }

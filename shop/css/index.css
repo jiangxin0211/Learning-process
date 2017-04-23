@@ -2,10 +2,9 @@
     background: url(../img/banner.jpg) no-repeat center center;
     height:600px;
 }
-#login:hover{
+#login a:hover{
     text-decoration:underline;
-
-
+    /*border-bottom: 1px solid #fff;*/
 
 }
 #login,#header h1{
@@ -15,10 +14,10 @@
 #login a{
     color:#ffffff;
 }
-#cart{
+#main-header #cart{
     width: 260px;
-    height: 60px;
-    background: #1b242f;
+    height: 30px;
+    background: #000 url(../img/cart.png) 230px center no-repeat;
     opacity:0.5;
     filter:alpha(opacity=50);
     color: white;
@@ -27,8 +26,9 @@
     padding:10px 20px;
     cursor: pointer;
     /*小手*/
-    margin-top: 35px;
-    line-height: 0;
+    margin-top: 25px;
+    line-height: 30px;
+    float: right;
 
 }
 #header img{
@@ -37,9 +37,72 @@
 #header .float{
     float: left;
 }
+#header h1.float{
+    text-align: center;
+}
 #main-header{
     height: 100px;
     /*background: #ff0000;*/
     line-height:100px;
-
+    position:relative;
 }
+#nav li{
+    width: 190px;
+    height: 40px;
+    background: #fa558f;
+    float: left;
+    text-align: center;
+    line-height: 40px;
+}
+#nav a{
+    color:#fff;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+#nav .selected{
+    background: #3c3b3b;
+}
+#submenu{
+    width: 1140px;
+    height: 300px;
+    background: #ffffff;
+    margin-left: -190px;
+    display: none;
+}
+#makeup:hover #submenu{
+    display: block;
+}
+#main-header p{
+    color:#fff;
+    position: absolute;
+    right: 110px;
+    top: 35px;
+}
+/*header结束*/
+
+/*new-product开始*/
+#new-prodect{
+    margin-top: 56px;
+    height: 66px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
