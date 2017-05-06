@@ -27,3 +27,6 @@ aoto：自动
 
 行级元素浮动以后能设置宽和高，可在一行例如：span
 边框圆角：border-radius
+行级元素里面不能包含块级元素
+overflow:hidden 溢出隐藏
+行高等于高***
