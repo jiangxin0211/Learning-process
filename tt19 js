@@ -1,0 +1,100 @@
+javascript是一种基于面向对象的语言，用于交互
+JS是一种客户端的语言，在用户的机器上执行任务，而不是服务器上
+BS浏览器，服务器，在浏览器上架构
+CS客户端，服务器，安装的，相对稳定
+JS不能读取本地文件，不能读取服务器上的文件
+不能关闭不是由JS打开的窗口
+document.write()
+JS:弱类型的语言
+变量：int double short long float char
+        varable
+    var a=5;
+    var b="abc";
+    var c=0.5;
+    var d=true;
+    var f;
+开发者工具：console
+        console.log(a);
+        console.log(b);
+        console.log(c);
+        console.log(typeof a);typeof查看类型，返回的是字符串，类型是number，string……
+        console.log(typeof(f));
+        console.log(typeof undefined);
+        console.log(5+2);
+        console.log(a+2);
+JS:基本类型有五种，number（数字，不区分小数整数）
+                   string （带引号，字符串）
+                   boolean（true/false）
+                   undefined(没有定义的类型)
+                   null()
+      var num;
+      num=3.1415926;
+      document.write(num);
+*****变量名不能用数字开头，
+     不能用中文
+     非法的-，下划线可以
+     var本身就是一个关键字，所以不能用来定义变量名
+     变量名称区分大小写
+     单引号双引号不做区分
+驼峰式命名规则，首字母小写，后面逢单词就大写
+     var g=1,h=2,i=3;一次可以定义多个变量，直接赋值
+     g="abc";
+     console.log(typeof g);不报错
+     boolean：布尔值只有两个，真，假
+     alert(g);辅助调试，弹出框
+     alert(h);辅助调试，弹出框
+     g+="def";相当于g=g+"def";
+     console.log(g+"def");
+     console.log(g);
+     var k=5;
+     console.log(k+"10");输出结果是510拼接
+     console.log(typeof(k+"10"));string型
+     console.log(k-"2")；输出结果是2
+     console.log(k-"2")；number型
+
+     NaN：not a number
+     console.log(k-"a");输出NaN
+
+     var k=5;
+     console.log(k++);//k=k+1输出值为5
+     console.log(k);//k=k+1输出值为6
+     console.log(++k);//k=k+1输出值为6，先自增再赋值
+     console.log(2<4);//输出true,布尔值
+     console.log(2=="2");//输出true,布尔值
+     console.log(2==="2");//输出false,布尔值
+     =是赋值
+     ==是判断值是否相等
+     ===判断值和类型是否相等
+     &&与 全真才真，一假为假 第一个为假，后面程序不会判断
+     ||或 一真为真，全假为假
+     ！非 取反
+     infinity 无限的，分母越小值越大
+     var l=true;//true=1,false=0
+     console.log(l*2);
+     console.log(typeof(l+""));//类型转换成string,转换类型加空字符串
+ ******判断：if & else if else if{}else{}
+ false：0 空字符串
+ true：1 非空字符串
+ ******命名规则：定义习惯
+        var iNum = 5;//int
+        var fNum = 0.5;//float
+        var sName = "zhangsan";//string
+        var bFlag = true;//boolean
+
+    var result=prompt("请输入"，'hello');
+    var result=window.prompt("请输入"，'hello');
+    console.log(result);
+    console.log(window);
+    var abc="123";
+    console.log(window.abc);//window全局变量，全部在window下定义的
+  三目运算符(唯一)：console.log( 2 < 4 ? "yes":"no");
+  switch：分支语法，类型和值都要匹配case: break;
+  default;默认值
+  if 只判断值不判断类型
+
+  ******函数：parseInt(5.5)
+    console.log(typeof parseInt(5.5));
+
+
+
+
