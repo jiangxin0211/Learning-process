@@ -1,0 +1,33 @@
+循环：
+    for(i=0;i<10;i++)
+    console.log(i);
+
+    while
+ ****函数的内置
+ break是跳出循环
+ continue是跳出当前循环，进入下一循环
+function fn1(）{
+ console.log("fn1")
+ }//函数的声明
+  fn1()//函数的调用
+
+  定义时，区分一下全局变量和局部变量
+
+ 实参，形参
+ funcition add(x,y){// 形参}
+ add(2,3)实参
+ console.log(x+y);
+ 返回值：return x+y;
+
+ 数组：Array
+ var arr[1,2,3];
+ console.log(arr[i]);//输出是object对象
+ console.log(arr[0]);
+ console.log(arr[1]);
+ console.log(arr[2]);
+for(var i=0;i<arr.length)
+name:"lisi"，//键值对 key-value.属性名+属性值
+coding:function(){}
+JS特有：
+**对象.属性：属性内容不可变
+**对象[属性]:属性内容可变obj[p]
