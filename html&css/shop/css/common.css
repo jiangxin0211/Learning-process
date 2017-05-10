@@ -25,5 +25,13 @@ li{
     height: 250px;
 }
 #login a:hover{
-
+    text-decoration: underline;
+    border-bottom: 1px solid #fff;
+}
+#login,#header h1{
+    color: #fff;
+    width: 380px;
+}
+#login a{
+    color: #fff;
 }

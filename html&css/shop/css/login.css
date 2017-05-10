@@ -1,0 +1,41 @@
+#login-container{
+    margin-top: 30px;
+    height: 380px;
+}
+#login-container form{
+    width: 570px;
+    height: 290px;
+    float: left;
+}
+#login-container h5{
+    color: #5d5959;
+    font-size: 20px;
+}
+#login-container label{
+    margin-top: 20px;
+    display: block;
+}
+#login-container label input{
+    width: 400px;
+    height: 38px;
+    outline: none;
+    text-indent: 10px;
+    font-size: 20px;
+}
+/*属性选择器*/
+#login-container input[value="login"]{
+    width: 114px;
+    height: 41px;
+    background: #ef8743;
+    color: #fff;
+}
+#login-container .btn{
+    font-size: 20px;
+    border: 0;
+    border-radius: 10px;/*css3属性，边框圆角，有兼容性问题*/
+    cursor: pointer;
+    margin-top: 20px;
+}
+#login-container .btn:hover{
+
+}
