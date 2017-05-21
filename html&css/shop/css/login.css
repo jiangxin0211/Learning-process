@@ -37,5 +37,54 @@
     margin-top: 20px;
 }
 #login-container .btn:hover{
-
+    border: 1px solid #000;
 }
+#login-container input[value="login"]:hover{
+    background: #ffffff;
+    color: #000;
+}
+#forget{
+    color: #5d5959;
+    text-decoration: underline;
+    margin-top: 20px;
+    display: block;
+}
+#register h3{
+    color: #ef8743;
+}
+#register p {
+    color:#999;
+    margin: 20px 0;
+}
+#register .btn{
+    width: 160px;
+    height: 42px;
+    background: #ffffff;
+    border: 1px solid #000;
+    display: block;
+    text-height:center;
+    line-height: 42px;
+    color: #000;
+}
+#register .btn:hover{
+    background: #ef8743;
+    border-color: #ef8743;
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

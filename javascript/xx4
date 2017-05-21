@@ -1,0 +1,76 @@
+BOM：
+location.href:重定向
+Mozilla:火狐公司名字
+history.back():上一个回退
+history.forward():下一个
+history.go()：指定页面
+
+window.moveBy(x,y):移动多少像素
+window.moveTo(x,y):移动到什么位置
+回到顶部的例子；
+
+
+var aDiv=document.getElementsByClassName("aa");//有兼容性问题
+console.log(aDiv);
+
+var aDiv2=document.getElementsByClassTagName("div");//通过标签获取元素
+console.log(aDiv2);
+
+
+获取DIV1下面的所有div方法：var aDiv2=document.getElementsByClassTagName("div");
+
+*************************************************************************************
+
+事件以on开头
+onmousedown onmouseup onmouseover onmousemove onmouseout
+onkeypress  onkeyup
+onresize onscroll滚动 onstop  onblur失去焦点
+
+
+*********右键菜单***********
+页面相关事件：oncontextmenu
+给document绑定事件
+阻止浏览器的默认行为:return false;
+display:none;隐藏
+onMenu.style.display="block";设置右键显示
+e = e||window.event;//解决兼容性问题
+
+
+window.onload = function(){
+    把代码写在head前，必须加这个，并且把代码写在这个里面
+    DOM加载完成以后执行
+}
+写在body前和head前有什么区别：
+body前里面在DOM结束后，标签渲染完结束就执行
+onload不仅要在DOM中执行结束，还要等图片加载完成 在服务器上运行比较慢
+带src 的都有onload属性
+
+**********************************************************************************************
+定时器：setInterval      setTimeOut
+var i=0;
+var timer=setInterval(function(){
+    console.log(i++);
+    if(i<10){
+        clearInterval;
+    }
+};1000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
