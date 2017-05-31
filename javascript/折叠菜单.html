@@ -8,9 +8,20 @@
             margin: 0;
             padding: 0;
         }
+        ul{
+            list-style: none;
+        }
+        #menu{
+            width: 200px;
+            border:1px solid #000000;
+        }
+        #menu h3{
+            background: #000000;
+            color: #ffffff;
+        }
+
         #menu .sub-menu{
             display: none;
-
         }
     </style>
 </head>
@@ -71,53 +82,53 @@
 
 //元素节点是1，文本节点是,注释的节点是8.
 
-<script>
-    var aH3 = document.getElementById('menu');
-    var aH3 = oMenu.getElementsByTagName('h3');
-    var aUl = oMenu.getElementsByTagName('ul');
-    var aSubmenu = [];
-    for(var i =0; i<aUl.length; i++){
-        if(aUl[i].className == 'sub-menu'){
-            aSubmenu.push(aUl[i]);//将找到的submenu放到aSubMenu中
+<!--<script>-->
+    <!--var aH3 = document.getElementById('menu');-->
+    <!--var aH3 = oMenu.getElementsByTagName('h3');-->
+    <!--var aUl = oMenu.getElementsByTagName('ul');-->
+    <!--var aSubmenu = [];-->
+    <!--for(var i =0; i<aUl.length; i++){-->
+        <!--if(aUl[i].className == 'sub-menu'){-->
+            <!--aSubmenu.push(aUl[i]);//将找到的submenu放到aSubMenu中-->
 
-        }
-    }
+        <!--}-->
+    <!--}-->
 
-    for(var i=0; i<aH3.length; i++){
-        aH3[i].index = i;//索引值
-        aH3[i].onclick = function() {
-            aSubMenu[this.index].style.diaplay = 'block';//通过索引寻找,没有兼容性问题
-        }
-        }
-</script>
+    <!--for(var i=0; i<aH3.length; i++){-->
+        <!--aH3[i].index = i;//索引值-->
+        <!--aH3[i].onclick = function() {-->
+            <!--aSubMenu[this.index].style.diaplay = 'block';//通过索引寻找,没有兼容性问题-->
+        <!--}-->
+        <!--}-->
+<!--</script>-->
 
 
-<script>
-    var aH3 = document.getElementById('menu');
-    var aH3 = oMenu.getElementsByTagName('h3');
-    var aUl = oMenu.getElementsByTagName('ul');
-    var aSubmenu = [];
-    var bShow = false;//一个标识位，用来标识submenu是否显示，true代表正在显示，false代表隐藏
-    for(var i =0; i<aUl.length; i++){
+<!--<script>-->
+    <!--var aH3 = document.getElementById('menu');-->
+    <!--var aH3 = oMenu.getElementsByTagName('h3');-->
+    <!--var aUl = oMenu.getElementsByTagName('ul');-->
+    <!--var aSubmenu = [];-->
+    <!--var bShow = false;//一个标识位，用来标识submenu是否显示，true代表正在显示，false代表隐藏-->
+    <!--for(var i =0; i<aUl.length; i++){-->
 
-    }
+    <!--}-->
 
-    for(var i=0; i<aH3.length; i++){
-        aH3[i].index = i;//索引值
-        aH3[i].bShow = false;
+    <!--for(var i=0; i<aH3.length; i++){-->
+        <!--aH3[i].index = i;//索引值-->
+        <!--aH3[i].bShow = false;-->
 
-        aH3[i].onclick = function() {
-           var oSubmenu = aSubmenu[this.index];
-            if(bShow){
-                oSubmenu.style.display = 'none';
-            }
-            else{
-                oSubmenu.style.display = 'block';
-            }
-            this.bShow = !this.bShow;
-        }
-    }
-</script>
+        <!--aH3[i].onclick = function() {-->
+           <!--var oSubmenu = aSubmenu[this.index];-->
+            <!--if(bShow){-->
+                <!--oSubmenu.style.display = 'none';-->
+            <!--}-->
+            <!--else{-->
+                <!--oSubmenu.style.display = 'block';-->
+            <!--}-->
+            <!--this.bShow = !this.bShow;-->
+        <!--}-->
+    <!--}-->
+<!--</script>-->
 
 
 
