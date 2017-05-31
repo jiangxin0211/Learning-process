@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>item 1</li>
+        <li class="aa">item 2</li>
+        <li class="aa">item 3</li>
+    </ul>
+    <script>
+        var aLi = document.getElementsByTagName('li');
+       // var aLi = document.getElementsByClassName('aa');不兼容
+
+
+        for(i=0; i<aLi.length; i++){
+            if(aLi[i].className == 'aa'){
+                aLi[i].onclick = function(){
+                    //this对当前正在操纵的对象进行引用
+                    alert(this.innerHTML);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+'innerHTML
