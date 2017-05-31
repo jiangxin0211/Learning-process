@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>小插曲</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+            left :0;
+        }
+        #line{
+            width: 1px;
+            height: 300px;
+            background: #000000;
+            position: absolute;
+            left: 300px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">移动</button>
+    <div id="div1"></div>
+    <div id="line"></div>
+    <script>
+        var oBtn = document.getElementById('btn');
+        var oDiv1 = document.getElementById('div1');
+        oBtn.onclick = function() {
+            move(300);
+        };
+        function move(target){
+            var speed = target - oDiv1.offsetLeft > 0 ? 8 : -8;
+            var timer = setInterval(function(){
+                speed = (target - oDiv1.offsetLeft) * 0.6;
+
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+                oDiv1.style.left = oDiv1.offsetLeft + speed + 'px';
+//                if(Math.abs(target - oDiv1.offsetLeft) <= Math.abs(speed)){
+                if(oDiv1.offsetLeft == target){
+                    clearInterval(timer);
+                    oDiv1.style.left = target + 'px';
+                }
+                console.log(oDiv1.offsetLeft);
+            },50);
+        };
+    </script>
+</body>
+</html>
