@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+          list-style: none;
+        }
+        #container{
+            width: 400px;
+            height: 200px;
+            background: #ff0000;
+            margin: 100px auto;
+        }
+        #tabs{
+            overflow: hidden;//溢出隐藏，涉及bfc概念
+            border-bottom: 1px solid
+        }
+        #tabs li{
+            width: 120px;
+            height: 30px;
+            background: #cccccc;
+            display: inline-block;
+            float: left;
+            margin-right: 5px;
+            text-align: center;
+            line-height: 30px;
+        }
+        #tabs .selected{
+            background: #000000;
+            color: #fff;
+        }
+        #contents{
+            height: 170px;
+            background: #cccccc;
+        }
+        #contents div{
+            display: none;
+        }
+        #contents .selected{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul id="tabs">
+            <li class="selected">html</li>
+            <li>css</li>
+            <li>js</li>
+        </ul>
+        <div id="contents">
+            <div class="selected">001</div>
+            <div>002</div>
+            <div>003</div>
+        </div>
+    </div>
+
+    <script>
+        var oTab = document.getElementById('tabs');
+        var oContents = document.getElementById('contents');
+        var aDiv = oContents.getElementsByTagName('div');
+        var aLi = oTab.getElementsByTagName('li');
+        for{var i=0; i<aLi.length; i++}{
+            aLi[i].index = i;
+            aLi[i].onclick = function(){
+                for(var i=0; i<aLi.length; i++){
+                    aLi[i].className = '';
+                    aDiv[i].className = '';
+                }
+                this.className = 'selected';
+                aDiv[this.index].className = 'selected';
+            };
+        }
+    </script>
+</body>
+</html>
+
+
+<script>
+    var oTab = document.getElementById('tabs');
+    var oContents = document.getElementById('contents');
+//    console.log(oContents.childNodes);
+    console.log(oContents.children);//不是标准语法，但是可兼容
+    var aLi = oTab.getElementsByTagName('li');
+    for{var i=0; i<aLi.length; i++}{
+        aLi[i].index = i;
+        aLi[i].onclick = function(){
+            for(var i=0; i<aLi.length; i++){
+                aLi[i].className = '';
+                oContents[i].children.className = '';
+            }
+            this.className = 'selected';
+            oContents.children[this.index].className = 'selected';
+        };
+    }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
