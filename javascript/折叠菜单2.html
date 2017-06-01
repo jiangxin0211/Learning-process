@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>折叠菜单</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;//body自带8个像素的外边距
+        }
+        #container h3{
+            width: 200px;
+            background: #000000;
+            color: #ffffff;
+            cursor: pointer;
+        }
+        #container .submenu li:hover{
+            background: #cccccc;
+        }
+        #container .submenu{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <ul id="container">
+        <li>
+            <h3>管理区</h3>
+            <ul class="submenu">
+                <li>001</li>
+                <li>002</li>
+                <li>003</li>
+            </ul>
+        </li>
+        <li>
+            <h3>交流区</h3>
+            <ul class="submenu">
+                <li>001</li>
+                <li>002</li>
+                <li>003</li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+        var oContainer = document.getElementById('container');
+        var aH3 = oContainer.getElementsByTagName('h3');//nodelist节点列表
+//        var aUl = oContainer.getElementsByTagName('submenu');//有兼容性问题
+        var aUl = oContainer.getElementsByTagName('ul');//通过标签获取
+        console.log(aUl);
+        var bFlag1 = false;//定义一个标识位，false表示合上，true表示展开
+        for(var i=0; i<aH3.length; i++){
+            aH3[i].index = i;//给每个H3对像自定义属性，保存住当前i的值
+            //相当于
+            //aH3[0].xx = 0;
+            //aH3[1].xx = 1;
+            aH3[i].onclick = function(){
+//                console.log(this.xx);
+//                aUl[this.index].style.display = 'block';
+                console.log(aUl[this.index].style.display);
+                if(aUl[this.index].style.display = 'block'){
+                    aUl[this.index].style.display = 'none';
+                }
+                else{
+                    aUl[this.index].style.display = 'block';
+                }
+
+
+            };
+        }
+//        console.log(oContainer);//控制台输出,获取宽度
+
+        //事件三要素：事件源 事件处理函数 事件对象e
+        //aUl[i].style.display = "block"可以设置值，取值的话只能取到内联样式的值
+        //给每个对象定义自己的标识位 用this
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
