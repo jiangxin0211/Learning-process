@@ -19,6 +19,7 @@
         js的基本数据类型五种：
         number string boolean(true||false) undefined null
         alert辅助调试，弹出框
+        非空字符串是true;空字符串为false;
 
 
         */
@@ -67,6 +68,59 @@
         console.log(2 === "2");//返回false,一个"="是赋值，两个"=="判断值相等，三个等号判断值和类型是否相等
 
         console.log(5 / 0);//输出infinity 无限的
+        var m=true;//在运算的时候，相当于1；false相当于0；
+        console.log(m*2);//2
+        console.log(typeof (l + ""));//相当于把l变成字符型
+
+//        var result = prompt("请输入","您好");//返回值为输入内容
+//        console.log(result);
+
+        var abcdef="123";
+//        console.log(window.abcdef);
+        window.alert(123);//window是一个全局变量
+
+       for(var i=0; i<3; i++){
+           if(i == 4){
+               break;//结束跳出循环
+               continue;//结束当前循环进行下一循环
+           }
+           console.log(i);//0 1 2
+       }
+
+        var iNum = 1;
+        while(iNum >３){
+            console.log(iNum);
+            iNum++;//1 2有可能一次都不执行
+        }
+        do{
+            console.log(iNum);
+            iNum++;
+        }while(iNum >　３);//至少执行一次
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
