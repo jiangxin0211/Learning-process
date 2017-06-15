@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>函数与内置对象</title>
+</head>
+<body>
+    <script>
+        function fn1(){
+            console.log("fn1");
+        }
+        fn1();//函数的调用
+
+        //函数直接量,先定义后调用。
+        var fn2 = function (){
+            console.log("fn2");
+        }
+        fn2();
+
+        function calcAngleArea() {
+            var wide = window.prompt("请输入三角形的底边长度！","");;
+            var high = window.prompt("请输入三角形的高！","");
+            var area = wide * high / 2;
+            if(isNaN(area)){
+                alert("您的输入有错误！");
+            }else{
+                alert("三角形的面积为" + area);
+            }
+        }
+        calcAngleArea();//先调用，后调用，一样的。
+
+        function add(){
+
+        }
+        var a = 5,b = 6;
+        add(a,b);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
