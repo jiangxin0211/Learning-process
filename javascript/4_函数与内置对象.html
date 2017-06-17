@@ -6,16 +6,17 @@
 </head>
 <body>
     <script>
-        function fn1(){
-            console.log("fn1");
-        }
         fn1();//函数的调用
+        function fn1(){//函数的声明
+            console.log("fn1");
+        }//声明调用部分前后
+
 
         //函数直接量,先定义后调用。
         var fn2 = function (){
             console.log("fn2");
         }
-        fn2();
+        fn2();//后调用
 
         function calcAngleArea() {
             var wide = window.prompt("请输入三角形的底边长度！","");;
@@ -29,15 +30,90 @@
         }
         calcAngleArea();//先调用，后调用，一样的。
 
-        function add(){
 
+
+        function add(x,y){//形参
+            console.log(x);
+            console.log(x + y);
+//            console.log(argument[0]);
+//            console.log(argument[1]);
+            return x + y;//返回值：后续需要用到时，需要写返回值
         }
-        var a = 5,b = 6;
-        add(a,b);
+        //实参
+//        var result = add(2,3);
+//        console.log(result + 2);
+//
+//        function fn1(){//函数名重复，调用时，就近原则
+//            console.log(123);
+//        }
+
+        var result;
+        function add(x, y){
+//            var result;//结果undefined,外面无法找到，分清是全局变量还是局部变量
+            result = x + y;
+        }
+        add(2, 3);
+        console.log(result);
+
+
+//        **********数组********
+        var arr = [1,2,3];
+        console.log(arr.length);
+        for(var i=0; i<arr.length; i++){
+            consoe.log(arr[i]);
+        }
+        var arr2 = new Array();
+        arr2[0] = 1;
+        arr2[1] = 2;
+        arr2[2] = 3;
+        console.log(arr2.length);
+
+        var obj1 = new Object();
+        obj1.name = "zhangsan";
+        obj1.age = 20;
+        obj1.eat = function(){
+            alert("eat");
+        }
+        console.log(obj1.eat());
+
+        var father = {
+            name :"lisan",
+            age : 50
+        }
+        var student = {//定义对象的第二种方式
+            name : "lisi",//键值对 key-value
+            age  :18,
+            dad :father,
+            coding :function{
+                alert("code code");
+            }
+        };
+//        console.log(student.coding());
+        console.log(student.dad.name);
+        console.log(student["age"]);
+
+//        *********JS特有for/in循环*******
+        var arr = ["a","b","c"];
+        for(var p in arr){
+            console.log(p + ":" + arr[p]);//p是数组下标，property
+        }
+
+        var obj = {
+            name : "zhangsan",
+            age : 18,
+            school : "黑大"
+        }
+        for(var p in obj){
+            console.log(obj[p]);//变量[]输出每个对象所对的值；对象.属性，属性一定是固定不变的东西
+            console.log(p + ":" + obj[p]);
+        }
 
 
 
-
+        function fn1(obj){//这个obj代表的是一个形参，可以随便起名字
+            console.log(obj);//输出的是对象的属性
+        }
+        fn1(obj);//这个obj代表的是上面的函数
 
 
 
