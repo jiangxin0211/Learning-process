@@ -1,0 +1,23 @@
+#dependence h4:hover{
+    color: #ff530d;
+}
+#single .arrow{
+    width: 30px;
+    height: 30px;
+    background: #000000;
+    color:
+    text-ali
+    line-height
+    position:absolute;
+    top: 200px;
+    cursor: pointer;
+}
+#left{
+    left: 10px;
+}
+#right{
+    right: 10px;
+}
+#single-pic img.selected{
+    border: 1px solid #000;
+}

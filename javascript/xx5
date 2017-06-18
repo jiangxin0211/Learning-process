@@ -1,0 +1,39 @@
+single.html
+父元素相对定位；子元素绝对定位
+箭头用绝对定位，选择参照物
+溢出隐藏
+小图片移动规则：
+    下标 移动距离
+    0    0
+    1    1*width
+    2    1*widtn
+    3    1*width
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+offset只能取值不能赋值，可读不可写，对象.属性.offset
+offsetWidth
+offsetHeight内容，padding
+offsetTop
+offsetLeft
+offsetparent祖先元素
