@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ofset</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    #div1{
+        width: 200px;
+        height: 200px;
+        background: #ff0000;
+        padding:10px;
+        border:10px solid #000;
+        margin-top: 100px;
+        margin-leftL200px;
+    }
+    #div2{
+        width: 400px;
+        height: 400px;
+        background: #00ff00;
+
+    }
+</style>
+<body>
+    <div id="div2">
+        <div id="div1"></div>
+    </div>
+
+    <script>
+        var oDiv = document.getElementById("div1");
+        oDiv.offsetwidth = "500px";
+        console.log(oDiv.offsetWidth);
+        console.log(oDiv.offsetHeight);
+        //offset只能取值不能赋值
+        console.log(oDiv.offsetTop);
+        console.log(oDiv.offsetLeft);
+        console.log(oDiv.offsetParent);
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
