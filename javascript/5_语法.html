@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<link rel="stylesheet" href="">-->引入CSS文件方法
+</head>
+<body>
+    <h1 id="hh" class="aa bb">hhhhhhh</h1>
+
+
+    <script src="common.js"></script>引入JS的方法
+
+
+<script >
+    var a = 5;
+    var b = a;
+    b = 6;
+    alert(a);
+    var obj1 = {
+        name : "zhangsan",
+        age : 28
+    };
+    var obj2 = obj1;//obj1和obj2指向堆中同一块内存空间
+    obj2.name = "lisi";//已经把obj1中的name 内容给改了
+    alert(obj1.name);
+
+
+    if(undefined){//undefined is false...null is also false...NaN is false
+        console.log("true");
+    }else{
+        console.log("false");
+    }
+
+    if(null === undefinded){//false...NaN == NaN is also false
+        console.log("true");
+    }else{
+        console.log("false");
+    }
+
+    console.log(typeof undefined);//undefined
+    console.log(typeof null);//输出类型是object这是一个编译错误
+
+    var oH1 = document.getElementById("hh");
+    console.log(oH1);
+    console.log(oH1.id);
+    console.log(oH1.className);//class比较特殊
+
+    var num=020;//八进制10等于十进制16
+    alert(num);//不管用几进制表示一个数，输出结果都是转换成十进制的一个数
+
+    var num=0x12;//十进制18,0x表示十六进制
+    num=0xab;//171
+    alert(num);//十进制171
+
+    var a=10;
+    console.log(a.toString(16));//转换成任意进制
+
+    var b = 10.5;
+    console.log(parseInt(b));//10
+    console.log(parseFloat(b));//10.5
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
