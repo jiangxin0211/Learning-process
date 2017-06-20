@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            width: 400px;
+            height: 200px;
+            /*background: #ff0000;*/
+            margin: 100px auto;//上下左右
+        }
+        #tabs{
+            overflow: hidden;//溢出隐藏，解决元素塌陷问题，涉及bfc概念
+        border-bottom: 1px solid
+        }
+        #tabs li{
+            width: 120px;
+            height: 30px;
+            background: #cccccc;
+            display: inline-block;//行级块元素，可设置宽高，不兼容ie6
+        float: left;//子元素浮动脱离文档流，父元素空间被释放，叫元素塌陷
+        margin-right: 5px;
+            text-align: center;
+            line-height: 30px;//垂直居中，行高等于高
+        }
+        #tabs .selected{
+            background: #000000;
+            color: #fff;
+            cursor: pointer;
+        }
+        #contents{
+            height: 170px;
+            background: #cccccc;
+        }
+        #contents div{
+            display: none;
+        }
+        #contents .selected{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul id="tabs">
+            <li class="selected">html</li>
+            <li>css</li>
+            <li>js</li>
+        </ul>
+        <div id="contents">
+            <div class="selected">001</div>
+            <div>002</div>
+            <div>003</div>
+        </div>
+    </div>
+
+    <script>
+    var oTab = document.getElementById('tabs');
+    var oContents = document.getElementById('contents');
+    //    console.log(oContents.childNodes);//有text 与换行有关
+    console.log(oContents.children);//不是标准语法，但是可兼容
+    var aLi = oTab.getElementsByTagName('li');
+    for(var i=0; i<aLi.length; i++){
+        aLi[i].index = i;
+        aLi[i].onclick = function(){
+            for(var i=0; i<aLi.length; i++){
+                aLi[i].className = '';
+                oContents.children[i].className = '';
+            }
+            this.className = 'selected';
+            oContents.children[this.index].className = 'selected';
+        };
+    }
+
+    </script>
+
+</body>
+</html>
