@@ -10,3 +10,9 @@ DOM:document object model 文本对象模型
 001
 002
 003
+
+var oPerson = {};//o代表定义的是一个对象object
+JS的基本数据类型：五种
+JS引用类型：内置对象，自定义对象，DOM对象
+
+dom : document object model

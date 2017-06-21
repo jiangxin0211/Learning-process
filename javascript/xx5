@@ -33,7 +33,7 @@ single.html
 
 offset只能取值不能赋值，可读不可写，对象.属性.offset
 offsetWidth
-offsetHeight内容，padding
+offsetHeight内容，padding,border
 offsetTop
 offsetLeft
 offsetparent祖先元素
