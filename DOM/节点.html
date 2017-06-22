@@ -14,6 +14,9 @@
     </ul>
     <script>
         var oUl = document.getElementById("ul1");
+        var oH1 = document.getElementById("h1");
+//        console.log(next(oH1));
+        console.log(next(oUl1));
 //        console.log(oUl.firstChild.nodeType);//Chrom下获取到的节点是回车产生的，为3早期ie为1
 //        console.log(oUl.firstElementChild);
 //        console.log(oU1.nextSibling);
@@ -21,7 +24,15 @@
 //        console.log(oUl.lastElementChildst);
         //封装函数 找到该元素的的兄弟（元素节点）
         function next(elem){
-
+            do{
+               elem =  elem.nextSibling;
+            }while(elem && elem.nodeType != 1 );//元素节点为1
+            return elem;
+        }
+        //找到该元素的第一个孩子(元素节点)
+        function first(elem){
+            elem = elem.firstChild;
+            return elem.nodeType == 1 ? elem : next(elem);
         }
 
 
