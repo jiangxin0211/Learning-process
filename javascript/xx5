@@ -1,4 +1,10 @@
-single.html
+1.single.html 轮播图，放大镜
+2.product.html 下拉菜单
+3.cart.html 删除商品
+4.无缝滚动
+5.事件冒泡
+
+
 父元素相对定位；子元素绝对定位
 箭头用绝对定位，选择参照物
 溢出隐藏
@@ -9,31 +15,81 @@ single.html
     2    1*widtn
     3    1*width
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 offset只能取值不能赋值，可读不可写，对象.属性.offset
 offsetWidth
 offsetHeight内容，padding,border
 offsetTop
 offsetLeft
 offsetparent祖先元素
+
+
+
+拖拽元素的位置用鼠标点击位置（相对于浏览器）坐标减去鼠标点击位置到小块边界的位置
+
+垂直方向：pageY
+水平方向：clintX
+
+事件冒泡：从事件源逐层出现
+onfocus:获取焦点 onblur:失去焦点
+oDiv1.addEventListener("click",function(){
+        alert(1);
+    })
+    oDiv1.addEventListener("click",function(){
+            alert(2);
+        });//相同的函数定义两遍不会被覆盖
+
+obj.addEventListener(type,function(){
+
+    },false/true)
+默认false是事件冒泡的；true是事件的捕获（冒泡顺序相反）
+*事件的发生过程是先捕获后冒泡*！！！
+阻止事件冒泡：e.stopPropagation();
+oDiv1.addEventListener("click",function(){
+        alert("div1");
+        console.log(this);
+        e.stopPropagation();//阻止事件冒泡
+    })
+
+oDiv1.attachEvent("onclick",function(){
+        alert(1);
+        alert(this == window);//true
+    })
+
+ 早期IE下{
+    早期IE:attachEvent(on+type){}//只支持事件冒泡，不支持事件捕获
+    问题1：给同一个事件绑定同一个元素执行顺序与绑定顺序是相反的,this是指向window的
+    IE下阻止事件冒泡：window.event.cancelBubble = true;
+
+ }
+
+事件代理/事件委托：利用时间冒泡把子元素的事件委托给父元素绑定
+事件冒泡：
+
+创建DOM对象：document.creatElement("div");
+删除DOM对象：父元素，removeChild(子元素)
+追加元素：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
