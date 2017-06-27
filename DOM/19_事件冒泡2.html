@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>19</title>
+</head>
+<body>
+    <button id="add">增加</button>
+    <ul id="nav">
+        <li>001</li>
+        <li>002</li>
+        <li>003</li>
+        <li>004</li>
+        <li>005</li>
+    </ul>
+
+    <script>
+        var oNav = document.getElementById("nav");
+        var oAdd = document.getElementById("add");
+//        var aLi = document.getElementsByTagName("li");
+//        for(var i=0; i<aLi.length; i++){
+//            aLi[i].onclick = function(){
+//                console.log(this.innerHTML);
+//            };
+//        }
+
+
+        oNav.onclick = function(e){
+            var target = e.target||window.enent.srcElement;
+            console.log(target.innerHTML);
+        };
+
+        var oNavinnerHTML = oNav.innerHTML;
+        oAdd.onclick = function(){
+            var sLi = "<li>"+Math.random() + "</li>";
+            oNav.innerHTML +=sLi;
+
+
+//          var oLi = document.createElement("li");//创建DOM对象
+//            oLi.innerHTML = Math.random();
+//            oNav.appendChild(oLi);//追加孩子
+        };
+    </script>
+</body>
+</html>
