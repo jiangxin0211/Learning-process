@@ -12,6 +12,7 @@
             width: 200px;
             height: 200px;
             background: #ff0000;
+            position: absolute;
             top: 0;
             left: 0;
 
@@ -24,12 +25,12 @@
     <script>
         var oDiv = document.getElementById("div1");
         oDiv.onmousedown = function(e){
-            var iDisX = e.clientX - elem.offsetLeft;
-            var iDisY = e.clientY - elem.offsetTop;
-            oDiv.onmousemove = function(e){
-                e = e || window.event;
-                oDiv.style.left = e.clientX + "px";
-                oDiv.style.top = e.clientY + "px";
+            var iDisX = e.clientX - oDiv.offsetLeft;
+            var iDisY = e.clientY - oDiv.offsetTop;
+            document.onmousemove = function(e){
+                e = e || window.event;//解决兼容性问题
+                oDiv.style.left = e.clientX - iDisX + "px";
+                oDiv.style.top = e.clientY  - iDisY + "px";
             };
         };
         oDiv.onmouseup = function(){
@@ -40,7 +41,13 @@
     </script>
 </body>
 </html>
-
+<!--
+onmouseover滑入
+onmouseout滑出
+onmousedown
+onmouseup
+onmousemove
+-->
 
 
 
