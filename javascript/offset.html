@@ -2,29 +2,31 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>ofset</title>
+    <title>offset</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+        #div2{
+            width: 400px;
+            height: 400px;
+            background: #00ff00;
+            position: relative;
+            top: 200px;
+            left: 200px;
+        }
+    </style>
 </head>
-<style>
-    *{
-        margin:0;
-        padding:0;
-    }
-    #div1{
-        width: 200px;
-        height: 200px;
-        background: #ff0000;
-        padding:10px;
-        border:10px solid #000;
-        margin-top: 100px;
-        margin-leftL200px;
-    }
-    #div2{
-        width: 400px;
-        height: 400px;
-        background: #00ff00;
 
-    }
-</style>
 <body>
     <div id="div2">
         <div id="div1"></div>
@@ -32,10 +34,11 @@
 
     <script>
         var oDiv = document.getElementById("div1");
-        oDiv.offsetwidth = "500px";
+        oDiv.offsetWidth = "500px";
         console.log(oDiv.offsetWidth);
         console.log(oDiv.offsetHeight);
-        //offset只能取值不能赋值
+        //oDiv.style.width 只能获取内联样式的宽度，可以赋值
+        //offset只能取值（没有单位）不能赋值
         console.log(oDiv.offsetTop);
         console.log(oDiv.offsetLeft);
         console.log(oDiv.offsetParent);
@@ -43,10 +46,10 @@
 </body>
 </html>
 
-
-
-
-
+<!--offtop,offleft指的是是相对于离他最近的，以绝对定位的，祖先元素的位置-->
+<!--offsetparent输出的是祖先元素的对象-->
+<!--offsetwidth,offsetheight指的是对象.属性，取到的包括他的内容，包括padding,border的和的宽度和高度-->
+<!--都只能取值不能赋值，即可读不可写-->
 
 
 
