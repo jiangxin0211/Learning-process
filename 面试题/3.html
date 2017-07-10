@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+<script>
+    var o1 = {
+        name: 'lisi',
+        age: 23
+    };
+    var o2 = {
+        name: 'wangwu',
+        sex: '男'
+    };
+
+    /**
+     * 文档注释
+     * @param target 被合并的目标对象
+     * @param obj 要合并的对象
+     * @return  返回合并的新的对象
+     */
+
+    function extend(target,obj){
+        for(var p in obj){
+            if(typeof obj[p] === 'object'){
+                target[p] = extend(obj[p]);
+            }else {
+                target[p] = obj[p];
+            }
+        }
+        return target;
+    }
+
+    var o = extend(o1,o2);
+
+    console.log(o);
+
+    function cloneObj(obj){
+        var newObj = {};
+        for(var p in obj){
+            if(typeof obj[p] === 'object'){
+                newObj[p] = arguments.callee(obj[p]);
+            }else{
+                newObj[p] = obj[p];
+            }
+        }
+        return newObj;
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
