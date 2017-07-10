@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>对象的深克隆和浅克隆</title>
+</head>
+<body>
+<script>
+    var o1 = {
+        name:"lisi",
+        age: 34,
+        brother = {
+            name = "lihua"
+        }
+    };
+//    var o2 = o1;
+//    var o2 = {};
+
+//    for(var p in o1){//p=property属性
+////        console.log(p);
+//        o2[p] = o1[p];//o1.name&o1.age  这里p是变量
+//        o2.brother = o1.brother;
+//
+//    }
+
+
+    function cloneObj(obj){
+        var newObj = {};
+        for(var p in obj){
+            if(typeof obj[p] === 'object'){
+                newObj[p] = cloneObj(obj[p]);
+            }else{
+                newObj[p] = obj[p];
+            }
+        }
+        return newObj;
+    }
+    var o2 = cloneObj(o1);
+
+
+    o2.name = "wangwu";
+    console.log(o2.name);
+    console.log(o1.name);//在堆里指的是同一个内存空间，在栈里是两块空间同一地址
+</script>
+</body>
+</html>
