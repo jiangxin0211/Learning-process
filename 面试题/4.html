@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+<script>
+    function aa(name,age){
+        alert(name + ',' +age);
+        alert(arguments[2]);
+        arguments.callee();//指向当前被调用的函数本身
+    }
+    aa('lisi',23,男);
+</script>
+</body>
+</html>
