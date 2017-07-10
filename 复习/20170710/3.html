@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+    <button id="btn">click</button>
+    <ul id="ul1">
+        <li>item 1</li>
+        <li class="aa">item 2</li>
+        <li class="aa">item 3</li>
+    </ul>
+
+    <script>
+//        var oBtn = id('btn');
+        var aLi = getByClass('aa',getById('ul1'));
+        function getById(sid){
+        return document.getElementById("sid");
+        }
+
+        function getByClass(className,contex){
+
+        }
+
+        function getByTag(tagName,context){
+
+        }
+
+        function $(selector,context){
+            context = context || document;
+            switch (selector.charAt(0)){
+                case '#':
+                      return document.getElementBtId(selector,substring(1))
+                    break;
+                case '.':
+                    break;
+                default:
+                    break;
+            }
+        }
+        $('aa');//selector = #xx | .xx | xx
+
+        var oBtn = $('#btn')[0];
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
