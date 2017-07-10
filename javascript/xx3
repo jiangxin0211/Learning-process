@@ -12,7 +12,52 @@ DOM:document object model 文本对象模型
 003
 
 var oPerson = {};//o代表定义的是一个对象object
+JS的数据类型：基本数据类型，引用类型
 JS的基本数据类型：五种
 JS引用类型：内置对象，自定义对象，DOM对象
 
 dom : document object model
+
+document.getElementById("aa");
+context.getElementsByTagName("li");
+context.getElementsByClassName("aa");
+context.getElementsByName("username");
+document.querySelector()
+var oBtn = document.querySelector('#btn');
+oBtn.onclick = function(){
+alert('haha');
+        }
+var li = document.querySelectorAll('li');
+for(var i=0; i<=aLi,Length; i++){
+       aLi[i].onclick = function(){
+       alert(this.innerHTML)
+            }
+        }
+
+mdn(mozilla developer network)
+
+dom操作：元素查找
+        元素遍历
+        元素的操纵
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
