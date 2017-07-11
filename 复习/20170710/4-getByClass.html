@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="ul1">
+    <li>item1</li>
+    <li class="aa">item2</li>
+    <li class="aa">item3</li>
+</ul>
+//解决getElementsByclass在IE8之前不支持的问题
+<script src="Myjslibrary.js"></script>
+<script>
+    function getByClass(className,context){
+        context = context || document;
+        var result = [];
+        var arr = context.getElementsByTagName("*");
+        var re = new RegExp("\\b"+className+"\\b",'g');
+        for(var i = 0; i<=arr.length; i++){
+            if(re.test(arr[i].className)){
+                result.push(arr[i]);
+            }
+        }
+        return result;
+    }
+
+    var oUl = document.getElementById("ul1");
+
+    var aLi = getByClass('aa',oU1);
+    console.log(aLi);
+</script>
+</body>
+</html>
