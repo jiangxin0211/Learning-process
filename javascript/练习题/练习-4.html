@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+
+    <button id="btn">click</button>
+<script>
+
+
+    var oBtn = document.getElementById("btn");
+
+    var fn1 = function(){
+        alert('aaa');
+    };
+    var fn2 = function(){
+        alert(222);
+    };
+
+    function addEvent(elem,type,fn){
+        if(elem.addEventListener){
+            elem.addEventListener(type,fn,false);
+        }else if(elem.attachEvent){
+            elem[type + fn] = function(){
+              fn.call(elem);
+            };
+            elem.attachEvent('on' + type,elem[type + fn]);
+        }else{
+            elem['on'+ type] = fn;
+        }
+    }
+//函数有三个参数，元素，绑定事件类型，函数。用call函数改变在早期IE浏览器下this的指向
+    //elem[type + fn]是取元素的属性，[]中的内容是一个变量
+    function removeEvent(elem,type,fn){
+        if(elem.removeEventListener){
+            elem.removeEventListener(type,fn,false);
+        }else if(elem.detachEvent){
+            elem.detachEvent('on' + type,elem[type + fn]);
+        }else{
+            elem['on' + type] = null;
+        }
+    }
+
+    function getStyle(elem,attr){
+        if(elem.currentStyle){
+            return elem.currentStyle[attr];
+        }else if(window.getComputedStyle){
+            return elem.getComputedStyle(elem,false)[attr];
+        }else{
+            return elem.style[attr];
+        }
+    }
+
+    addEvent(oBtn,'click',fn1);
+    addEvent(oBtn,'click',fn2);
+
+    removeEvent(oBtn,'click',fn1);
+    removeEvent(oBtn,'click',fn2);
+
+    getStyle();
+
+
+
+
+
+</script>
+</body>
+</html>
