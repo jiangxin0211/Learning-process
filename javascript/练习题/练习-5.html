@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+
+    <ul id="ul1">
+        <li>001</li>
+        <li class="cc aa">002</li>
+        <li class="aa">003</li>
+    </ul>
+    <div id="div1">
+        <li>1</li>
+        <li class="aa bb cc">2</li>
+        <li class="aa">3</li>
+    </div>
+
+<script>
+
+    var oDiv = document.getElementById("div1");
+    var oUl = document.getElementById("ul1");
+
+
+
+    function $(selector,context){
+        context = context || document;
+        switch(selector.charAt(0)){
+            case '#':
+                return [document.getElementById(selector.substring(1))];
+            break;
+            case '.':
+                return getByClassName(selector.substring(1),context);
+            break;
+            default :
+                return context.getElementsByTagName(selector);
+            break;
+        }
+
+    }
+
+
+    function getByClass(className,context){
+        context = context || document;
+        var result = [];
+        var arr = context.getElementsByTagName("*");
+        var re = new RegExp("\\b"+className+"\\b");
+        for(var i = 0; i<arr.length;i++){
+            if(re.test(arr[i] = className)){//()内的内容与test前的内容比较是否相同
+               result.push(arr[i]);
+            }
+        }
+        return result;
+    }
+
+    function before(elem,newNode){
+        elem.parentNode.insertBefore(newNode,elem);
+    }
+
+    function after(elem){
+        if(elem.nextSibling){
+            before(elem.nextSibling(newNode));
+        }else{
+            elem.parentNode.appendChild(newNode);
+        }
+    }
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
