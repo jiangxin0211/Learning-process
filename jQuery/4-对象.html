@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+    <div id="div1">div1</div>
+    <script src="jquery-1.11.2.js"></script>
+    <script>
+        //原生对象
+        var oDiv = document.getElementById("div1");
+        oDiv.onclick = function(){
+            alert(oDiv.innerHTML);
+        };
+
+        //jQuery对象
+        var $div = $("#div1");
+        console.log($div.html());
+
+
+        console.log($(oDiv).html());//原生对象转化成JQ对象
+        console.log($div[0].innerHTML);//jq对象调用原生方法，加[]
+        console.log($div.get(0).innerHTML);//jq对象调用原生方法，加。get(0)
+    </script>
+</body>
+</html>
