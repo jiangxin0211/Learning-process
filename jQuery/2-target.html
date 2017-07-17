@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+    <style>
+        *{
+            padding:0;
+            margin: 0;
+        }
+        body{
+            height: 3000px;
+        }
+        #nav{
+            height: 30px;
+        }
+        #nav li{
+            width: 120px;
+            height: 30px;
+            background: #cccccc;
+            float: left;
+            list-style: none;
+        }
+        div{
+            height: 300px;
+        }
+        #div1{
+            background: #ff0000;
+        }
+        #div2{
+            background: #00ff00;
+        }
+        #div3{
+            background: #ffff00;
+        }
+        /*#div3:target{
+            background: #cccccc;
+        }//div3作为目标对象时变为灰色*/
+    </style>
+</head>
+<body>
+<ul id="nav">
+    <li><a href="#div1">模块1</a></li>
+    <li><a href="#div2">模块2</a></li>
+    <li><a href="#div3">模块3</a></li>
+</ul>
+<div id="div1">模块1</div>
+<div id="div2">模块2</div>
+<div id="div3">模块3</div>
+<script src="jquery-1.11.2.js"></script>
+<script>
+    $(function(){
+//        $("#div3:target").css("background",'#ccc');//不能使div3作为目标对象时变为灰色，因为文档加载时这句话就已经执行完了
+        $("#nav li:last").on('click',function(){
+            $('#div3:target').css("background","#ccc");
+        });
+    });
+</script>
+</body>
+</html>
