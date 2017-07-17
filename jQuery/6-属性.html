@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+    <input type="text" id="username" value="zhangsan"/>
+    <div id="div1"></div>
+    <script src="jquery-1.11.2.js"></script>
+    <script>
+        /*var oDiv = document.getElementById("div1");
+        oDiv.aa = "123";
+        console.log(oDiv.aa);
+
+        oDiv.setAttribute("bb","234");
+        console.log(oDiv.getAttribute("bb"));*/
+
+        $(function(){
+            var $div1= $("#div1");
+            $div1.attr("aa","123");//两个参数是赋值
+            $div1.removeAttr("aa");//移除
+            console.log($div1.attr("aa"));//一个参数是取值
+
+            $div1.prop("bb","234");//两个参数是赋值
+            console.log($div1.prop("bb"));//一个参数是取值
+
+            console.log($("#username").val());//无参数是取值
+            $("#username").val("lisi");//有参数是赋值
+        })
+    </script>
+</body>
+</html>
