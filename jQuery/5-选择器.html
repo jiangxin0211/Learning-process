@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+    <style>
+        ul li:nth-child(2n){/*n从1开始数 */
+        background : #ff0000;
+        }
+    </style>
+</head>
+<body>
+<form action="">
+    用户名：<input type="text" name="username"/><br>
+    性别：
+    <input type="radio" name="sex"/>男
+    <input type="radio" name="sex"/>女<br>
+    爱好：
+    <input type="checkbox" name="hobby"/>篮球
+    <input type="checkbox" name="hobby"/>足球
+    <input type="checkbox" name="hobby"/>排球<br>
+    头像 <input type="file"/>
+
+    <button type="button">提交</button>/*加上type="button"后内容就不会提交,仅仅是一个按钮*/
+</form>
+<ul>
+    <li>01</li>
+    <li>02</li>
+    <li>03</li>
+    <li>04</li>
+    <li>05</li>
+    <li>06</li>
+</ul>
+    <div>
+        <span>Corey,</span>
+        <span>Yehuda,</span>
+        <span>Adam,</span>
+        <span>Todd</span>
+    </div>
+    <div>
+        <b>Nobody,</b>
+        <span>Jörn,</span>
+        <span>Scott,</span>
+        <span>Timo</span>
+    </div>
+    <script src="jquery-1.11.2.js"></script>
+    <script>
+//        $("div span:first-child").css("background","green");//第一个类型为span的孩子
+        $("div span:first-of-type").css("background","green");//第一个span类型的孩子
+
+    </script>
+
+</body>
+</html>
