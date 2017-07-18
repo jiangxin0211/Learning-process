@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+    <style>
+        body{
+            font-size: 16px;
+        }
+        table{
+            width: 400px;
+            border: 2px solid #000000;
+            border-collapse:collapse;/*为表格设置合并边框模型*/
+        }
+        table td,th{
+            width: 50%;
+            height: 30px;
+            border: 1px solid #ffffff;
+        }
+        tbody th{
+            background: #abc;
+        }
+        tbody tr:nth-child(even){
+            background: #eeddff;
+        }
+
+    </style>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th colspan="2">鼠标点击表格就可编辑</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th>姓名</th>
+        <th>学号</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td class="editable">AA</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td class="editable">BB</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td class="editable">CC</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td class="editable">DD</td>
+    </tr>
+
+    </tbody>
+</table>
+
+<script src="../javascript/练习题/jquery-1.11.2.js"></script>
+<script>
+    $(function(){
+        $(".editable").on("click", function(){
+//            console.log( $("input", this) );
+            if($(this).has("input").length > 0){
+                return false;
+            }
+            var $input = $("<input type='text'>").val(this.innerHTML);
+            $(this).empty().append($input);
+            $input.trigger("focus");
+        });
+    });
+
+
+
+
+</script>
+</body>
+</html>
