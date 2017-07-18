@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div.centent{
+            float: left;
+            text-align: center;
+            margin: 10px;
+        }
+        span{
+            display: block;
+            margin: 2px;
+            padding: 5px;
+            background: #898989;
+            font-size: 12px;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        #select1{
+            height: 250px;
+            width: 100px;
+        }
+        #select2{
+            height: 250px;
+            width: 100px;
+            /*float: left;*/
+        }
+    </style>
+</head>
+<body>
+<div class="centent">
+    <select multiple="multiple" id="select1">
+        <option value="1">选项一</option>
+        <option value="2">选项二</option>
+        <option value="3">选项三</option>
+        <option value="4">选项四</option>
+        <option value="5">选项五</option>
+        <option value="6">选项六</option>
+        <option value="7">选项七</option>
+    </select>
+    <div>
+        <span id="add">添加到右边</span><br>
+        <span id="add-all">全部添加到右边</span>
+    </div>
+</div>
+
+<div class="centent">
+    <select multiple="multiple" id="select2">
+        <option value="8">选项八</option>
+    </select>
+    <div>
+        <span id="remove">选中删除到左边</span><br>
+        <span id="remove-all">全部删除到左边</span>
+    </div>
+</div>
+
+
+<script src="../javascript/练习题/jquery-1.11.2.js"></script>
+<script>
+    $(function(){
+        var $select1 = $("#select1");
+        var $select2 = $("#select2");
+        $("#add").on('click',function(){
+            $('#select1 option:selected').appendTo($select2);
+        });
+        $("#add-all").on('click',function(){
+            $("#select1 option").appendTo($select2);
+        });
+        $("#remove").on("click",function(){
+            $("#select2 option:selected").appendTo($select1);
+        });
+        $("#remove-all").on("click",function(){
+            $("#select2 option").appendTo($select1);
+        });
+        $("#select1").on("dblclick",function(e){
+            $(e.target).appendTo($select2);
+        });
+        $("#select2").on("dblclick",function(e){
+            $(e.target).appendTo($select1);
+        });
+
+
+    });
+
+
+</script>
+</body>
+</html>
