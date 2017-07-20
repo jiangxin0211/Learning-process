@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+    <style>
+        /*#div1::after{*/
+            /*content:"aaa";*/
+            /*background: #ff0000;*/
+            /*width: 200px;*/
+            /*height: 200px;*/
+            /*display: block;*/
+        /*}*/
+        /*#div1::before{*/
+            /*content:""*/
+        /*}*/
+        a::after{
+            content: attr(href);/*插入的只是内容不是元素*/
+        }
+        #ul1{/*解决子元素浮动，父元素元素塌陷问题*/
+            /*position: absolute;*/
+            /*float: left;*/
+            /*height: 30px;*/
+            /*overflow: hidden;*/
+        }
+
+        #ul1 li{
+            list-style: none;
+            float: left;
+        }
+
+        .clearfix::after{/*通用样式解决元素塌陷*/
+            content: "";
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">div</div>
+    <a href="http://www.baidu.com">baidu</a><br>
+    <a href="http://www.taobao.com">taobao</a><br>
+    <a href="http://www.jd.com">jd</a><br>
+
+    <ul id="ul1" class="clearfix">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</body>
+</html>
