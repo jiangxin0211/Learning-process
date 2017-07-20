@@ -1,0 +1,107 @@
+www.can i use.com 网站
+浏览器内核
+-webkit-  Chrome
+-moz-  火狐
+-ms-  IE
+-o-  opera欧鹏
+标准浏览器
+
+css.chm手册
+css参考手册：www.
+
+伪类选择器： “：”真实存在的元素
+link  未访问过
+visited  访问过
+hover   鼠标放上去就会触发    在早期IE下只能给a加hover
+active 选定按住
+focus 获取焦点 blur不是个选择器，失去焦点
+root 根元素永远是html
+lang  语言
+not（selector）  不包含
+even并不是一个选择器，只是一个参数  :nth-child(even)
+first-child  ul li:first-child  li下面的第一个孩子，不是ul的
+last-child(1)  倒数第一个
+nth-child  第几个孩子开始
+first-of-type 第一个出现type类型的
+nth-of-type
+empty 使……为空
+checked 选中
+enabled  disabled 可编辑 不可编辑
+target 目标 锚点
+
+
+
+伪对象选择符：“：：”并不是真实存在的
+first-line 第一行
+first-letter 第一个字母
+selection  选中的内容
+placeholder  input里的内容
+clearfix::after  解决元素塌陷问题
+before& after   必须有content=“”  元素内容的前面或者后面插入一个伪元素
+
+文本阴影text-shadow: （水平方向偏移量(px)， 垂直方向偏移量(px)，  模糊程度(值越小越清楚，越大越模糊 带px)， 颜色rgb(255,0,0)）
+可以设置多阴影用“，”隔开
+透明度rgba(0,0,0,0.5)
+
+{white-space: nowrap;//不换行
+overflow: hidden;//超出部分隐藏
+text-overflow: ellipsis；//超出部分用…代替}
+word-break: break-all;//强制换行
+
+
+woff (web open font)网络开放格式化字体
+网络字体：色调 饱和度 亮度
+  @font-face{font-famliy:}
+
+边框：
+border-radius: 50%   边框圆角
+box-shadow（元素阴影）：水平 垂直       外延值 颜色
+border-img 以图片作为边框
+
+
+背景：
+背景原点background-origin
+背景裁剪background-clip:padding-box content-box border-box      还有一个text
+     background-clip: text ; font-weight: blord   color:transparent;  剩下的字体是背景填充的
+背景大小background-size  px    %相对于整个元素div的百分比，不是自己
+        background-size: contain  等比例缩放，图片有一个边界触到元素边界就停止缩放 未必充满整个元素
+        background-size: cover   等比例缩放，图片全部覆盖整个元素就停止缩放，图片可能会超出元素范围
+多背景 mult background
+渐变： 线性渐变 径向渐变
+
+
+盒模型：
+标准盒模型 width=content
+怪异/混杂盒模型 width=content+padding+border
+DOCTYPE不写就会在IE6之前下开启怪异模式
+
+弹性盒模型:
+box-flex
+子元素分配父元素的剩余宽度
+box-orient： 水平 垂直vertical
+box-direction：reverse；
+box-ordinal-group: 1;按数值大小排列
+box-pack 对齐方式
+box-algin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
