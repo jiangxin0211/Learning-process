@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="div1">div1
+    <div  class="aa">div2</div>
+    <div  class="aa">div3</div>
+</div>
+
+<script>
+    document.getElementById("id");
+    document.getElementsByTagName("div");
+
+    //兼容性问题
+    document.getElementsByClassName("username");
+    document.getElementsByName("aa");
+
+    var aDiv = document.querySelectorAll("#div1 .aa");
+    console.log(aDiv);
+    var oDiv1 = document.querySelector("#div1 .aa");//只返回一个对象，第一个
+//    oDiv1.className += " cc";
+    console.log(oDiv1.className);//返回字符串
+    console.log(oDiv1.classList.add(" cc"));//返回的是数组
+    oDiv1.classList.remove(" cc");
+    oDiv1.classList.remove(" bb");
+    oDiv1.classList.toggle(" bb");//有bb就删除，没有bb就添加
+
+
+
+
+
+    /**
+     * 查找符合className的元素
+     * @param className
+     * @param context
+     * @returns {Array}
+     */
+    function getByClass(className,context){
+        context = context || document;
+        var result = [];
+        var arr = context.getElementsByTagName("*");
+        var re = new RegExp("\\b"+className+"\\b",'g');
+        for(var i = 0; i<=arr.length; i++){
+            if(re.test(arr[i].className)){
+                result.push(arr[i]);
+            }
+        }
+        return result;
+    }
+</script>
+</body>
+</html>
