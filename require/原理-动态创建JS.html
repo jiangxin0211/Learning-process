@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+    <button id="btn">add</button>
+
+    <script>
+        var oBtn = document.getElementById("btn");
+        oBtn.onclick = function(){
+            var oScript = document.createElement("script");
+            oScript.src = "xx.js";
+            oScript.onload = function(){
+
+            }
+            document.body.appendChild(oScript);
+
+        }
+    </script>
+</body>
+</html>
