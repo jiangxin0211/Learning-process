@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--
+类： 具有相同属性和方法的对象的集合
+对象： 实例化对象
+
+-->
+
+<script>
+    //类  构造函数
+    function people(name,age){
+        this.name = name;
+        this.age = age;
+    }
+    People.prototype.code = function(){
+        alert(123);
+    };
+
+    //对象
+    var p1 = new People("zhangsan",23);
+    p1.code();
+
+    function aa(name,age){
+        console.log(this);//this默认指向是window
+        console.log(name);
+        console.log(age);
+    }
+    var obj = {
+        name: "zhangsan",
+        school: "heida"
+    };
+//    aa.call(obj,"lisi",18);
+//    aa.apply(obj,["lisi",18]);
+//    aa.bind(obj,"lisi",18);//bind只是改变this指向，不会立即调用
+    aa.bind(obj)("lisi",18);//此时既改变了this指向，又立即调用了
+</script>
+<!--
+改变this的指向
+call( , , ,)
+apply( ,[ , ,])
+bind()( , ,)
+
+-->
+</body>
+</html>
