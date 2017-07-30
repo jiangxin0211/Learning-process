@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<script>
+    var obj1 = {
+        name: "zhangsan",
+        age: 12
+    };
+
+    console.log(obj1);
+    var str1 = JSON.stringify(obj1);//object-->string
+    console.log(typeof str1);
+
+    var obj2 = JSON.parse(str1);//string-->object
+    console.log(obj2);
+
+    var a = 5;
+    var b = a;
+    a = 6;
+    console.log(b);//b=5，基本数据类型，存放在栈里
+
+
+    var obj3 = {
+        name:"zhangsan",
+        age:23
+        father: {
+            name: "zhanger"
+        }
+    };
+    var obj4 = obj3;
+    obj3.name = "lisi";
+    console.log(obj4.name);// lisi,引用类型指向同一内存空间
+
+
+    var str5 = JSON.stringify(obj3);
+    var obj5 = JSON.parse(str5);
+    obj3.name = "lisi";
+    console.log(obj5.name);//同样能完成深拷贝
+
+//    eval("alert(123);");
+    eval("while(true){alert(1);}");//解析字符串,不安全,关不掉
+    JSON.parse("alert(1);");//安全，只能解析JSON格式的
+
+
+
+
+
+    //深拷贝
+    function cloneObj(obj) {
+        var newObj = {};
+        for(var p in obj){
+            if(typeof obj[p] === 'object'){
+                newObj[p] = arguments.callee(obj[p]);//递归，重复调用自己
+            }else{
+                newObj[p] = obj[p];
+            }
+        }
+        return newObj;
+    }
+</script>
+
+<!--xml-->
+<user>
+    <username>zhangsan</username>
+    <age>18</age>
+    <school>heida</school>
+<!--数据小，速度快-->
+
+</user>
+
+
+
+
+
+
+
+
+</body>
+</html>
