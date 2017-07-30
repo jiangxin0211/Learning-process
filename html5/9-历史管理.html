@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+        <!--<a href="http://www.baidu.com">百度</a>-->
+        <button id="btn">随机数</button>
+        <div id="result"></div>
+        //普通方式
+        <script>
+            var oBtn = document.querySelector("#btn");
+            var oResult = document.querySelector("#result");
+            var obj = {};
+            oBtn.addEventListener("click",function(){
+                var arr = [];
+                for(var i=0; i<5; i++){
+                   arr.push(Math.floor(Math.random() * 10));//ceil向上取整；  floor向下取整
+               }
+                oResult.innerHTML = arr;
+
+                location.hash = Math.random();
+                obj[location.hash] = arr;
+
+            });
+
+            window.onhashchange = function(){
+                //产生前后按钮之后会，能返回上一次状态
+                oResult.innerHTML = obj[location.hash];//通过哈希值，绑定当前状态
+                console.log(location.hash);
+            }
+
+
+
+        </script>
+
+</body>
+</html>
