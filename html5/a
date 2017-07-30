@@ -1,0 +1,146 @@
+HTML5
+简介
+在线制作ico文件
+
+域名
+
+*******语义化标签：便于开发者阅读，搜索引擎优化
+header
+nav 导航
+footer
+artical
+aside 侧栏
+datalist 自动筛选
+datals 描述文档或文档某个细节
+dialog 弹出框
+section 定义文档中的章节
+time
+站长工具SEO
+
+
+
+
+*尽量少使用无语义的标签div,span
+*html5shiv.js:用于解决早期浏览器对html5的新增标签的不支持  在head里引入这个文件，因为IE浏览器必须在元素解析前知道这个元素
+*在既可以用div又可以用p时，尽量用p，因为p自带上下边距
+*normalize.css: css重置文件
+        img{border: 0;} 去掉边框，意思是在IE6下img外面有个a,自带蓝色边框
+*bootstrap框架  重置的 twitter研发的
+*不要使用纯样式标签 例如：b  让字体加粗 u 斜体
+*使用表格时：标题用caption 表头用thead 主体tbody 尾部tfoot  表头th 单元格td
+
+
+********新增的表单控件和表单属性
+form里的action是提交
+input type="email" 不同浏览器自带不同提示
+           "url"
+           "number" 有上下箭头 加减
+           "range"左右滑动
+           "date"下拉日历菜单  日历插件datepicker
+           "search"
+           "color"调色盘
+
+
+
+*********视频音频
+视频video: autoplay自动播放 loop循环播放 controls添加了音量，下载，暂停等功能
+音频audio：
+
+
+*********选择器
+querySelector
+querySeclectorAll
+getElementByClassName
+classList: length add remove toggle切换
+ classname返回的是对象
+ classlist返回的是数组
+
+
+
+**********JSON的新方法
+parse 字符串转化为对象
+stringfiy 对象转化成字符串
+ json ：javascript object notation标记  用于前后台数据传输
+ 轻量级的数据交换格式  简洁  官网json.org
+ 兼容性问题：去官网http://json.org  下载json2.js
+在线解析JSON格式问题 校验
+
+XML数据小，速度快，但是不方便解析 效率较低
+
+
+
+**********自定义数据与JS加载
+以data-为前缀的自定义属性用data()来解析
+获取自定义属性的是data.set();返回的是对象
+setAttribute(); getAttribute();添加属性；获取属性
+DOM中属性名带-的，JS中要大写
+
+JS是单线程的
+<script>  顺序加载完成
+<script defer> 异步加载 边解析 边加载  IE下
+<script async> 异步加载 边解析 边加载  不能保证加载顺序 跟文件大小有关
+
+
+**********历史管理
+单页面网站
+history.pushState(arr,"");
+
+
+本地存储
+
+localStorage.removeItem
+localStorage.clear
+
+session  5M大小 生命周期是关闭浏览器
+sessionStorage.name
+sessionStorage.setItem
+
+web存储
+
+
+webworker 单线程 不能执行DOM操作
+webSocket
+
+跨域：同源策略
+跨域的四种情况{
+    www.a.com    www.b.com  域名不同
+    www.qq.com   news.qq.com 主域和子域
+    端口号不同也属于跨域
+    域名相同但是协议不同  }
+协议域名相同其下文件名不同不属于跨域
+
+阿帕奇 Tomcat  硬件服务器上有软件服务器 XAMPP
+
+CDN加速：内容分发网络
+
+
+跨域的方式
+1.JSONP：json padding 加载另一个域的文件 get方法      利用script标签的src属性实现跨域
+   echo输出
+2.iframe 缺点：内嵌html  搜索引擎捕获不到iframe里的内容，DOM结构复杂
+多层级用top;上一级用parent；
+
+3.服务器代理方式
+
+4.html5新方式：  postmessage  有兼容性问题
+
+
+
+*****************HTML5 Canvas（画布） 教程
+canvas 是一个标签
+beginPath() 定义了一个新路径绘制的开始,重新起笔，不然会被覆盖
+context.arc(x, y, radius, startAngle, endAngle, antiClockwise)
+二次曲线 两个切线焦点
+ECHARTS网站 画图样式
+
+阮一峰 技术流
+
+
+
+
+
+
+
+
+
+
