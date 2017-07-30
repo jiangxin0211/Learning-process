@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="div1" data-aa-bb="456"></div>
+
+<script>
+    var oDiv1 = document.getElementById("div1");
+    oDiv1.aa = "123";//jq prop
+    console.log(oDiv1.aa);
+
+    oDiv1.setAttribute("bb","234");//jq attr
+    console.log(oDiv1.getAttribute("bb"));
+
+    console.log($("#div1").data("aaBb"));//aa-bb data只能解析以data-为前缀的自定义属性
+
+//    map是键值对的意思
+    console.log(oDiv1.dataset.aaBb);//aa-bb不能输出
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
