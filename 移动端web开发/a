@@ -1,0 +1,47 @@
+移动端开发：安卓是JAVA IOS是script 成本高
+主流应用程序答题分为三大类：Native APP，Web APP,Hybrid APP
+Native原生APP：日历，相机，短信，联系人，备忘录……
+        可以调用底层接口，声音震动通知
+       ios（ 开发语言objectC  ） android （java）
+WebAPP：   依托于浏览器  语言HTML+CSS 受限于UIwebview
+Hybrid混合APP: 淘宝APP是一个壳里面内嵌页面（html+css+js）,打包成一个安装包
+        具有时效性 实时更新 可调用底层接口 具有以上两个的优点 通常依托于操作系统 交互性强
+android手机的默认（原生)浏览器：Chrome ； ios手机的默认浏览器是：safari
+分辨率  视网膜屏retina一个像素点里会显示4个普通像素点，清晰度高    像素px是一个相对单位
+
+www.honeyfi.com
+www.ghostchina.com
+www.zaar.com
+如何让一个网页显示在不同分辨率的屏幕上,在移动端显示：CSS  JS
+固定式布局
+流式布局
+DPR显示倍数
+物理分辨率
+逻辑分辨率
+分辨率越大图标越小
+width=device-width:不同设备下大小相同
+user-scalable=yes：是否允许网页放大或者缩小倍数
+initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0：初始放大倍数，允许放大的最大倍数，允许缩小的最小倍数
+
+
+em  rem 区别
+em是倍数，父元素font-size的倍数  所有用px的地方都能用em或rem
+rem: r 是root   rem相对于html里的font-size来说的
+
+媒体查询：
+orientation:lanscape 横屏
+orientation: portrait 竖屏
+
+
+
+
+
+
+
+
+
+
+
+
+
+
