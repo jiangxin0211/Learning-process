@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<script>
+    //number boolean undefined null string
+    //引用类型
+    //undefined === null  不等
+//    console.log(NaN == NaN);
+//
+//    var arr = [1,2,3,NaN,4,5,6,7];
+//    console.log(arr.lastIndexOf(3));
+
+//    var arr = [1,2,3,4,3,6,4,7];
+//    arr.forEach(function(value){
+//        if(arr.lastIndexOf(value) == arr.indexOf(value)){
+//            console.log(value);
+//        }
+//    })
+
+    var oDiv = document.createElement('div');
+    oDiv.innerHTML = "aaaa";
+    document.body.appendChild(oDiv);
+    document.body.removeChild(oDiv);
+
+    setTimeout(function(){
+        console.log(1111);
+    },0);
+
+    setInterval(function(){
+        console.log(2222);
+    },1000);
+//用setTimeOut实现setInterval的功能
+    function fn(){
+        console.log(1111);
+        setTimeout(argument.callee,1000)
+    }
+    fn();
+
+
+    /**
+     * 闭包:封闭函数内，执行过后内存仍被占用，会一直被调用到，不会释放
+     * 三个改变this指向的方法 call apple bind
+     * **/
+    var a = 20;
+
+    var obj = {
+        a : 10,
+        fn:function(x,y){
+            console.log(this.a,x,y);
+        }
+    }
+    obj.fn.call(window,1,2);//马上输出
+    obj.fn.bind(window,1,2)();//返回一个函数在输出，有延迟
+    obj.fn.apple(window,[1,2]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
