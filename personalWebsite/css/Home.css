@@ -1,0 +1,29 @@
+#container{
+    background: url(../img/tm-bg-1.jpg)  no-repeat center center;
+    height: 750px;
+}
+
+.wrapper{
+    overflow: hidden;
+}
+.main-nav{
+    width: 1600px;
+    height: 110px;
+    margin-top: 40px;
+    background:#cccccc url(../img/nav.png) no-repeat left center;
+    filter:alpha(opacity:50);
+    opacity:0.5;
+    position:relative;
+}
+#nav ul{
+
+}
+#nav li{
+    width: 10%;
+    height: 110px;
+    float: left;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 40px;
+}
