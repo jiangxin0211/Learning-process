@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="process.css">
+	<style>
+	  
+
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="show"></div>
+		<div class="button">
+			<button class="button-r" id="create">创建进程</button>
+			<button class="button-r" id="block">阻塞进程</button>
+			<button class="button-r" id="wake">激活进程</button>
+			<button class="button-r" id="timeover">时间片到</button>
+			<button class="button-r" id="call">调度进程</button>
+			<button class="button-r" id="shown">显示内存</button>
+			<button class="button-r" id="stop">结束进程</button>
+			<button class="button-r" id="clear">clear</button>
+		</div>
+		<div>
+
+
+		</div>
+	</div>
+	<script>
+		var show = document.getElementsByClassName('show')[0];
+		var ready = [];
+		var block = [];
+		var run = [];
+		var flag = 1;
+		var storage = [];
+		var ocreate = document.getElementById('create');
+		var oblock = document.getElementById('block');
+		var owake = document.getElementById('wake');
+		var otimeover = document.getElementById('timeover');
+		var ocall = document.getElementById('call');
+		var ostop = document.getElementById('stop');
+		var oclear = document.getElementById('clear');
+		var oshown = document.getElementById('shown');
+
+		oclear.onclick = function() {
+			location.reload();
+		}
+		ocreate.onclick = function() {
+			createProcess();
+		}
+		oblock.onclick = function() {
+			blockProcess();
+		}
+		owake.onclick = function() {
+			wakeProcess();
+		}
+		otimeover.onclick = function() {
+			timeOverProcess();
+		}
+		ocall.onclick = function() {
+			callProcess();
+		}
+		ostop.onclick = function() {
+			stopProcess();
+		}
+		oshown.onclick = function() {
+			shownProcess();
+		}
+
+		//创建进程
+		function createProcess() {
+			if(run.length === 0 && block.length === 0 && ready.length === 0){
+				flag = 1;
+			}
+			var temp = 'process' + flag;
+			ready.unshift(temp);
+			flag++;
+			alert('进程创建成功！');
+			showProcess();
+		}
+
+		//显示所有进程
+		function showProcess() {
+			var div = document.createElement('div');
+			div.style.width = '690px';
+			div.style.height = '70px';
+			show.appendChild(div);
+			div.innerHTML = 'ready process : ' + ready + '<br>' + 'block process : ' + block + '<br>' + 'run process : ' + run + '<br>' + '----------------------------------------------------------------------------------';
+			// if (i = 0; i < 64; i++) {
+			// 	var j = Math.random();
+			// 	document,write(Math.ceil())
+
+			// } else{};
+		}			 
+
+		//时间片到
+		function judgetimeOverProcess() {
+			if(run.length !== 0) {
+				var process = run.pop();
+				ready.unshift(process);
+				if(ready.length !== 0) {
+					var temp = ready.pop();
+					run.unshift(temp);
+				}
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+		function timeOverProcess() {
+			if(judgetimeOverProcess()) {
+				showProcess();
+			}else{
+				alert('暂无进程！');
+			}
+		}
+
+		//阻塞进程
+		function judgeblockProcess() {
+			if(run.length !== 0) {
+				var process = run.pop();
+				block.unshift(process);
+				// console.log(run);
+				// console.log(block);
+				if(ready.length !== 0) {
+					var temp = ready.pop();
+					run.unshift(temp);
+					// console.log(ready);
+				}
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+		function blockProcess() {
+			if(judgeblockProcess()) {
+				console.log(run);
+				showProcess();
+			}else{
+				alert('暂无进程！');
+			}
+		}
+
+		//激活进程
+		function judgewakeProcess() {
+			if(block.length !== 0) {
+				var process = block.pop();
+				ready.unshift(process);
+				if(run.length === 0) {
+					var temp = ready.pop();
+					run.unshift(temp);
+				}
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+		function wakeProcess() {
+			if(judgewakeProcess()) {
+				showProcess();
+			}else{
+				alert('暂无进程！');
+			}
+		}
+		
+		//调度进程
+		function judgecallProcess() {
+			if(ready.length !== 0) {
+				var process = ready.pop();
+				// console.log(ready)
+				run.unshift(process);
+				// console.log(run)
+				if(run.length > 1) {
+					// alert('a')
+					var temp = run.pop();
+					ready.unshift(temp);
+				}
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+		function callProcess() {
+			if(judgecallProcess()) {
+				showProcess();
+			}else{
+				alert('暂无进程！');
+			}
+
+		}
+		//显示内存
+		function shownProcess(){
+            var s = [i];            
+            for (var i = 0; i < 4; i++) {
+            	var m = [j];
+            	for(var j = 0; j < 16; i++){
+            	    s = Math.random() - 0.5;
+            	    if (s > 0) {
+            	    	s = 1;
+            	    } else{
+            	    	s = 0;
+            	    };
+            	}
+            };
+          
+		}
+
+		//结束进程
+		function judgestopProcess() {
+			if(run.length !== 0) {
+				run.pop();
+				if(ready.length !== 0) {
+					var temp = ready.pop();
+					run.unshift(temp);
+				}
+				return true;
+			}
+			return false;
+		}
+
+		function stopProcess() {
+			if(judgestopProcess()) {
+				showProcess();
+			}else{
+				alert('暂无进程！');
+			}
+		}
+
+		//初始化
+		function init() {
+			show.innerHTML = '';
+		}
+
+		init();
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="process3.css">
+	<script src='jQuery.js'></script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="show"></div>
+		<div class="input1">
+			<input type="text" id="memorysize" value="请输入进程大小" onfocus="if(this.value==='请输入进程大小'){this.value='';this.style.color='black'}" onblur="if(this.value===''){this.value='请输入进程大小';this.style.color='#ccc'}">
+		</div>
+		<div class="input2">
+			<input type="text" id="address" value="请输入十位逻辑地址" onfocus="if(this.value==='请输入十位逻辑地址'){this.value='';this.style.color='black'}" onblur="if(this.value===''){this.value='请输入十位逻辑地址';this.style.color='#ccc'}">
+			<button id="sure">地址转换</button>
+		</div>
+		<div class="button">
+			<button id="create">创建进程</button>
+			<button id="block">阻塞进程</button>
+			<button id="wake">激活进程</button>
+			<button id="timeover">时间片到</button>
+			<button id="call">调度进程</button>
+			<button id="stop">结束进程</button>
+			<button id="memory">显示内存</button>
+			<button id="page">显示页表</button>
+			<button id="clear">clear</button>
+		</div>
+		<div id='math'>
+			<div id="showresult1">
+				<span class='arithmetic'>先进先出</span>
+				<span class='queyeP'></span>
+			</div>
+			<div id="showresult2">
+				<span class='arithmetic'>最近最久未使用</span>
+				<span class='queyeP'></span>
+			</div>
+			<input type="text" id="scanner" value="请输入任意页面" onfocus="if(this.value==='请输入任意页面'){this.value='';this.style.color='black'}" onblur="if(this.value===''){this.value='请输入任意页面';this.style.color='#ccc'}">
+			<button id="in">输入</button>
+		</div>
+	</div>
+
+	<script>
+		var show = document.getElementsByClassName('show')[0];
+		var showresult1 = document.getElementById('showresult1');
+		var showresult2 = document.getElementById('showresult2');
+		var showresult3 = document.getElementsByClassName('OPT')[0];
+		var ready = [];
+		var block = [];
+		var run = [];
+		var flag = 1;
+		var memory = [];//内存
+		var spare = [];//内存空闲
+		var memorysize = document.getElementById('memorysize');
+		var address = document.getElementById('address');
+		var scanner = document.getElementById('scanner');
+		var reg = /\d+/;//匹配memorysie值
+		var value;//memorysize值
+		var ovalue;//address值
+		var scanval = scanner.value;
+		var attr = {};
+		var p = document.getElementsByClassName('queyeP');
+		var fuck = document.getElementById('fuck');
+
+
+		//阻止默认事件
+		$(document).on('contextmenu', function() {
+			return false;
+		})
+
+
+		//监听内存大小的值
+		$('#memorysize').on('change', function() {
+			value = memorysize.value;
+		})
+
+		//逻辑地址
+		$('#address').on('change', function() {
+			ovalue = address.value;
+		})
+
+		$('#sure').on('click', function() {
+			showAddress(ovalue);
+		})
+
+		$('#clear').on('click', function() {
+			location.reload();
+		})
+		$('#create').on('click', function() {
+			if(createProcess()) {
+				changestorage(value);
+				showProcess();
+			}	
+		})
+		$('#block').on('click', function() {
+			blockProcess();
+		})
+		$('#wake').on('click', function() {
+			wakeProcess();
+		})
+		$('#timeover').on('click', function() {
+			timeOverProcess();
+		})
+		$('#call').on('click', function() {
+			callProcess();
+		})
+		$('#stop').on('click', function() {
+			stopProcess();
+		})
+		$('#memory').on('click', function() {
+			showMemory();
+		})
+		$('#page').on('click', function() {
+			showPage();
+		})
+
+
+		$('#scanner').on('change', function() {
+			scanval = scanner.value;
+		})
+
+		$('#in').on('click', function() {
+			// index++;
+			fifo(scanval);
+			lru(scanval);
+		})
+
+		//创建进程
+		function createProcess() {
+			var count = 0;
+			for(var i = 0; i < memory.length; i++) {
+				if(memory[i] === 0) {
+					count++;
+				}
+			}
+			if(reg.test(value) && parseInt(value) <= count) {
+				if(run.length === 0 && block.length === 0 && ready.length === 0){
+					flag = 1;
+				}
+				var temp = 'process' + flag;
+				ready.unshift(temp);
+				flag++;
+				return true;
+			}else if(parseInt(value) > count) {
+				alert('内存不足!');
+				return false;
+			}else if(!reg.test(value)){
+				alert('请输入内存大小!');
+				return false;
+			}
+		}
+
+		//显示所有进程
+		function showProcess() {
+			var div = document.createElement('div');
+			div.style.width = '480px';
+			div.style.height = '66px';
+			div.style.borderBottom = '1px solid #ccc';
+			div.style.lineHeight = '22px';
+			div.style.paddingLeft = '20px';
+			div.innerHTML = 'ready process : ' + ready + '<br>' + 'block process : ' + block + '<br>' + 'run process : ' + run + '<br>';
+			show.appendChild(div);
+		}
+
+		//显示内存
+		function showMemory() {
+			var wrapper = document.createElement('div');
+			wrapper.style.borderBottom = '1px solid #ccc';
+			if(!memory.length) {
+				for(var i = 0; i < 64; i++) {
+					var j = Math.random();
+					if(j > 0.5) {
+						memory.push(Math.ceil(j));
+					}else{
+						memory.push(Math.floor(j));
+					}
+				}
+			}
+			for(var i = 0; i < 64; i++) {
+				var div = document.createElement('div');
+				div.style.width = '31px';
+				div.style.height = '31px';
+				div.style.display = 'inline-block';
+				div.innerHTML = memory[i];
+				div.style.textAlign = 'center';
+				div.style.lineHeight = '31px';
+				wrapper.appendChild(div);
+			}
+			show.appendChild(wrapper);
+		}
+
+		//显示页表
+		function showPage() {
+			var wrapper = document.createElement('div');
+			wrapper.style.borderBottom = "1px solid #ccc";
+			if(run.length !== 0) {
+				var len = attr[parseInt(run[0].substring(run[0].length - 1, run[0].length))].length;
+				for(var i = 0; i < len; i++) {
+					var div = document.createElement('div');
+					div.style.width = '400px';
+					div.style.height = '30px';
+					div.style.lineHeight = '30px';
+					div.style.textIndent = '2em';	
+					div.innerHTML = i + ":" + attr[parseInt(run[0].substring(run[0].length - 1, run[0].length))][i];
+					wrapper.appendChild(div);
+				}
+				show.appendChild(wrapper);
+			}else {
+				alert('运行队列无进程！');
+			}
+		}
+
+		function showAddress(value) {
+			var tempvalue = value.substring(0,8);
+			var last = value.substring(8,10);
+			var lastvalue = parseInt(last, 2);
+			var temp = parseInt(parseInt(tempvalue.replace(/^0+/,'')), 2);
+			if(run.length !== 0) {
+				var len = attr[parseInt(run[0].substring(run[0].length - 1, run[0].length))].length;
+				if(attr[parseInt(run[0].substring(run[0].length - 1, run[0].length))][temp]) {
+					var add = attr[parseInt(run[0].substring(run[0].length - 1, run[0].length))][temp] * 4 + lastvalue;
+					var div = document.createElement('div');
+					div.style.width = '500px';
+					div.style.height = '30px';
+					div.style.lineHeight = '30px';
+					div.style.textIndent = '2em';
+					div.style.borderBottom = '1px solid #ccc';
+					div.innerHTML = "物理地址为: " + add;
+					show.appendChild(div);
+				}else{
+					alert('请输入正确的逻辑地址！');
+					return;
+				}
+			}else {
+				alert('运行队列无进程！');
+				return;
+			}
+			
+		}
+
+		//计算剩余空间
+		function caculspare() {
+			(function(){
+				for(var i = 0; i < memory.length; i++) {
+					if(memory[i] === 0) {
+						spare.push(i);
+					}
+				}
+			}());
+		}
+
+		//分配内存
+		function changestorage(value) {
+			attr[flag - 1] = [];
+			caculspare();
+			for(var i = 0; i < value; i++) {
+				attr[flag - 1][i] = spare.shift();
+				memory[attr[flag -1][i]] = 1;
+			}
+		}
+
+		//删除内存
+		function delstorage(query) {
+			for(var i = 0; i < attr[query].length; i++) {
+				memory[attr[query][i]] = 0;
+			}
+		}	 
+
+		//时间片到
+		function judgetimeOverProcess() {
+			if(run.length !== 0) {
+				var process = run.pop();
+				ready.unshift(process);
+				if(ready.length !== 0) {
+					var temp = ready.pop();
+					run.unshift(temp);
+				}
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+		function timeOverProcess() {
+			if(judgetimeOverProcess()) {
+				showProcess();
+			}else{
+				alert('暂无进程！');
+			}
+		}
+
+		//阻塞进程
+		function judgeblockProcess() {
+			if(run.length !== 0) {
+				var process = run.pop();
+				block.unshift(process);
+				// console.log(run);
+				// console.log(block);
+				if(ready.length !== 0) {
+					var temp = ready.pop();
+					run.unshift(temp);
+					// console.log(ready);
+				}
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+		function blockProcess() {
+			if(judgeblockProcess()) {
+				console.log(run);
+				showProcess();
+			}else{
+				alert('暂无进程！');
+			}
+		}
+
+		//激活进程
+		function judgewakeProcess() {
+			if(block.length !== 0) {
+				var process = block.pop();
+				ready.unshift(process);
+				if(run.length === 0) {
+					var temp = ready.pop();
+					run.unshift(temp);
+				}
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+		function wakeProcess() {
+			if(judgewakeProcess()) {
+				showProcess();
+			}else{
+				alert('暂无进程！');
+			}
+		}
+		
+		//调度进程
+		function judgecallProcess() {
+			if(run.length !== 0) {
+				var process = run.pop();
+				ready.unshift(process);
+				if(ready.length !== 0) {
+					var temp = ready.pop();
+					run.unshift(temp);
+				}
+				return true;
+			}else if(run.length === 0 && ready.length !== 0){
+				var process = ready.pop();
+				run.unshift(process);
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+		function callProcess() {
+			if(judgecallProcess()) {
+				showProcess();
+			}else{
+				alert('暂无进程！');
+			}
+
+		}
+
+		//结束进程
+		function judgestopProcess() {
+			if(run.length !== 0) {
+				delstorage(parseInt(run[0].substring(run[0].length - 1, run[0].length)));
+				run.pop();
+				if(ready.length !== 0) {
+					var temp = ready.pop();
+					run.unshift(temp);
+				}
+				return true;
+			}
+			return false;
+		}
+
+		function stopProcess() {
+			if(judgestopProcess()) {
+				showProcess();
+			}else{
+				alert('暂无进程！');
+			}
+		}
+
+		var fifoArr = [];
+		var fifohtml = [{},{},{},{},{}];
+		var lruhtml = [{},{},{},{},{}];
+		var lruArr = [];
+		var optArr = [];
+		var opthtml = [{},{},{},{},{}];
+		var page = [7,0,1,2,0,3,0,4,2,3,0,3,2,1,2,0,1,7,0,1];
+		
+		//初始化
+		for(var i = 0; i < 5; i++) {
+			fifohtml[i].num = null;
+			fifohtml[i].flag = 0;
+			lruhtml[i].num = null;
+			lruhtml[i].flag = 0;
+			opthtml[i].num = page[i];
+			opthtml[i].flag = i;
+			opthtml[i].temp = false;
+		}
+
+		function getMaxNum(prop) {
+			var max = -10;
+			var maxFlag = -10;
+			for(var i = 0; i < 5; i++) {
+				if(prop[i].flag > maxFlag) {
+					maxFlag = prop[i].flag;
+					max = i;
+				}
+			}
+			return max;
+		}
+
+		var fifos = 0,
+			fifof = 0;
+		function fifo(value) {
+			p[0].innerHTML = '';
+			var wrapper = document.createElement('div');
+			wrapper.style.marginLeft = '90px';
+			wrapper.style.marginTop = '20px';
+			for(var i = 0; i < 5; i++) {
+				var div = document.createElement('div');
+				div.style.width = '30px';
+				div.style.height = '30px';
+				div.style.lineHeight = '30px';
+				div.style.textAlign = 'center';
+				div.style.border = '1px solid black';
+				div.style.marginRight = '5px';
+				div.style.display = 'inline-block';
+				wrapper.appendChild(div);
+			}
+			showresult1.appendChild(wrapper);
+			fifoArr.push(value);
+
+			var oFlag = false;
+			for(var i = 0; i < fifohtml.length; i++) {
+				if(fifohtml[i].num === value) {
+					oFlag = true;
+				}
+			}
+			if(!oFlag) {
+				var max = getMaxNum(fifohtml);
+				fifohtml[max].num = value;
+				for(var i = 0; i < 5; i++) {
+					if(i !== max) {
+						fifohtml[i].flag += 1;
+					}
+				}
+				fifohtml[max].flag = 0;
+				fifos ++;
+			}else {
+				fifof ++;
+			}
+			for(var i = 0; i < 5; i++) {
+				if(fifohtml[i]) {
+					wrapper.children[i].innerHTML = fifohtml[i].num;
+				}
+			}
+			p[0].innerHTML = ((fifos / (fifof + fifos)) * 100).toFixed(2) + '%';
+		} 
+
+		var lrus = 0,
+			lruf = 0;
+		function lru(value) {
+			var wrapper = document.createElement('div');
+			wrapper.style.marginLeft = '90px';
+			wrapper.style.marginTop = '20px';
+			for(var i = 0; i < 5; i++) {
+				var div = document.createElement('div');
+				div.style.width = '30px';
+				div.style.height = '30px';
+				div.style.lineHeight = '30px';
+				div.style.textAlign = 'center';
+				div.style.border = '1px solid black';
+				div.style.marginRight = '5px';
+				div.style.display = 'inline-block';
+				wrapper.appendChild(div);
+			}
+			showresult2.appendChild(wrapper);
+			lruArr.push(value);
+			var flag = -1;
+			var oFlag = false;
+			for(var i = 0; i < 5; i++) {
+				if(lruhtml[i].num === value) {
+					oFlag = true;
+					flag = i;
+				}
+			}
+			if(!oFlag) {
+				var max = getMaxNum(lruhtml);
+				lruhtml[max].num = value;
+				for(var i = 0; i < 5; i++) {
+					if(i !== max) {
+						lruhtml[i].flag += 1;
+					}
+				}
+				lruhtml[max].flag = 0;
+				lrus++;
+			}else {
+				lruhtml[flag].num = value;
+				for(var i = 0; i < 5; i++) {
+					if(i !== flag) {
+						lruhtml[i].flag += 1;
+					}
+				}
+				lruhtml[flag].flag = 0;
+				lruf++;
+			}
+			for(var i = 0; i < 5; i++) {
+				if(lruhtml[i]) {
+					wrapper.children[i].innerHTML = lruhtml[i].num;
+				}
+			}
+			p[1].innerHTML = ((lrus / (lruf + lrus)) * 100).toFixed(2) + '%';
+		}
+
+		function getMaxN(num) {
+			var max = -1;
+			for(var i = 0; i < 5; i++) {
+				opthtml[i].	temp = false;
+			}
+			for(var i = num; i < page.length; i++) {
+				for(var j = 0; j < 5; j++) {
+					if(opthtml[j].num == page[i] && !opthtml[j].temp) {
+						opthtml[j].flag = i - opthtml[j].flag;
+						opthtml[j].temp = true;
+					}
+				}
+			}
+			for(var i = 0; i < 5; i++) {
+				if(!opthtml[i].temp) {
+					return i;
+				}
+			}
+			return getMaxFlag();
+		}
+
+		function getMaxFlag() {
+			var max = -10;
+			var maxFlag = -10;
+			for(var i = 0; i < 5; i++) {
+				if(opthtml[i].flag > maxFlag) {
+					maxFlag = opthtml[i].flag;
+					max = i;
+				}
+			}
+			return max;
+		}
+
+		function opt() {
+			var wrapper = document.createElement('div');
+			wrapper.style.marginLeft = '90px';
+			wrapper.style.marginTop = '20px';
+			showresult3.appendChild(wrapper);
+			var temp = false;
+			var oflag = new Array(5);
+			var s = 0,
+				f = 0;
+
+			for(var j = 0; j < 5; j++) {
+				var div = document.createElement('div');
+				div.style.width = '30px';
+				div.style.height = '30px';
+				div.style.lineHeight = '30px';
+				div.style.textAlign = 'center';
+				div.style.border = '1px solid black';
+				div.style.marginRight = '5px';
+				div.style.display = 'inline-block';
+				wrapper.appendChild(div);
+				div.innerHTML = opthtml[j].num;	
+			}
+
+			for(var i = 5; i < page.length; i++){
+				for(var j = 0; j < 5; j++) {
+					if(opthtml[j].num === page[i]) {
+						temp = true;
+					}
+				}
+				if(!temp) {
+					for(var j = 0; j < 5; j++) {
+						oflag[j] = opthtml[j].flag;
+					}
+					var max = getMaxN(i);
+					opthtml[max].num = page[i];
+					for(var j = 0; j < 5; j++) {
+						opthtml[j].flag = oflag[j];
+					}
+					opthtml[max].flag = max;
+					s ++;
+				}else {
+					f ++;
+				}
+
+				temp = false;
+				var wrap = document.createElement('div');
+				for(var j = 0; j < 5; j++) {
+					var div = document.createElement('div');
+					div.style.width = '30px';
+					div.style.height = '30px';
+					div.style.lineHeight = '30px';
+					div.style.textAlign = 'center';
+					div.style.border = '1px solid black';
+					div.style.marginRight = '5px';
+					div.style.display = 'inline-block';
+					wrap.appendChild(div);
+					div.innerHTML = opthtml[j].num;
+				}
+				wrapper.appendChild(wrap);
+			}
+			fuck.innerHTML = ((s / (f + s)) * 100).toFixed(2) + '%';
+		}
+		opt();
+
+		//初始化
+		function init() {
+			show.innerHTML = '';
+		}
+
+		init();
+
+
+	</script>
+</body>
+</html>
