@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+    <style>
+        #app{
+            width: 300px;
+            margin:0 auto;
+        }
+        h1{
+            text-align: center;
+        }
+        li{
+            list-style: none;
+            height: 30px;
+            margin:10px;
+            line-height: 30px;
+            padding: 10px;
+        }
+        span{
+            float: right;
+        }
+        .green{
+            background: green;
+        }
+        .red{
+            background: red;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="app">
+        <h1>services</h1>
+        <ul>
+            <li v-for="obj in arr" @click="change(obj)"
+                :class="{red:obj.active,green:!obj.active}">
+                {{obj.name}} <span>{{obj.price}}</span>
+            </li>
+        </ul>
+        <hr/>
+        total: <span>{{sum}}</span>
+
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+       el:'#app',
+        data:{
+            arr:[
+                {name:'aaa',price:234,active:false},
+                {name:'bbb',price:665,active:false},
+                {name:'ccc',price:163,active:false},
+                {name:'ddd',price:845,active:false},
+                {name:'eee',price:263,active:false}
+            ],
+            sum:0
+        },
+        methods:{
+            change(o){
+//                this.arr[index].active = !this.arr[index].active;
+                  o.active = !o.active;
+                    this.total();
+            },
+            total(){
+                    let total = 0;
+                    this.arr.forEach(function (val,index){
+                       if(val.active){
+                           total += val.price;
+                       }
+
+                    });
+                    this.sum = total;
+//                    return total;
+            }
+        }
+    });
+
+</script>
+</html>
