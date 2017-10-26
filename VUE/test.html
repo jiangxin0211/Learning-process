@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="msg" id="ipt"/>
+    {{msg}}
+</div>
+
+<button @click="fn('zs',23)"></button>
+
+</body>
+
+<script src="vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#appp',//作用域
+        data:{
+            msg:'aaa'
+        },
+        methods:{
+            fn:function(name,age){
+                console.log(event.target);
+                console.log(name,age);
+            }
+        }
+    });//el data 是固定写法
+
+    function V(obj){
+        for(var p in obj){
+            if(p == 'el'){
+                this.['$' + p] = document.querySelector(obj[p]);
+            }else if(p == 'data'){
+                this.['$' + ｐ] = obj[p];
+                for(var q in obj[p]){
+                    this.[q] = obj[p][q];
+                }
+            }
+        }
+    }
+
+    var v = new V({
+        el:'#appp',
+        data:{
+            msg:'aaa'
+        }
+    });
+
+
+
+
+
+    //访问器属性
+    var obj = {
+
+    };
+    Object.defineProperty(obj,'name',{
+        set:function(val){
+            document.getElementById('ipt').value = val;
+            console.log(val);
+        }
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>
