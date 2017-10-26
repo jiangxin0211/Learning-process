@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" @keyup.enter="fn"/>
+</div>
+</body>
+<script src="vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#appp',//作用域
+        data:{
+
+        },
+        methods:{
+            fn(){console.log(event.target.value)}
+        }
+    });
+
+</script>
+</html>
