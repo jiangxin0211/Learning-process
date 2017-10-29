@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+ <div id="app">
+     {{firstName}}+{{lastName}} = {{fullName}}
+ </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            firstName:'zhang',
+            lastName:'san'
+        }
+        computed:{
+            fullName:{
+                get:function(){
+                    return this.firstName + '' + this.lastName;
+            },
+                set:function(val){
+                    console.log(val);
+                }
+            }
+        }
+    });
+
+    vm.$watch('firstName',function(val,oldVal){
+        console.log(val+"......"+oldVal);
+        if(oldVal == 'zhang'){
+            this.firstName = oldVal;
+        }
+    });
+
+
+
+
+
+</script>
+</html>
