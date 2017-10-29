@@ -1,0 +1,14 @@
+vue前端框架
+数据双绑定
+对象数组两种形式
+msg时刻调取dom中的数据
+访问器属性
+v-model
+v-on:相当于@
+v-text v-html
+
+@keyup.shift
+@keyup.enter
+按键修饰符
+
+v-bind: 动态绑定属性指令 缩写':'
