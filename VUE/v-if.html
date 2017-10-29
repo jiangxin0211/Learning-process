@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+<div id="app">
+    <h1 v-if="flag == 1">hhhhhhh</h1>
+    <span v-else-if="flag ==2">dddddd</span>
+    <p v-else>ppppp</p>
+
+</div>
+</body>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            flag:true
+        }
+    })
+
+
+</script>
+</html>
