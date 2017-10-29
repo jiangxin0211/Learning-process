@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+    <style>
+        .red{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <input type="text"  v-model="msg" @keyup="search"/>
+    <button @click="add">add</button>
+    <ul>
+        <li v-for="val in showArr" :class="{red:val.active}"
+                @click="val.active = !val.active">
+            {{val.name}}
+        </li>
+    </ul>
+</div>
+
+</body>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            arr:[],
+            msg:'',
+            showArr:[]
+
+        },
+        methods:{
+            add(){
+                this.arr.push({name:this.msg,active:false});
+                this.msg='';
+                this.arr.sort((a,b)=>{
+                    return a.name > b.name;
+                })
+                this.showArr = this.arr;
+            },
+            search(){
+                var filterArr = this.arr.filter((val)=>{//filter用于过滤的数组方法，会返回一个满足条件的新的数组
+                    return val.name.includes(this.msg);//includes判断后面的是否包含前面的字符串，包含返回true不包含返回false
+                });
+                this.showArr = filterArr;
+            }
+
+        }
+    });
+
+
+</script>
+</html>
