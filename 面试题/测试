@@ -44,6 +44,49 @@
 4.e.target 和 e.currentTaeget区别：
 
 
+8.display属性对应的值：
+    position
+    overflow
+
+9.this指向：
+    call
+    bind 会返回一个新的对象
+
+10.jQuery中
+
+11.一个占空间一个不占空间 dispaly:none  空间释放了
+
+12.jquery操作DOM 方便获取DOM对象
+    vue 操作JS本身
+
+13.let const var
+    let不能变量提升，不能
+    const定义常量
+
+14.判断数组中是否包含NAN
+
+15.删除数组中任意位置的数
+    splice
+
+
+简答题
+4.MDN中对target的解释为，一个触发事件的对象的引用，
+    当事件处理程序在事件的冒泡或捕获阶段被调用时。
+      而对于currentTarget，它指的是当事件遍历DOM时，
+      标识事件的当前目标。它总是引用事件处理程序附加到的元素，
+      而不是event.target，它标识事件发生的元素。
+    e.target可以用来实现事件委托，该原理是通过事件冒泡（或者事件捕获）
+    给父元素添加事件监听，e.target指向引发触发事件的元素
+    e.currentTarget指向的是给绑定事件监听的那个对象
+
+编程题：
+1.定位：父元素相对定位 子元素绝对定位 margin-left父元素一半宽高  transform
+    弹性盒模型
+
+
+
+
+
 
 
 
