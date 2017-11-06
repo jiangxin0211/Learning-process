@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+<div id="div1">
+    <button id="btn">btn</button>
+</div>
+</body>
+<script src="jquery-1.11.2.js"></script>
+<script>
+    $('#btn').on('click',function(){
+        alert(1111111);
+    });
+
+    var btn = $('#btn').detach();
+//    var btn = $('#btn').remove();
+
+    $('#div1').append(btn[0]);
+</script>
+</html>
