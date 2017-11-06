@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+    <ul>
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+    </ul>
+
+
+</body>
+<script>
+
+
+    var aLi = document.getElementsByTagName('li');
+    for(let i = 0; i<aLi.length; i++){
+        aLi[i].onclick = function(){
+            console.log(i);
+        }
+    }
+    /**
+     * ECMA一个组织  6是版本 就是JS
+     * ECMAScript 6 es6  2015 06
+     * let 定义变量
+     * 1.let定义的没有变量提升
+     * 2.let不可以重复定义
+     * 3.用let定义的变量不允许任何重复定义，全局定义的也不行临时失效区（暂时性死区）
+     * 4.块级作用域（ let变量  const常量） let定义的变量只在自己的作用域有效  外部调用不到
+     *
+     * **/
+//    console.log(a);
+//    var a =10;//undefind  var变量提升
+
+//    let a = 3;
+//    console.log(a);
+
+//    var a = 20;
+//    var a= 10;
+//    console.log(a);//10
+//
+//    let a=20;
+//    let a=10;
+//    console.log(a);//有错
+
+//    var a = 10;
+//    function fn(){
+//        console.log(a);
+//        let a = 20;
+//    }
+//
+//    fn();
+
+//    {
+//        let i=0;
+//    }
+//    console.log(i);
+
+//    for(var i=0;i<3;i++){
+//        console.log(i);//0 1 2
+//    }
+//    console.log(i);// 3
+
+//    for(let i=0;i<3;i++){
+//        console.log(i);//0 1 2
+//    }
+//    console.log(i);//undefined
+
+</script>
+
+
+
+
+</html>
