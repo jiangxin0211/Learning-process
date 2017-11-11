@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+    <div id="app">
+        <!--<demo1 v-bind:my-msg-a="a" msg2="cccccc"></demo1>-->
+        <!--<demo1 :my-msg-a="b"></demo1>-->
+        <demo1>
+            <p slot="title">ppppppp</p>
+            <div slot="title1">
+                <h1>hhhhhh</h1>
+            </div>
+        </demo1>
+    </div>
+    <!--<div id="app2">-->
+        <!--<demo></demo>-->
+    <!--</div>-->
+</body>
+<script src="vue.js"></script>
+<script type="text/x-templaate" id="temp">
+    <div>
+            <slot name="title">
+                <h1>默认值111</h1>
+            </slot>
+            aaaaaaaa
+             <slot  name="title1">
+                <h1>默认值222</h1>
+            </slot>
+    </div>
+</script>
+<script>
+
+//    //全局的组件
+//    Vue.component('demo',{
+//        template:'<div><h1>hhhhhh</h1><p>ppppp</p></div>'//定义的模板只能有一个最外层标签
+//    });
+
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            a:'aaaaaa',
+            b:'bbbbbb'
+        },
+        components:{
+            demo1:{
+                template:'#temp',
+                props:['myMsgA','msg2']
+            }
+        }
+    });
+//    new Vue({
+//        el:'#app2'
+//    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>
