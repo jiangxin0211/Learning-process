@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文件管理</title>
+	<link rel="stylesheet" href="wenjian.css"/>
+	<script src='jQuery.js'></script>
+
+</head>
+<body>
+	<div class='wrapper'>
+		<div class="border">
+			<div class='img'></div>
+			<span>C:\Windows\system32\cmd.exe</span>
+			<div class="close"></div>
+		</div>
+		<div class="show">
+			<div class="title">
+				<h2>Microsoft Windows[版本 6.3.9600]</h2>
+				<h2>  Microsoft Corporation. 保留所有权利</h2>
+				<br>	
+			</div>
+			<div class="inp">
+				<span class='position active'>C:\></span>
+				<input type="text">
+			</div>	
+		</div>
+	</div>
+	<script>
+
+		$('.close').on('click', function() {
+			$('.wrapper').animate({marginTop:'400px',width:'50px',height:'10px'});//动画效果
+		})
+
+		//内存初始化
+		var memory = [];
+		for(var i = 0; i < 50; i++) {
+			memory.push(0);
+		}
+
+		var context = 'C:\\>';
+
+		//创建指令框
+		function createInp(context) {
+			$('.show .inp span').removeClass('active');
+			var div = $('<div class="inp"></div>').appendTo($('.show'));
+			var span = $('<span class="position active"></span>').html(context).appendTo(div);
+			var inp = $('<input type="text"/>').appendTo(div);
+			inp.get(0).focus();
+			initInp();
+		}
+
+
+		//显示内存
+		function showMemory() {
+			var oDiv = $('<div class="memory"></div>').appendTo($('.show'));
+			var oUl = $('<ul/>').appendTo(oDiv);
+			memory.forEach(function(index) {
+				$('<li/>').html(index).appendTo(oUl);
+			})
+			createInp(context);
+		}
+		showMemory();
+		//显示帮助
+		function help() {
+			var oDiv = $('<div class="help"></div>').appendTo($('.show'));
+			var spanlist = [
+							"MD - - - - - - - - - - - - - - 创建目录",
+							"CD - - - - - - - - - - - - - - 进入目录",
+							"RD - - - - - - - - - - - - - - 删除目录",
+							"MK - - - - - - - - - - - - - - 创建文件",
+							"DEL - - - - - - - - - - - - - - 删除文件",
+							"DIR - - - - - - - - - - - - - - 列出目录项目",
+							"MEO - - - - - - - - - - - - - - 显示内存",
+							". - - - - - - - - - - - - - - - 当前目录",
+							".. - - - - - - - - - - - - - - 上一级目录"];
+			spanlist.forEach(function(index) {//调用数组的每个元素，并将元素传递给回调函数。
+				$('<span>').html(index).appendTo(oDiv);
+			})
+			createInp(context);
+		}
+		help();
+
+		//存储文件和目录
+		var listArr = [];
+		var fileArr = [];
+
+		function createList(listname) {
+			var pos = $('.show .active').html();
+			var arr = pos.split('\\');
+			var flag = true;
+			if(arr.length === 2) {
+				var temp = arr[1] === '&gt;' ? 'c' : arr[1].split('&gt;')[0];
+				fileArr.forEach(function(item) { //判断上一级是否为文件
+					console.log(item)
+					if(item['filename'] === temp) {
+						flag = false;
+					}
+				})
+
+				listArr.forEach(function(item) {//判断是否存在该目录
+					if(item['listname'] === listname) {
+						flag = false;
+					}
+				})
+
+				if(flag) {
+					this.parent = temp;
+				}else {
+					return false;
+				}
+			}else {
+				var temp = arr[arr.length - 1].split('&gt;')[0];//split把一个字符串分割成字符串数组
+					console.log(temp);
+				fileArr.forEach(function(index) { //判断上一级是否为文件
+					if(index['filename'] === temp) {
+						flag = false;
+					}
+				})
+
+				listArr.forEach(function(item) {//判断是否存在该目录
+					if(item['listname'] === listname) {
+						flag = false;
+					}
+				})
+
+				if(flag) {
+					this.parent = temp;
+				}else {
+					return false;
+				}
+			}
+			var date = new Date(),
+				dateStr = date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate()
+						+ " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+			this.listname = listname;
+			this.date = dateStr;
+			listArr.push(this);
+			// if(context === 'C:\\>') {
+			// 	context = context.split('\\>')[0];
+			// }else {
+			// 	context = context.split('>')[0];
+			// }
+			// context = context + '\\' + listname + '>';
+			createInp(context);
+			return this;
+		}
+
+		function createFile(filename, size) {
+			var pos = $('.show .active').html();
+			var arr = pos.split('\\');
+			// console.log(arr)
+			var flag = true;
+			if(arr.length === 2) {
+				// alert(0)
+				var temp = arr[1] === '&gt;' ? 'c' : arr[1].split('&gt;')[0];
+				fileArr.forEach(function(index) { //判断是否为文件
+					if(index['filename'] === temp) {
+						flag = false;
+					}
+				})
+				if(flag) {
+					this.parent = temp;
+				}else {
+					return false;
+				}
+			}else {
+				var temp = arr[arr.length - 1].split('&gt;')[0];
+				fileArr.forEach(function(index) { //判断是否为文件
+					if(index['filename'] === temp) {
+						flag = false;
+					}
+				})
+				if(flag) {
+					this.parent = temp;
+				}else {
+					return false;
+				}
+			}
+
+			var date = new Date(),
+				dateStr = date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate()
+						+ " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+			var spare = 0;
+
+			for(var i = 0; i < memory.length; i++) {
+				if(memory[i] !== 1) {
+					spare ++;
+				}
+			}
+
+			if(spare >= size) {
+				this.filename = filename;
+				this.date = dateStr;
+				this.size = size;
+				this.locate = [];
+			}else {
+				return false;
+			}
+
+			for(var i = 0; i < memory.length; i++) {
+				if(size && memory[i] === 0) {
+					memory[i] = 1;
+					size --;
+					this.locate.push(i);
+				}
+			}
+			// if(context === 'C:\\>') {
+			// 	context = context.split('\\>')[0];
+			// }else {
+			// 	context = context.split('>')[0];
+			// }
+			fileArr.push(this);
+			// context = context + '\\' + filename + '>';
+			createInp(context);
+			return this;
+		}
+
+		function deleteList(listname) {
+			var flag = true;
+			//判断list中是否存在文件
+			fileArr.forEach(function(item) {
+				if(item['parent'] === listname) {
+					flag = false;
+				}
+			})
+			//判断list中是否存在list
+			listArr.forEach(function(item) {
+				if(item['parent'] === listname) {
+					flag = false;
+				}
+			})
+
+			//判断是否在当前list下
+			var tempContext = context.split('\\');
+			var curList = tempContext[tempContext.length - 1].split('>')[0];
+			if(curList === listname) {
+				flag = false;
+			}
+
+			if(flag) {
+				for(var i = 0; i < listArr.length; i++) {
+					if(listArr[i]['listname'] === listname) {
+						listArr.splice(i, 1);
+						createInp(context);
+						return true;
+					}
+				}
+			}
+			createInp(context);
+			return false;
+		}
+
+
+		function deleteFile(filename) {
+			createInp(context);
+			fileArr.forEach(function(item,index) {
+				if(item['filename'] === filename) {
+					item['locate'].forEach(function(item) {
+						memory[item] = 0;
+					})
+					fileArr.splice(index, 1);
+				} 
+			})
+		}
+
+		//进入目录
+		function cdList(listname) {
+			var contextArr = context.split('\\');
+			var currlist;
+			if(contextArr[contextArr.length - 1] === '>') {
+				currlist = 'c';
+			}else {
+				currlist = contextArr[contextArr.length - 1].split('>')[0];
+			}
+			console.log(contextArr)
+			console.log(currlist)
+			listArr.forEach(function(item) {
+				if(item['listname'] === listname && item['parent'] === currlist) {
+
+					contextArr.pop();
+					if(currlist !== 'c') {
+						contextArr.push(currlist);
+					}
+					var temp = contextArr.join('\\');
+					context = temp + '\\' + listname + '>';
+					return true;
+				}
+			})
+			createInp(context);
+		}
+
+		//返回上一级目录
+		function returnList() {
+			var contextArr = context.split('\\');
+			if(contextArr.length === 2) {
+				if(contextArr[1] === '>') {//如果为根目录不能后退
+					createInp(context);
+					return false;
+				}
+				contextArr.pop();
+				context = contextArr.join('\\') + '\\>';
+			}else {
+				contextArr.pop();
+				context = contextArr.join('\\') + '>';
+			}
+			createInp(context);
+		}
+
+		//显示当前名目录的所有目录项
+		function dir() {
+			var contextArr = context.split('\\'),
+				currContext = '',
+				result = [];
+			if(contextArr[contextArr.length - 1] === '>') {
+				currContext = 'c';
+			}else {
+				currContext = contextArr[contextArr.length - 1].split('>')[0];
+			}
+			// console.log(currContext)
+			var oDiv = $('<div class="currList"></div>').appendTo($('.show'));
+			listArr.forEach(function(item) {
+				// console.log(item)
+				if(item['parent'] === currContext) {
+					result.push(item);
+					// console.log('yes')
+					var tempdiv = $('<div/>').appendTo(oDiv);
+					$('<span/>').html(item['date']).css('margin-right','20px').appendTo(tempdiv);
+					$('<span/>').html(item['listname']).appendTo(tempdiv);
+				}
+			})
+			createInp(context);
+		}
+
+		function tree() {
+			var templistarr = listArr;
+			var tempfilearr = fileArr;
+			var contextArr = context.split('\\');
+			var currContext = '';
+			if(contextArr[contextArr.length - 1] === '>') {
+				currContext = 'c';
+			}else {
+				currContext = contextArr[contextArr.length - 1].split('>')[0];
+			}
+			var oul = $('<ul>').appendTo($('.show'));//在被选元素的结尾（仍然在内部）插入指定内容
+			for(var i = 0; i < listArr.length; i++) {
+				if(listArr[i]['parent'] === currContext && templistarr.length !== 0) {
+					var oli = $('<li class="treeli">').html(listArr[i]['listname']).appendTo(oul);
+					templistarr.slice(i, 1);
+					forLoop(listArr[i]['listname'], oli);
+				}
+			}
+			for(var i = 0; i < fileArr.length; i++) {
+				if(fileArr[i]['parent'] === currContext && tempfilearr.length !== 0) {
+					var oli = $('<li class="treeli">').html(fileArr[i]['filename']).appendTo(oul);
+					tempfilearr.slice(i, 1);
+				}
+			}
+			createInp(context);
+
+		}
+
+		function forLoop(listname, tag) {
+			var templistarr = listArr;
+			var tempfilearr = fileArr;
+			var currContext = listname;
+			var oul = $('<ul>').appendTo(tag);
+			for(var i = 0; i < listArr.length; i++) {
+				if(listArr[i]['parent'] === currContext && templistarr.length !== 0) {
+					var oli = $('<li class="treeli">').html(listArr[i]['listname']).appendTo(oul);
+					templistarr.slice(i, 1);
+					forLoop(listArr[i]['listname'], oli);
+				}
+			}
+			for(var i = 0; i < fileArr.length; i++) {
+				if(fileArr[i]['parent'] === currContext && tempfilearr.length !== 0) {
+					var oli = $('<li class="treeli">').html(fileArr[i]['filename']).appendTo(oul);
+					tempfilearr.slice(i, 1);
+				}
+			}
+		}
+
+
+
+		function initInp() {
+			$('.active').next().on('keyup', function(e) {
+				var curKey = e.which; 
+				if(curKey === 13) {
+				 	var str = e.target.value;
+					var tempArr = str.split(' ');
+				 	switch(tempArr[0]) {
+				 		case 'help' : help();
+				 			break;
+				 		case 'meo' : showMemory();
+				 			break;
+				 		case 'mk' : new createFile(tempArr[1],parseInt(tempArr[2]));
+				 			break;
+				 		case 'md' : new createList(tempArr[1]);
+				 			break;
+				 		case 'del': deleteFile(tempArr[1]);
+				 			break;
+				 		case 'rd': deleteList(tempArr[1]);
+				 			break;
+				 		case 'cd': tempArr[1] == '..' ? returnList() : cdList(tempArr[1]);
+				 			break;
+				 		case 'dir': dir();
+				 			break;
+				 		case 'tree': tree();
+				 			break;
+				 		default: createInp(context + '指令不正确！');
+				 				createInp(context);
+				 			break;
+				 	}
+				 }
+			})
+		}
+
+		initInp();
+
+	</script>
+</body>
+</html>
