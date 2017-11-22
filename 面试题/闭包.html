@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <ul id="ul1">
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+    </ul>
+    <button id="btn">点击</button>
+<script>
+//    function outer(){//外部函数
+//        var a = 5;
+//        function inner(){//内部函数
+//            return a;
+//        }
+//        return inner;
+//    }
+//    var fn = outer();
+//    console.log(fn());//5 没有被释放
+
+//    (function outer(){//外部函数
+//            var a = 5;
+//            function inner(){//内部函数
+//                return a;
+//            }
+//            return inner;
+//        })();
+
+
+
+//    var oUl = document.getElementById('ul1');
+//    var aLi = oUl.getElementsByTagName('li');
+//    for(var i=0;i<aLi.length; i++){
+//        (function(idx){
+//            aLi[i].onclick = function(){
+//                alert(idx);//不是立即调用
+//            }
+//        })(i);//函数声明和调用
+//        //每一次循环内部idx这个形参都会引用外部的idx
+//        //而且不会释放
+//        //每次循环i的值都会传给外部idx
+//
+    }
+
+    //点击按钮，两秒后弹出haha
+
+    var oBtn = document.getElementById('btn');
+    oBtn.onclick = function(){
+        var str = 'haha';
+        setTimeout(function(){
+            alert(str);
+        },2000);//按理说点击完会立即释放不会弹出，所以是闭包
+    };
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

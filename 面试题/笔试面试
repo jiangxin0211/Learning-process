@@ -1,0 +1,70 @@
+1.html语义化，
+2.html文档类型 html:xml  html:5 html:4t html4
+    html:xt 扩展名是xhtml
+    标准模式（DOCTYPE）和怪异模式 IE6
+3.什么是css盒模型 图 border margin padding
+    IE6怪异模式下： width=border+padding+content
+    标准：width=content
+    标准模式下如果实现和怪异模式一样的效果
+        box-sizing:content-box/border-box
+4.列表行框和列框的区别
+    自适应只是占据剩余空间 设置%是相对于父元素的
+5.行级元素的内外边距问题
+    padding是左，右，下
+    margin是左，右
+    解决方案：变成块，float，定位
+6.元素水平和垂直居中问题
+    text-align:center加给父元素 子元素就居中了
+    margin: 0 auto;比父元素窄（浮动的元素不管用）
+    浮动的元素 得绝对定位
+        已知宽高可以用top left margin-left margin-top 负的一半
+    css3语法: transform:translateX(-50%);有兼容性问题，浏览器不支持
+            弹性盒模型 justify-content 新语法
+                box-flex按分是剩余空间的比例不是整个父元素宽度
+          父元素： display: box; 兼容性问题
+          子元素：box-flex:1;
+          box-pack:center水平居中 justify-content
+          box-align:center垂直居中
+7.元素的padding使用%是相对于谁？
+    padding：50%；是相对于父元素的宽度的50%
+8.relative相对定位  相对自己的初始位置
+absolute绝对定位
+fixed固定定位
+static默认
+
+9清除浮动的方法
+    clear：both；
+    在DIV中加style="clear";
+    .clearfix:after{//在元素内部插入元素，变成块级
+        content:"";
+        diaplay: block;
+        clear: both;
+        *zoom:1;//IE下的怪异模式
+        overflow：hidden；
+    }
+10.JS中的闭包问题
+    外部函数内部声明了内部函数，在内部函数中引入老人
+    外部函数的局部变量，当外部执行完毕以后，这个局部变量不会释放
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
