@@ -1,0 +1,13 @@
+ECMAScript 6 es6  2015ba
+http://es6.ruanyifeng.com
+VS code：Visual Studio 编译软件
+
+.pkg mac
+.msi windows
+
+nodejs 服务   运行cmd  node -v  检查版本号
+
+cnpm   npm
+
+vue-router 路由是VUE.JS官方路由插件
+router-view 渲染的位置

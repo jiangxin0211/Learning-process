@@ -1,0 +1,16 @@
+编译sass文件
+命令：sass sass/index.scss:css/index.css
+自动编译命令：sass --watch  scss:css
+css输出格式：sass --watch sass:css --style nested(--watch可以去掉)
+
+watch  监听
+nested嵌套
+compact紧凑
+expanded扩展
+compressed压缩
+
+&引用父选择器
+#{$}引用成选择器名
+
+
+mixin混合

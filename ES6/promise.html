@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+<script>
+    //    ajax:不刷新页面请求
+    //$.get()得到   数据小
+    // $.post()发送  数据大
+
+    //status code
+    //200不报错
+    //304读缓存文件
+    //504 404 502
+
+    /*ajas原理
+    * 1.创建对象
+    * 2.向服务器发送请求
+    * 3.服务器响应
+    *
+    *
+    * */
+
+
+    let p1 = new Promise((reslove,reject) =>{
+                $.get('product-data.json',{},function(res){
+                        let list =res.productdata;
+                        if(list.length >0){
+                            reslove();
+                        }else{
+                            reject();
+                        }
+                    },json);
+            });
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

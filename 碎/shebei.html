@@ -327,7 +327,7 @@
             }
             ul.children[0].innerHTML = 'id: ' + chctlist[i].id;
             ul.children[1].innerHTML = 'chctName: ' + chctlist[i].chctName;
-            ul.children[2].innerHTML = 'isUse: ' + chctlist[i].isUse;
+            ul.children[2].innerHTML = 'Use: ' + chctlist[i].isUse;
             chct.appendChild(ul);
         }
         for(var i = 0; i < coctlist.length; i++) {
@@ -337,9 +337,9 @@
                 ul.appendChild(li);
             }
             ul.children[0].innerHTML = 'id: ' + coctlist[i].id;
-            ul.children[1].innerHTML = 'parentId: ' +coctlist[i].parentId;
+            ul.children[1].innerHTML = 'Id: ' +coctlist[i].parentId;
             ul.children[2].innerHTML = 'coctname: ' + coctlist[i].coctName;
-            ul.children[3].innerHTML = 'isUse: ' + coctlist[i].isUse;
+            ul.children[3].innerHTML = 'Use: ' + coctlist[i].isUse;
             coct.appendChild(ul);
         }
         for(var i = 0; i < dctlist.length; i++) {
@@ -349,9 +349,9 @@
                 ul.appendChild(li);
             }
             ul.children[0].innerHTML = 'id: ' + dctlist[i].id;
-            ul.children[1].innerHTML = 'parentId: ' + dctlist[i].parentId;
+            ul.children[1].innerHTML = 'Id: ' + dctlist[i].parentId;
             ul.children[2].innerHTML = 'dctName: ' + dctlist[i].dctName;
-            ul.children[3].innerHTML = 'isUse: ' + dctlist[i].isUse;
+            ul.children[3].innerHTML = 'Use: ' + dctlist[i].isUse;
             dct.appendChild(ul);
         }
     }

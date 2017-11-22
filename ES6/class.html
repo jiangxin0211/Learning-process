@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+
+</body>
+
+<script>
+//    function User(){
+//        this.name = 'zhangsan';
+//    }
+//    User.prototype.say = function(){
+//        console.log(1111);
+//    };
+//    var u = new User();
+//    u.say();
+
+
+
+    function Son(){
+
+    }
+    Son.prototype = u;
+
+    var s = new Son();
+
+
+
+
+
+    class User{
+        constructor(n){
+            this.name = n;
+        }
+        say(){
+            console.log(this.name);
+        }
+    }
+
+    var u1 = new User('xx');
+    u1.say();
+
+    class Son extends User{
+        constryction(n,a){
+            super();
+            this.age =a;
+        }
+    }
+
+    var s = new Son ('yy',12);
+    s.say();
+
+
+</script>
+</html>
+
+
+
+
+
+

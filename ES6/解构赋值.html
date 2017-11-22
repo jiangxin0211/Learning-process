@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    let [a,b,c] = [1,2,3];
+//    console.log(a,b,c);
+
+//    let [a,b,c,d] = [1,2,[3,4],5];
+//    console.log(a,b,c,d);
+
+//    let [a,b,c,e] = [1,2,[3,4],5];
+//    console.log(a,b,c,e);
+
+
+/**
+ * 对象是通过名字对应；数组是通过顺序对应的
+ * 字符串可以当成数组解构  等同charAt()
+ * **/
+    let fn = () =>{
+    console.log('fn');
+    return fn;
+
+}
+
+    let {name:n,age:a} = {
+        name:'zhangsan',
+        age:18
+    };
+    console.log(n,a);
+
+
+    let str = 'weichuang';
+    for(let i=0;i<str.length ;i++){
+        console.log(str[i]);
+        console.log(str.charAt());
+    }
+
+
+    let foo = ([x,y,z=0]) =>{
+    console.log(x,y,z);
+};
+    foo (['a','b']);
+
+
+    let add = ([a=0,b=0]) =>console.log(a + b);
+    add(5,6);
+
+
+    let foo = ({name,age,school}) =>{
+    console.log(name,age,school);
+}
+    let obj = {
+        school:'heida',
+        age: 18,
+        name:'lisi'
+    };
+    console.log(obj);
+
+
+    //json
+    let json = '{"a":"hello","b":"world"}';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

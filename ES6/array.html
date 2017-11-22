@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var arr = [1,2,3,4,5,6,7,8,90,0];
+//                [1,2,5,6,7,6,7,8,9,0]
+
+//    第一个参数 从哪个位置开始替换
+//    第一个参数 从哪个位置开始复制
+//    第一个参数 从哪个位置开始复制结束（可省略）
+//    console.log(arr.copyWithin(2,4));
+
+    var val = arr.findIndex(function (value,index){
+        return index > 6;
+    });
+
+    console.log(val);
+
+    console.log(arr.fill(10));
+
+
+</script>
+</body>
+</html>

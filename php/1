@@ -1,0 +1,11 @@
+Aptana
+
+
+用后端语言把数值显示在页面上
+V8解释器不能解释PHP代码
+用阿帕奇的解释器解释
+localhost/phpi/01-test.php
+<?php
+    echo "123";
+?>
+
