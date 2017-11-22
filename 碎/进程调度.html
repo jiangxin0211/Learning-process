@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='jQuery.js'></script>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+		.wrapper ul {
+			width: 727px;
+			height: 30px;
+			border: 1px solid deeppink;
+			border-right: none;
+			font-size: 18px;
+			text-align: center;
+		}
+		.wrapper ul li {
+			float: left;
+			width: 120px;
+			height: 30px;
+			background: lightpink;
+			border-right: 1px solid hotpink;
+			text-align: center;
+			line-height: 30px;
+			font-size: 18px;
+			color:deeppink;
+		}
+		.second {
+			margin-top: 50px;
+		}
+		.third {
+			margin-top: 50px;
+		}
+		.btn1, .btn2, .btn3 {
+			width: 150px;
+			height: 40px;
+			margin-bottom: 50px;
+			margin-top: 20px;
+			margin-left: 80px;
+			background: pink;
+			color: deeppink;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<button class="btn1" onclick="fcfs()">FCFS</button>
+		<button class="btn2" onclick="sjf()">SJF</button>
+		<button class="btn3" onclick="rr()">RR</button>
+		<ul>
+			<li>进程名称</li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<ul>
+			<li>到达时间</li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<ul>
+			<li>服务时间</li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<ul>
+			<li>完成时间</li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<ul>
+			<li>周转时间</li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<ul>
+			<li>带权周转时间</li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<ul class='second'>
+			<li>进程名称</li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<ul>
+			<li>到达时间</li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<ul>
+			<li>服务时间</li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<ul>
+			<li>完成时间</li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<ul>
+			<li>周转时间</li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<ul>
+			<li>带权周转时间</li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<div>
+			<ul class='third'>
+				<li>进程名称</li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<ul>
+				<li>到达时间</li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<ul>
+				<li>服务时间</li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<ul>
+				<li>完成时间</li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<ul>
+				<li>周转时间</li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<ul>
+				<li>带权周转时间</li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</div>
+	<script>
+		var fcfsarr = [];
+		var sjfarr = [];
+		var rrarr = [];
+
+		function createProcess(name, reachTime, serveTime) {
+			this.name = name;
+			this.reachTime = reachTime;
+			this.serveTime = serveTime;
+			fcfsarr.push(this);
+			sjfarr.push(this);
+		}
+
+		function fcfs() {
+			var finishTime = 0;
+			var sortArr = [];
+			var caculateArr = [];
+			for(var i = 0; i < fcfsarr.length; i++) {
+				sortArr.push(fcfsarr[i].reachTime);
+			}
+			sortArr.sort(function(a, b) {//排序
+				return a - b;
+			})
+
+			sortArr.forEach(function(item, index) {//forEach遍历数组,(数组元素，元素索引，数组本身)
+				caculateArr.push(getProcessByReachTime(item));
+			})
+			
+			caculateArr.forEach(function(item) {
+				finishTime = finishTime + item.serveTime;
+				item['finishTime'] = finishTime;
+				item['zhouzhuanTime'] = item['finishTime'] - item['reachTime'];
+				item['daiquanzhouzhuanTime'] = item['zhouzhuanTime'] / item['serveTime'];
+			})
+
+			for(var i = 0; i < 5; i++) {//eq获取元素索引,html设置或返回当前jquery对象所匹配的DOM元素内的html内容
+				$('.wrapper ul').eq(0).find('li').eq(i + 1).html(caculateArr[i].name);
+				$('.wrapper ul').eq(1).find('li').eq(i + 1).html(caculateArr[i].reachTime);
+				$('.wrapper ul').eq(2).find('li').eq(i + 1).html(caculateArr[i].serveTime);
+				$('.wrapper ul').eq(3).find('li').eq(i + 1).html(caculateArr[i].finishTime);
+				$('.wrapper ul').eq(4).find('li').eq(i + 1).html(caculateArr[i].zhouzhuanTime);
+				$('.wrapper ul').eq(5).find('li').eq(i + 1).html(caculateArr[i].daiquanzhouzhuanTime);
+			}
+		}
+
+		function getProcessByReachTime(index) {
+			for(var i = 0; i < fcfsarr.length; i++) {
+				if(fcfsarr[i].reachTime === index) {
+					return fcfsarr[i];
+				}
+			}
+		}
+
+		function getRrProcessByReachTime(index) {
+			for(var i = 0; i < rrarr.length; i++) {
+				if(rrarr[i].reachTime === index) {
+					return rrarr[i];
+				}
+			}
+		}
+
+		new createProcess('a',0,4);
+		new createProcess('b',1,3);
+		new createProcess('c',2,5);
+		new createProcess('d',3,2);
+		new createProcess('e',4,4);
+
+		function sjf() {
+			var temp = sjfarr;
+			var first = temp[0];
+			var finishTime = 0;
+			for(var i = 0; i < temp.length; i++) {
+				if(first.reachTime > temp[i].reachTime) {
+					first = temp[i];
+				}else if(first.reachTime == temp[i].reachTime && first.name !== temp[i].name) {
+					if(temp[i].serveTime < first.serveTime) {
+						first = temp[i];
+					}
+				}
+			}
+			finishTime = first.reachTime + first.serveTime;
+			temp[findProcessId(first.name, temp)].flag = true;
+			temp[findProcessId(first.name, temp)].finishTime = finishTime;
+			findShortTime(temp, finishTime);
+			sjfarr.forEach(function(item) {
+				item['zhouzhuanTime'] = item['finishTime'] - item['reachTime'];
+				item['daiquanzhouzhuanTime'] = (item['zhouzhuanTime'] / item['serveTime']).toFixed(2);
+			})
+			for(var i = 0; i < 5; i++) {
+				$('.wrapper ul').eq(6).find('li').eq(i + 1).html(sjfarr[i].name);
+				$('.wrapper ul').eq(7).find('li').eq(i + 1).html(sjfarr[i].reachTime);
+				$('.wrapper ul').eq(8).find('li').eq(i + 1).html(sjfarr[i].serveTime);
+				$('.wrapper ul').eq(9).find('li').eq(i + 1).html(sjfarr[i].finishTime);
+				$('.wrapper ul').eq(10).find('li').eq(i + 1).html(sjfarr[i].zhouzhuanTime);
+				$('.wrapper ul').eq(11).find('li').eq(i + 1).html(sjfarr[i].daiquanzhouzhuanTime);
+			}
+
+
+		}
+
+		function findProcessId(name, arr) {
+			for(var i = 0; i < arr.length; i++) {
+				if(name = arr[i].name) {
+					return i;
+				}
+			}
+		}
+
+		function findShortTime(arr, finishTime) {
+			var oflag = true;
+			var shortTime;
+			var index;
+			var iflag = true;
+			for(var i = 0; i < arr.length; i++) {
+				if(!arr[i]['flag']) oflag = false;
+			}
+			if(!oflag) {
+				for(var i = 0; i < arr.length; i++) {
+					if(!arr[i]['flag'] && !shortTime) {
+						shortTime = arr[i].serveTime;
+						index = i;
+					}
+				}
+
+				for(var i = 0; i < arr.length; i++) {
+					if(arr[i].serveTime < shortTime && !arr[i]['flag']) {
+						shortTime = arr[i].serveTime;
+						finishTime += shortTime;
+						arr[i]['finishTime'] = finishTime;
+						arr[i].flag = true;
+						iflag = false;
+					}
+				}
+				if(shortTime && !arr[index]['flag'] && iflag) {
+					finishTime += shortTime;
+					arr[index]['finishTime'] = finishTime;
+					arr[index].flag = true;
+				}
+	
+			}
+			for(var i = 0; i < arr.length; i++) {
+				if(!arr[i]['flag']) oflag = true;
+			}
+
+			if(oflag) {
+				arguments.callee(arr, finishTime)
+			}
+
+		}
+
+		function createRrProcess(name, reachTime, serveTime) {
+			this.name = name;
+			this.reachTime = reachTime;
+			this.serveTime = serveTime;
+			rrarr.push(this);
+		}
+		new createRrProcess('a',0,4);
+		new createRrProcess('b',1,3);
+		new createRrProcess('c',2,5);
+		new createRrProcess('d',3,2);
+		new createRrProcess('e',4,4);
+		function rr() {
+			var sortArr = [];
+			var caculateArr = [];
+			var tempcaculateArr = [];
+			var otime = 0;
+			for(var i = 0; i < rrarr.length; i++) {
+				sortArr.push(rrarr[i].reachTime);
+			}
+			sortArr.sort(function(a, b) {
+				return a - b;
+			})
+			sortArr.forEach(function(item) {
+				caculateArr.push(getRrProcessByReachTime(item));
+			})
+
+			recordSearchTime(tempcaculateArr, caculateArr);
+			turn(caculateArr, otime);
+			for(var i = 0; i < tempcaculateArr.length; i++) {
+				caculateArr[i].serveTime = tempcaculateArr[i];
+			}
+
+			caculateArr.forEach(function(item) {
+				item['zhouzhuanTime'] = item['finishTime'] - item['reachTime'];
+				item['daiquanzhouzhuanTime'] = (item['zhouzhuanTime'] / item['serveTime']).toFixed(2);
+			})
+			for(var i = 0; i < 5; i++) {
+				$('.wrapper div ul').eq(0).find('li').eq(i + 1).html(caculateArr[i].name);
+				$('.wrapper div ul').eq(1).find('li').eq(i + 1).html(caculateArr[i].reachTime);
+				$('.wrapper div ul').eq(2).find('li').eq(i + 1).html(caculateArr[i].serveTime);
+				$('.wrapper div ul').eq(3).find('li').eq(i + 1).html(caculateArr[i].finishTime);
+				$('.wrapper div ul').eq(4).find('li').eq(i + 1).html(caculateArr[i].zhouzhuanTime);
+				$('.wrapper div ul').eq(5).find('li').eq(i + 1).html(caculateArr[i].daiquanzhouzhuanTime);
+			}
+
+		}
+
+		function recordSearchTime(target, arr) {
+			for(var i = 0; i < arr.length; i++) {
+				target.push(arr[i].serveTime);
+			}
+		}
+
+		function turn(arr, otime) {
+			var flag = false;
+			for(var i = 0; i < arr.length; i++) {
+				if(otime >= arr[i].reachTime && arr[i].serveTime !== 0 && !arr[i]['finishTime']) {
+					arr[i].serveTime--;
+					otime++;
+				}
+				if(arr[i].serveTime === 0 && !arr[i]['finishTime']) {
+					console.log(otime)
+					arr[i].finishTime = otime;
+				}
+			}
+			for(var i = 0; i < arr.length; i++) {
+				if(arr[i].serveTime) {
+					flag = true;
+				}
+			}
+			if(flag) {
+				arguments.callee(arr, otime);
+			}
+
+		}
+
+	</script>
+</body>
+</html>
