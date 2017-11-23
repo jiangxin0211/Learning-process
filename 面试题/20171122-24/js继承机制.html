@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+<script>
+    //寄生机制 解决调用两次父类
+    function Animal(name) {
+        this.name = name;
+    }
+    Animal.prototype.eat = function(){
+        console.log('haha');
+    };
+
+    function Cat(){
+        Animal.call(this);//Animal()
+        //为了让cat子类继承animal父类的属性
+    }
+
+    function inherit(o){//封装了一个方法用来继承原型
+        function F(){}
+        F.prototype = o;
+//        F.prototype = Animal.prototype;
+        return new F();
+    }
+
+
+
+
+
+    Cat.prototype = inherit(Animal.prototype);
+    //有执行了一次Animal（）没有实际意义
+    Cat.prototype = new Animal();//cat属性的原型继承了Animal函数，同样也继承了Animal函数下的name和eat属性
+    Cat.prototype.constructor = Cat;//把默认属性改回原来的Cat
+
+
+    var cat1 = new Cat('mimi');
+    console.log( cat1.constructor );//Animal
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
