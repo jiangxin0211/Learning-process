@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function Person(name,age){
+//        this.name = 'lisi';
+//        this.age = 23;
+
+        console.log(this);
+    }
+//    var p1 = new Person('lisi',23);
+//    console.log(p1);
+    new Person();//this指向person{}
+    Person();//this指向window
+
+
+</script>
+</body>
+</html>
