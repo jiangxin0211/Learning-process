@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+<script>
+//    function test(){
+//        console.log(this);//->window
+//    }
+
+//    var obj = {
+//        sayHello:function(){
+//            console.log(this);//->obj
+//        }
+//    };
+//    obj.sayHello();
+
+
+    var oBtn = document.getElementById('btn');
+    oBtn.onclick = function(){
+//        console.log(this);//->obtn
+//        var that = this;
+//        setTimeout(function(){
+//            console.log(that);
+//        },2000)
+
+        var obj = {
+            name:'lisi',
+            sayHello: function(){
+                console.log(this);//->window
+            }
+        };
+        var fn = obj.sayHello = function(){
+          console.log(this); //->window
+        };
+        setTimeout(obj.satHello,2000);//没有加（）调用，obj.sayHello只是一个变量,只是引用了obj下的sayHello
+
+//        var fn = function(){
+//            console.log(this);//->
+//        };
+//        setTimeout(fn,2000);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
