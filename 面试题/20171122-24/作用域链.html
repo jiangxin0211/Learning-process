@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+<script>
+//    var a = 4;
+//    function test(argument){
+//        var a = 5;
+//        function test2(){
+//
+//            alert(a);//向外找，直到找到全局的作用域
+//            var a = 6;
+//        }
+//        test2();
+//    }
+//    test();
+    //将变量的声明提前了，但是没赋值  变量提升 undefined
+
+    function test(){
+        var a = 5,b = 5;
+    }
+    test();
+
+//    alert(a);//not defined 因为全局的无法访问局部的
+    alert(b);//5 因为b前面没有var
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
