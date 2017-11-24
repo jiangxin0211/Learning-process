@@ -5,7 +5,24 @@
 	<title>Document</title>
 	<link rel="stylesheet" type="text/css" href="process.css">
 	<style>
-	  
+		.wrapper button{
+			height: 40px;
+			width: 70px;
+			margin-left: 15px;
+			margin-top: 5px;
+			margin-bottom: 5px;
+			border-radius: 8px;
+			background-color: #dcdcdc;
+
+		}
+		.button-r:hover{
+			cursor: pointer;
+			background-color: #DA70D6;
+		}
+		.wrapper{
+			float: left;;
+			border: 2px solid #9a9a9a;
+		}
 
 	</style>
 </head>
@@ -13,14 +30,14 @@
 	<div class="wrapper">
 		<div class="show"></div>
 		<div class="button">
-			<button class="button-r" id="create">创建进程</button>
-			<button class="button-r" id="block">阻塞进程</button>
-			<button class="button-r" id="wake">激活进程</button>
-			<button class="button-r" id="timeover">时间片到</button>
-			<button class="button-r" id="call">调度进程</button>
-			<button class="button-r" id="shown">显示内存</button>
-			<button class="button-r" id="stop">结束进程</button>
-			<button class="button-r" id="clear">clear</button>
+			<button class="button-r" id="create" style="background:pink">创建进程</button>
+			<button class="button-r" id="block" style="background:pink">阻塞进程</button>
+			<button class="button-r" id="wake" style="background:pink">激活进程</button>
+			<button class="button-r" id="timeover" style="background:pink">时间片到</button>
+			<button class="button-r" id="call" style="background:pink">调度进程</button>
+			<button class="button-r" id="shown" style="background:pink">显示内存</button>
+			<button class="button-r" id="stop" style="background:pink">结束进程</button>
+			<button class="button-r" id="clear" style="background:pink">clear</button>
 		</div>
 		<div>
 
@@ -98,7 +115,7 @@
 		function judgetimeOverProcess() {
 			if(run.length !== 0) {
 				var process = run.pop();
-				ready.unshift(process);
+				ready.unshift(进程控制);
 				if(ready.length !== 0) {
 					var temp = ready.pop();
 					run.unshift(temp);
@@ -121,7 +138,7 @@
 		function judgeblockProcess() {
 			if(run.length !== 0) {
 				var process = run.pop();
-				block.unshift(process);
+				block.unshift(进程控制);
 				// console.log(run);
 				// console.log(block);
 				if(ready.length !== 0) {
@@ -148,7 +165,7 @@
 		function judgewakeProcess() {
 			if(block.length !== 0) {
 				var process = block.pop();
-				ready.unshift(process);
+				ready.unshift(进程控制);
 				if(run.length === 0) {
 					var temp = ready.pop();
 					run.unshift(temp);
@@ -172,7 +189,7 @@
 			if(ready.length !== 0) {
 				var process = ready.pop();
 				// console.log(ready)
-				run.unshift(process);
+				run.unshift(进程控制);
 				// console.log(run)
 				if(run.length > 1) {
 					// alert('a')
