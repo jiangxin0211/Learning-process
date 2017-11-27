@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+    <style>
+        ul{
+            background: #ff0000;
+        }
+        li{
+            background: #00ff00;
+        }
+        #div1{
+            width: 200px;
+            height: 100px;
+            background: #ff0000;
+            margin: 66px auto;
+        }
+        #div2{
+            width: 100px;
+            height: 100px;
+            background: #00ff00;
+        }
+    </style>
+</head>
+<body>
+<input type="text" id="ipt" value="abc"/>
+
+<ul id="ul1">
+    <li>item1</li>
+    <li>item2</li>
+</ul>
+<div id="div1">div1
+    <div id="div2"></div>
+</div>
+
+<script>
+    var oUl1 = document.getElementById("ul1");
+    oUl1.onclick = function(e){
+//        console.log(e.target);
+        console.log(e.type);
+    }
+
+    var oDiv1 = document.getElementById("div1");
+    oDiv1.onclick = function(e){
+        e = e || window.event;
+
+//        console.log(e.offsetX + "," + e.offsetY);
+//        console.log(e.layerX + "," + e.layerY);
+//        console.log(e.clientX + "," + e.clientY);
+        //相对于当前坐标系的左上角border的坐标，不是屏幕坐标
+
+    }
+    //阻止默认行为
+    var Odiv2 = document.getElementById("div2");
+    Odiv2.onclick = function(e){
+        e = e || window.event;
+        alert('div2');
+        e.cancelBubble = true;
+        //停止传播
+        e.stopPropagation();
+    };
+
+    //阻止事件冒泡
+
+    document.oncontextmenu = function(e){
+        e = e || window.event;
+        e.returnValue = false;
+
+        e.preventDefault();
+    }
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
