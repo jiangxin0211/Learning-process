@@ -1,0 +1,19 @@
+个人技能：熟练使用……运用其干什么了，，有什么功能 核心用法
+项目经验：例如轮播图，按钮位置 切换方法  封装过轮播图组件
+            做过一个页面，响应式设计，移动端 PC端
+亮点：前端热门公众账号：zhangxinxu.... 360……
+前端大神的个人简历 webGL
+http://www.cnblogs.com/polk6/p/5154470.html
+MDN Web 文档      HTML DOM EVENT
+
+relateTarget : 返回与相关目标点的节点  滑入目标节点之前离开的那个节点
+onmouseover 进入的目标节点
+
+target :正在操纵的元素
+currenttarget：返回正在监听的元素
+bubbules:是否是起泡事件类型
+offsetX/Y: 获取元素左上角的X/Y
+阻止默认行为，阻止事件冒泡
+
+
+
