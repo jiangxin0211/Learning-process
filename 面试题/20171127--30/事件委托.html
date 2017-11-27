@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button id="btn">add new</button>
+<ul id="ul1">
+    <li>item1</li>
+    <li>item2</li>
+</ul>
+<script>
+    var oUl1 = document.getElementById('ul1');
+    oUl1.onclick = function(e){
+        e = e || window.event;
+        var target = e.target || e.srcElement;
+        //if(target.tagName == 'LI'){
+        if(target != this){
+            alert(target.innerHTML);
+        }
+    };
+    /*var aLi = oUl1.getElementsByTagName('li');
+     for(var i=0; i<aLi.length; i++){
+     aLi[i].onclick = function () {
+     alert(this.innerHTML);
+     }
+     }
+
+     var fn = function () {
+     alert(this.innerHTML);
+     };*/
+    var oBtn = document.getElementById('btn');
+    oBtn.onclick = function () {
+        var oLi = document.createElement('li');
+        oLi.innerHTML = Math.random();
+        oUl1.appendChild(oLi);
+    };
+
+
+//    var aLi = oUl1.getElementsByTagName('li');
+//    for(var i = 0; i<aLi.length; i++){
+//        aLi[i].onclick = function(){
+//            alert(this.innerHTML);
+//        }
+//    }
+//
+//    var oBtn = document.getElementById('btn');
+//    oBtn.onclick = function(){
+//        var oLi = document.crestElement('li');
+//        oLi.innerHTML = Math.random();
+//        oLi.onclick = fn;
+//        oUl1.appendChild();
+//    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
