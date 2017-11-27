@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button id="btn">button</button>
+</body>
+<script>
+    var oBtn = document.getElementById('btn');
+    //重复绑定事件会被覆盖
+    /*oBtn.addEventListener('click',function(){
+        alert(1111);
+    },false);
+    oBtn.addEventListener('click',function(){
+        alert(1111);
+    },false);
+    window.onload = function(){
+        alert(1);
+    }
+    window.onload = function(){
+        alert(2);
+    }
+    oBtn.attachEvent('onclick',function(){
+        alert(1);
+    });
+    oBtn.attachEvent('onclick',function(){
+        alert(2);
+    });*/
+
+    var fn = function(){
+        alert(1);
+    };
+//    oBtn.addEventListener('click',fn,function(){},false)
+//    oBtn.removeEventListener('click',fn,function(){},false);
+    //为了解决this问题，给handler绑定了函数
+    function addEvent(elem,type,handler){
+        if(elem.addEventListener){//能力检测
+            elem.addEventListener(type,handler,false);
+        }else if(elem.attachEvent){//IE
+            elem[type+handler] = function(){
+                handler.call(elem);
+            };
+            elem.attachEvent('on' + type, elem[type+handler]);
+        }
+    }
+
+    function removeEvent(elem,type,handler){
+        if(elem.removeEventListener){
+            elem.removeEventListener(type,handler,false);
+        }else if(elem.detachEvent){
+            elem.detachEvent('on'+type,elem[type+handler]);
+        }
+    }
+
+    var fn2 = function(){
+        console.log(1);
+    };
+    var fn3 = function(){
+        console.log(2);
+    };
+    addEvent(oBtn,'click',fn2);
+    addEvent(oBtn,'click',fn3);
+
+    removeEvent(oBtn,'click',fn2);
+    removeEvent(oBtn,'click',fn3);
+
+
+
+
+
+
+
+
+
+
+    //    addEvent(oBtn,'click',function(){
+//        console.log(this);
+//    });
+//    oBtn.addEvent('onclick',function(){
+//        alert(1);
+//    });
+//    oBtn.addEvent('onclick',function(){
+//        alert(2);
+//    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+    addEvent(oBtn,'click',function(){})
+
+</script>
+</html>
+
+
+
+
+
+
+
+
