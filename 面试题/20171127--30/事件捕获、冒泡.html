@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+    <style>
+        ul{
+            background: #ff0000;
+        }
+        li{
+            background: #00ff00;
+        }
+        #div1{
+            width: 200px;
+            height: 100px;
+            background: #ff0000;
+            margin: 66px auto;
+        }
+        #div2{
+            width: 100px;
+            height: 100px;
+            background: #00ff00;
+        }
+    </style>
+</head>
+<body>
+
+<div id="div1">div1
+    <div id="div2">div2</div>
+</div>
+
+<script>
+    var oDiv1 = document.getElementById("div1");
+    /*oDiv1.onclick = function(e){
+
+    }*/
+    oDiv1.addEventListener('click',function(){
+        console.log('div1');
+    },true);//捕获，父元素先捕获
+    oDiv1.addEventListener('click',function(){
+        console.log('div1');
+    },false);//冒泡
+    var odiv2 = document.getElementById("div2");
+    /*Odiv2.onclick = function(e){
+
+    }*/
+    oDiv2.addEventListener('click',function(){
+        console.log('div2');
+    },true);//捕获
+    oDiv2.addEventListener('click',function(){
+        console.log('div2');
+    },false);//冒泡，子元素先冒泡
+
+
+
+
+
+
+</script>
+</body>
+</html>
