@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        #box{
+            width: 300px;
+            height: 30px;
+            margin: 50px auto;
+            border: 1px solid #ccc;
+        }
+        #search{
+            width: 300px;
+            height: 30px;
+            border:0;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <input type="text" id="search"/>
+
+</div>
+</body>
+<script src="jquery-1.11.2.js"></script>
+<script>
+    //不刷新页面向服务器发送数据并获取数据，异步的
+    //$.post提交数据（从本地向服务器提交数据） 数据量大
+    // $.get获取数据（从本地向服务器获取数据）数据量小
+    // $.ajax
+    // $.load
+    //json : js objest notation
+    $(function(){
+        $('#search').on('keyup',function(){
+            //1.url 2.data 3.callback回调 4.datatype
+            $.post('data.json',{key: this.value},function(resp){
+                console.log(resp);
+            },'json');
+
+        });
+    });
+
+    //www.php.net
+    //0: 请求未初始化
+    //1: 服务器连接已建立
+    //2: 请求已接收
+    //3: 请求处理中
+    //4: 请求已完成，且响应已就绪
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>
