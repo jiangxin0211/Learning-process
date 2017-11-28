@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>skill</title>
+    <style>
+        *{
+            margin:0px;
+            padding: 0px;
+
+        }
+        li{
+            list-style: none;
+        }
+        .-contain{
+            display:flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+            max-width: 800px;
+            margin：0 auto;
+            min-width: 750px;
+
+        }
+        .-skill-circle{
+            padding: 5px;
+            position: relative;
+            font-size: 12px;
+            width: 300px;
+            color: #fff;
+        }
+        .-outer-circle{
+            width: 242px;
+            height: 242px;
+            border: 4px dashed #999;
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto;
+        }
+        .-outer-circle .-out{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: absolute;
+            text-align: center;
+            line-height: 50px;
+            -webkit-backface-visibility: hidden;/*<!--优化Android卡顿-->*/
+        }
+        .-outer-circle .-out:nth-child(1){
+            animation: outX 8s  cubic-bezier(.36,0,.64,1) -4s infinite alternate,
+            outY 8s cubic-bezier(.36,0,.64,1) 0s infinite alternate;
+        }
+        .-outer-circle .-out:nth-child(2){
+            animation: outX 8s  cubic-bezier(.36,0,.64,1) -6s infinite alternate,
+            outY 8s cubic-bezier(.36,0,.64,1) 0s infinite alternate;
+        }
+        .-outer-circle .-out:nth-child(3){
+            animation: outX 8s  cubic-bezier(.36,0,.64,1) -8s infinite alternate,
+            outY 8s cubic-bezier(.36,0,.64,1) 0s infinite alternate;
+        }
+        .-outer-circle .-out:nth-child(4){
+            animation: outX 8s  cubic-bezier(.36,0,.64,1) -10s infinite alternate,
+            outY 8s cubic-bezier(.36,0,.64,1) 0s infinite alternate;
+        }
+        .-outer-circle .-out:nth-child(5){
+            animation: outX 8s  cubic-bezier(.36,0,.64,1) -12s infinite alternate,
+            outY 8s cubic-bezier(.36,0,.64,1) 0s infinite alternate;
+        }
+        .-outer-circle .-out:nth-child(6){
+            animation: outX 8s  cubic-bezier(.36,0,.64,1) -14s infinite alternate,
+            outY 8s cubic-bezier(.36,0,.64,1) 0s infinite alternate;
+        }
+        .-outer-circle .-out:nth-child(7){
+            animation: outX 8s  cubic-bezier(.36,0,.64,1) -16s infinite alternate,
+            outY 8s cubic-bezier(.36,0,.64,1) 0s infinite alternate;
+        }
+        .-outer-circle .-out:nth-child(8){
+            animation: outX 8s  cubic-bezier(.36,0,.64,1) -18s infinite alternate,
+            outY 8s cubic-bezier(.36,0,.64,1) 0s infinite alternate;
+        }
+
+
+        .-skill-circle .-inner-circle{
+            width: 142px;
+            height: 142px;
+            border: 4px dashed #999;
+            border-radius: 50%;
+            position: absolute;
+            text-align: center;
+            line-height: 50px;
+            top:50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+        .-inner-circle .-inner{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            position: absolute;
+            text-align: center;
+            line-height: 40px;
+            -webkit-backface-visibility: hidden;
+        }
+        .-inner-circle .-inner:nth-child(1){
+            animation: innerX 8s  cubic-bezier(.36,0,.64,1) -4s infinite alternate,
+            innerY 8s cubic-bezier(.36,0,.64,1) 0s infinite alternate;
+        }
+        .-inner-circle .-inner:nth-child(2){
+            animation: innerX 8s  cubic-bezier(.36,0,.64,1) -8s infinite alternate,
+            innerY 8s cubic-bezier(.36,0,.64,1) 0s infinite alternate;
+        }
+        .-inner-circle .-inner:nth-child(3){
+            animation: innerX 8s  cubic-bezier(.36,0,.64,1) -12s infinite alternate,
+            innerY 8s cubic-bezier(.36,0,.64,1) 0s infinite alternate;
+        }
+        .-inner-circle .-inner:nth-child(4){
+            animation: innerX 8s  cubic-bezier(.36,0,.64,1) -16s infinite alternate,
+            innerY 8s cubic-bezier(.36,0,.64,1) 0s infinite alternate;
+        }
+        .-des{
+            text-align: center;
+            color: #fff;
+            line-height: 24px;
+            font-size: 18px;
+        }
+
+
+
+        @keyframes outX {
+            0%{ left: -27px; }
+            100%{ left: 217px; }
+        }
+        @keyframes outY {
+            0%{ top: -27px; }
+            100%{ top: 217px; }
+        }
+        @keyframes innerX {
+            0%{ left: -22px; }
+            100%{ left: 122px; }
+        }
+        @keyframes innerY {
+            0%{ top: 122px; }
+            100%{ top: -22px; }
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="-contain" ng-class="{'-contain-en':$ctrl.isEng}">
+    <div class="-skill-circle">
+        <ul class="-outer-circle">
+            <li class="-out ng-binding ng-scope"
+                style="background-color:rgba(121,100,102,0.8)"
+                ng-repeat="item in $ctrl.outCircleList track by $index"
+                ng-bind="item.name">gulp</li>
+            <li class="-out ng-binding ng-scope"
+                style="background-color:rgba(49,65,82,0.8)"
+                ng-repeat="item in $ctrl.outCircleList track by $index"
+                ng-bind="item.name">angular</li>
+            <li class="-out ng-binding ng-scope"
+                style="background-color:rgba(76,157,160,0.8)"
+                ng-repeat="item in $ctrl.outCircleList track by $index"
+                ng-bind="item.name">webpack</li>
+            <li class="-out ng-binding ng-scope"
+                style="background-color:rgba(66,66,66,0.8)"
+                ng-repeat="item in $ctrl.outCircleList track by $index"
+                ng-bind="item.name">less</li>
+            <li class="-out ng-binding ng-scope"
+                style="background-color:rgba(193,131,106,0.8)"
+                ng-repeat="item in $ctrl.outCircleList track by $index"
+                ng-bind="item.name">git</li>
+            <li class="-out ng-binding ng-scope"
+                style="background-color:rgba(117,148,179,0.8)"
+                ng-repeat="item in $ctrl.outCircleList track by $index"
+                ng-bind="item.name">nodejs</li>
+            <li class="-out ng-binding ng-scope"
+                style="background-color:rgba(71,83,94,0.8)"
+                ng-repeat="item in $ctrl.outCircleList track by $index"
+                ng-bind="item.name">cordova</li>
+            <li class="-out ng-binding ng-scope"
+                style="background-color:rgba(147,147,189,0.8)"
+                ng-repeat="item in $ctrl.outCircleList track by $index"
+                ng-bind="item.name">react</li>
+        </ul>
+
+        <ul class="-inner-circle">
+            <li class="-inner ng-binding ng-scope"
+                style="background-color:rgba(179,164,140,0.8)"
+                ng-repeat="item in $ctrl.innerCircleList track by $index"
+                ng-bind="item.name">es6</li>
+            <li class="-inner ng-binding ng-scope"
+                style="background-color:rgba(171,209,220,0.8)"
+                ng-repeat="item in $ctrl.innerCircleList track by $index"
+                ng-bind="item.name">vue</li>
+            <li class="-inner ng-binding ng-scope"
+                style="background-color:rgba(238,215,163,0.8)"
+                ng-repeat="item in $ctrl.innerCircleList track by $index"
+                ng-bind="item.name">ng2</li>
+            <li class="-inner ng-binding ng-scope"
+                style="background-color:rgba(207,184,178,0.8)"
+                -repeat="item in $ctrl.innerCircleList track by $index"
+                ng-bind="item.name">fp</li>
+        </ul>
+    </div>
+    <div class="-des" ng-class="{'-des-en':$ctrl.isEng"></div>
+</div>
+
+
+</body>
+</html>
