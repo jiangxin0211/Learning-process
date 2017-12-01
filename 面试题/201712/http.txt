@@ -1,0 +1,146 @@
+xampp apache
+http(无状态的协议）socket
+https  客户端和服务端的交互 ssl加密 http://www.alipay.com  443
+
+http://www.163.com:8080/welcome/index (result访问方式) 默认端口号80
+
+index.php?name=laoshan welcome/index?name=laoshan  welcome/index/laoshan
+
+chrome-->webserver(ngnix )
+
+httpd端口 https-ssl
+
+单域名对应多IP DNS解析服务 222.27.89.3
+
+OSI七层结构：http应用层 协议 公开和不公开
+公开：http ftp tftp pop3 smtp  RFC文档
+不公开：qq msn yy
+RPC（表示层（yy({'name':'laoshan','age':40})))) 上四层协议
+$.post("地址"，{json数据}，function(){},"text");
+读取文件的两种方式：本地读取fopen 远程读取
+应用层--》表示层 <p>fsdsrgfs</p> gzip welcome/index加密  base64
+base64_encode  base64_decode
+会话层-》传输层
+
+软刷新F5（有缓存文件就会运行）和硬刷新ctrl+F5（无论有没有缓存都会链接服务器)
+
+http(包头，包体）
+包头：请求头，响应头
+传递string： html
+http/1.1 0.9 1.2
+模拟http进行的请求
+    请求行（请求方法，请求路径所用协议） telnet get 提交
+        请求方法：get post put delete head options trace
+        get http://www.163.hp?name=laoshan  url
+        打开Telnet回显功能telnet localhost 80   ctrl+]
+
+    请求头信息
+    请求主体信息
+响应头信息： status code 200
+
+    content-type: text/plan
+    content-length : 5(包体内容长度)
+
+POST /http/test2.php   http/1.1
+Host: localhost
+
+
+hello包体内容 <h1>hello</h1>
+如何把内存中的string写到文件里
+
+总结http构造包：
+    GET:请求方法，请求路径，请求协议
+
+    POST：请求方法，请求路径，请求协议
+
+    包头内容：content-type，content-length
+    包体内容
+HEAD：与get基本一致，发送请求，不返回请求地址内容
+        用来检测外部服务器是否存在
+设置cookie的时候设置httponly有什么好处：提升安全性！xss攻击
+
+PUT  向服务器传输内容  分文件块下载  put
+method  not allowed 405
+status code 200 405
+302临时重定向 301持久重定向 307
+options(返回服务器方法)
+    allow:get head post options
+trace：代理上网的 能看到代理有没有修改你的http请求
+delete：删除服务器上的一些资源
+
+
+**************************************************
+http status
+1xx保留
+2xx回显成功
+3xx从定向
+4xx客户端错误
+5xx服务端错误（500内部错误）
+
+304：not modified 未修改
+    确定当前浏览器缓存里的内容有没有改变 时间，文件
+    last-modify：服务器上的文件最后被改动的时间
+    etag:d890-55f466
+    if-modify-match
+    if-
+PHP处理的页面和vue处理的页面有什么区别？
+    后端渲染 template + data 有服务器端完成
+    前端渲染 template json data chrome端完成
+    1.减少http连接
+    2.减少回传数据的大小（前端渲染最好）：webpack js/image/css
+    3.优化http头
+    <head></head>
+    <body></body>
+是不是所有的跳转都是3xx?
+301/302(永久重定向/临时重定向)
+    robots 爬虫 SEO   robots.txt
+    302 A-->B A内容依然爬虫还是要访问
+    301 A-->B A内容爬虫不爬
+header跳转是包头跳转 先执行
+script location 是包体跳转 发起了一次get操作 200
+包头的跳转永远优于包体的跳转
+
+POST  解决post跳转代码不丢失！！！
+    header("location",)
+refer:重定向头 防盗链 Apache上重写模块 mod_rewriter .htaccess重定向文件
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
