@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+    //async函数就是generator函数的语法糖
+
+    //前文有一个generator函数，一次读取两个文件
+    var fs = require('fs');
+
+    var readFile = function(fileName){
+        return new Promise(function (resolve,reject){
+            fs.readFile(fileName,function(error,data){
+                if(error)reject(error);
+                resolve(data);
+            });
+        });
+    };
+
+    var gen = function* (){
+        var f1 = yield readFile('/ect/fstab');
+        var f2 = yield resdFile('/ect/shells');
+        console.log(f1.toString());
+        console.log(f2.toString());
+    };
+
+    //async函数
+
+    var asyncReadFile = async function(){
+        var f1 = await readFile('/ect/fstab');
+        var f2 = await readFile('/ect/shells');
+        console.log(f1.toString());
+        console.log(f2.toString());
+    };
+
+    /*async函数的优点
+    1.内置执行器。
+    2.更好的语义：async表示函数里边有异步操作，await表示紧跟在其后的表达式需要等待结果。
+    3.更广的适用性：async函数的await命令后面可以跟promise对象和原始类型的值（数值，字符串，布尔值，但这时等同于同步操作）。
+
+     */
+    /*async函数就是将generator函数和自动执行器（spawn）包装在一个函数里。
+    async是非常新的语法功能，新到都不属于ES6，而是属于ES7。目前，仍处于提案阶段
+    但是转码器Babel和regeneration都已经支持，转码后就能用。
+     */
+
+    /*
+    async函数返回一个promise对象，可以使用then方法添加回调函数。
+    当函数执行时，一旦遇到await就会先返回，等到触发的异步操作完成，
+    再接着执行函数体后面的语句。
+     */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>
