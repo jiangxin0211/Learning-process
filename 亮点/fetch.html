@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+
+</body>
+<script>
+    /*
+    位于WorkerOrGlobalScope这一个mixin中的fetch()方法
+    用于发起获取资源的请求，返回promise，这个promise
+    会在请求响应后被resolve，并传回response对象。
+
+     当遇到网络错误时，fetch() 返回的 promise 会被 reject，并传回 TypeError，
+     虽然这也可能因为权限或其它问题导致。成功的 fetch() 检查不仅要包括 promise 被 resolve，
+     还要包括 Response.ok 属性为 true。HTTP 404 状态并不被认为是网络错误。
+     fetch() 方法由 Content Security Policy 的 connect-src 指令控制，而不是它请求的资源。
+     注意:fetch() 方法的参数与 Request() 构造器是一样的。
+     */
+    /*
+     XMLHttpRequest 是一个设计粗糙的 API，不符合关注分离
+     （Separation of Concerns）的原则，配置和调用方式非常混乱，
+     而且基于事件的异步模型写起来也没有现代的 Promise，
+     generator/yield，async/await 友好。
+     Fetch 的出现就是为了解决 XHR 的问题，拿例子说明：
+     */
+    //使用XHR发送一个json请求一般是这样
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET',url);
+    xhr.responseType = 'json';
+
+    xhr.onload = function(){
+        console.log(xhr.response);
+    };
+
+    xhr.onerror = function(){
+        console.log("Oops,error");
+    };
+
+    xhr.send();
+
+    //使用fetch后，顿时看起来好一点
+    fetch(url).then(function(response){
+        return response.json();
+    }).then(function(data){
+        console.log(data);
+    }).catch(function(e){
+        console.log("Oops,error");
+    });
+
+    //使用es6的箭头函数后：
+    fetch(url).then(response => response.json())
+    .then(data => console.log(data))
+    .catch(e => console.log("Oops,error",e))
+
+    //async/await最终优化
+    async function(){
+        try{
+            let response = await fetch(url);
+            let data = response.json();
+            console.log(data);
+        }catch(e){
+            console.log("Oops,error",e);
+        }
+    }
+
+    //fetch也很适合做现在流行的同构应用，有人基于fetch的语法，在node端基于http库实现
+    //实现了node-fetch，又有人封装了基于同构应用的isomorphic-fetch.
+    //同构(isomorphic/universal)就是使前后端运行同一套代码的意思，后端一般是指 NodeJS 环境.
+
+    /*
+     Fetch 请求默认是不带 cookie 的，需要设置 fetch(url, {credentials: 'include'})
+     服务器返回 400，500 错误码时并不会 reject，只有网络错误这些导致请求不能完成时，fetch 才会被 reject。
+     */
+
+    /*
+     所有版本的 IE 均不支持原生 Fetch，fetch-ie8 会自动使用 XHR 做 polyfill。但在跨域时有个问题需要处理。
+     IE8, 9 的 XHR 不支持 CORS 跨域，虽然提供 XDomainRequest，但这个东西就是玩具，
+     不支持传 Cookie！如果接口需要权限验证，还是乖乖地使用 jsonp 吧，
+     推荐使用 fetch-jsonp。如果有问题直接提 issue，我会第一时间解决。
+     */
+
+    /*
+     标准 Promise 的不足
+     由于 Fetch 是典型的异步场景，所以大部分遇到的问题不是 Fetch 的，其实是 Promise 的。
+     ES6 的 Promise 是基于 Promises/A+ 标准，为了保持简单简洁，只提供极简的几个 API。
+     如果你用过一些牛 X 的异步库，如 jQuery(不要笑) 、Q.js 或者 RSVP.js，
+     可能会感觉 Promise 功能太少了。
+
+     没有 Deferred
+     Deferred 可以在创建 Promise 时可以减少一层嵌套，还有就是跨方法使用时很方便。
+     ECMAScript 11 年就有过 Deferred 提案，但后来没被接受。
+     其实用 Promise 不到十行代码就能实现 Deferred：es6-deferred。
+     现在有了 async/await，generator/yield 后，deferred 就没有使用价值了。
+
+     没有获取状态方法：isRejected，isResolved
+     标准 Promise 没有提供获取当前状态 rejected 或者 resolved 的方法。
+     只允许外部传入成功或失败后的回调。我认为这其实是优点，这是一种声明式的接口，更简单。
+
+     缺少其它一些方法：always，progress，finally
+     always 可以通过在 then 和 catch 里重复调用方法实现。finally 也类似。
+     progress 这种进度通知的功能还没有用过，暂不知道如何替代。
+
+     */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>
