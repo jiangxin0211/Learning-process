@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<iframe id="ifr" src="http://www.b.com/index3.html" frameborder="0"></iframe>
+
+<script>
+    window.onload = function(){
+        var iFr = document.getElementById('ifr');
+        var win = ifr.contentWindow;
+        win.postMessage('hello','http://b.com/index4.html')
+
+        window.onmessage = function(e){
+            alert(e.data);
+        };
+    };
+</script>
+
+</body>
+
+</html>
