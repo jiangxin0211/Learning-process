@@ -12,7 +12,7 @@
     <!-- cdn 内容分发网络-->
     <script src="jquery-1.11.2.js"></script>
     <script>
-        $.get('http://m.maoyan.com/movie/list.json?type=hot&linit=10&offset=0',function(){
+        $.get('https://bird.ioliu.cn/v1/?url=http://m.maoyan.com/movie/list.json?type=hot&linit=10&offset=0',{},function(res){
             console.log(res);
         });
 

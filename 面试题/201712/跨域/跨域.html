@@ -18,10 +18,12 @@
      不同协议：http://www.a.com    https://www.a.com
 
      跨域方式：
-     1.jsonp：json  padding  利用script标签的src属性来实现跨域
-     2.iframe:
-     3.服务器代理方式：
-     4.postmessage:
+     1.jsonp：json  padding  利用script标签的src属性来实现跨域 ---get
+     2.iframe: 利用iframe标签的src属性实现跨域   ---get
+     3.服务器代理方式：https://bird.ioliu.cn/v1/?url=
+     4.postmessage:  ---post
+     5.服务器端配置:     header("Access-Control-Allow-Origin:http://www.a.com");
+
 
 
 
