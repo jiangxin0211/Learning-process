@@ -1,0 +1,26 @@
+MVC/MVVM模式的框架：
+Backone.js
+Ember.js
+Angular.js ：
+    UI和业务逻辑的隔离，模块间的依赖性，易测试，易复用
+    主要解决快速开发问题，组件化：开发过程快，变更成本小
+react.js：
+    虚拟DOM，精确更新， UI和业务逻辑的隔离，模块间的依赖性，易测试，易复用
+    可预测性，
+polymer.js:
+ionic famo.us移动
+webGL
+
+isomorphic javascript框架：
+    mojito:第一个开源isomorphic javascript框架，完全用node.js，依赖于YUI和雅虎的特殊模式
+    meteor：现今最好的isomorphic项目
+    asana:任务管理应用
+     Rendr:它是 Airbnb 开发的一款轻量级类库，准许同时在客户端和服务端运行 Backbone.js。
+
+
+*********************************************************
+1. SVG与CSS3动画技术未来有更多可能性，产品化能力强
+2. 国内Node.js技术栈刚开始在企业市场起步
+3. 移动Web技术方案，趋势，不必多说
+4. 无障碍Web
+5. TV端Web，写上这个原因很简单，国内几乎是空白
