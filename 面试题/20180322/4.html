@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+    //试着编写一个 arrayMerge() 函数，实现该函数被调用时，
+    // 传递任意数量的数组，返回一个合并后的数组（可不局限于一种实现）。
+
+    let arrayMerge = function (...arr) {
+        return Array.prototype.concat.call([], ...arr)
+    }
+
+
+
+    let arrayMerge = (...list) => {
+        const args_len = list.length;
+        //得到参数的数量
+        let res = [];
+        for(let i = 0; i < args_len; i ++){
+            res = [...res, ...list[i]];
+        }
+        return res;
+    };
+    const res = arrayMerge([1,2,3],[4,5]);
+
+</script>
+</html>
