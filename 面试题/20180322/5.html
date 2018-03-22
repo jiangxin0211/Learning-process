@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+
+<script>
+    //倒计时
+
+
+    var totalTime=200000
+    var counter=document.getElementById('counter')
+
+    function countTime(){
+        if(this.totalTime<0) return
+        var objTime=this.divideTime(this.totalTime)
+        var res=objTime.hours+':'+objTime.minutes+':'+objTime.seconds+':'+objTime.milliseconds/100
+        this.counter.innerHTML=res
+        this.totalTime-=100
+        setTimeout("countTime()",100)
+    }
+
+
+    function divideTime(totalMilliseconds){
+        var hours,minutes,seconds,milliseconds;
+        var rest
+        milliseconds=totalMilliseconds%1000
+        rest=Math.floor(totalMilliseconds/1000)
+        seconds=rest%60
+        rest=Math.floor(rest/60)
+        minutes=rest%60
+        rest=Math.floor(rest/60)
+        hours=rest%24
+        return {hours,minutes,seconds,milliseconds}
+    }
+
+    countTime()
+
+</script>
+
+</html>
