@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+    //实现a.add()计算a.x + a.y的值
+    var a = { x: 7 , y: 5 };
+
+    var b = {
+        x : 1,
+        y : 2,
+        add: function (){
+            return this.x + this. y;
+        }
+    };
+
+    console.log(b.add.call(a));
+
+    console.log(b.add.apply(a));
+
+    console.log(b.add.bind(a)());
+
+</script>
+</html>
