@@ -73,7 +73,7 @@ delete：删除服务器上的一些资源
 http status
 1xx保留
 2xx回显成功
-3xx从定向
+3xx重定向
 4xx客户端错误
 5xx服务端错误（500内部错误）
 
@@ -103,19 +103,6 @@ script location 是包体跳转 发起了一次get操作 200
 POST  解决post跳转代码不丢失！！！
     header("location",)
 refer:重定向头 防盗链 Apache上重写模块 mod_rewriter .htaccess重定向文件
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
