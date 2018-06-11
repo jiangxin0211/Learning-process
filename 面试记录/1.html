@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>todo list</title>
+	<style type="text/css">
+	.container{
+		width: 400px;
+		height: auto;
+		margin: 40px auto;
+	}
+	</style>
+</head>
+<body>
+<div class="container" id="todolist">
+	<div>
+		<input type="text" id="content"></input>
+	</div>
+	<ul id="list">
+		
+	</ul>
+</div>
+<script type="text/javascript">
+	(function(){
+		var oContent = document.getElementById('content');
+		oContent.onkeypress = function(e){
+			if(e.keyCode=='13'){
+				e.preventDefault();
+				addList();
+			}
+		}	
+		function addList(){
+			var UL = document.getElementById('list');
+			var addUl = document.createElement('li');
+			var delSpan = document.createElement('span');
+			delSpan.innerHTML = 'X';
+			addBox.innerHTML = oContent.value;
+			var oList = document.getElementById('list');
+			oList.appendChild(addUl);
+			addUl.appendChild(delSpan);
+			delSpan.onclick = function(){
+				UL.removeChild(this.parentNode);
+			}
+			oContent.value = '';
+		}
+	})();
+</script>
+</body>
+</html>

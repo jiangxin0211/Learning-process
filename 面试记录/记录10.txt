@@ -1,0 +1,110 @@
+行：span input button a
+img input button textarea
+
+他们严格来讲不算是纯的行元素，都是行级块元素吧
+
+块：div p h1 ul li
+
+是的
+
+标准：width=content
+IE怪异：width=border+padding+content
+css3 box-sizing: border-box/content-box
+
+
+div#left
+div#right
+div#content
+
+css:
+#left{
+	width: 100px;
+	float: left;
+}
+#right{
+	width: 100px;
+	float: right;
+}
+#center{
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+div
+	img
+
+	因为img是行元素所以可以直接：text-align:center;
+
+alert(1+2+"3") => "33"
+
+string/number/boolean/undefined/null
+
+typeof
+constructor或者instanceof
+
+arr.constructonr == Array
+
+借助后端的session或是存在数据库中的购物车表
+
+cookie或是localStorage
+
+cookie存储的信息量小，4kb
+cookie会随着请求发送到服务器端
+localStorage: 5M
+
+
+标准语法:localStorage.removeItem("name")
+或者简单的localStorage.name = null;
+
+localStorage.clear（"name"）是清除所有的
+
+
+我比较熟悉require.js和sea.js这两个框架
+
+re: amd, 依赖前置
+sea: cmd， 依赖就近
+
+
+express node.js的一个博客
+
+它有一个router这么个模块
+url, funtion
+router.get('/xxx', function(){
+	
+})
+
+react
+
+利用props这个属性
+
+ 我忘记了
+ 可以给他们套一个父组件，利用父组件
+
+ 大点声，肯定点
+
+
+ Html5里有一个postMessage方法
+
+ 如果是iframe加载子页面的话，
+
+ 父调用子： iframe.contentWidow.xxx
+
+ 子调用
+
+ 了解，没具体用过
+
+ 大点声
+
+有的
+
+这个真知道，不过忘记了
+
+？？？`
+
+const 定义常量
+let定义块级作用域
+
+sass
+
+
+谢谢

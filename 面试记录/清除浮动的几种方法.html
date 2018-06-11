@@ -1,0 +1,33 @@
+有几种：
+1. 在浮动的元素后面插入一个空div，设置div的clear:both;
+2. 添加一个伪类：.clearfix（这种方法ie6不支持after）
+.clearfix:after{
+	content: '';
+	display: block;
+	clear: both;
+	overflow: hidden;
+	*zoom:1;
+}
+3. 可以让父元素overflow: hidden;
+4. 也可以让父元素float
+
+
+这个是BFC（block format context）的原理
+
+应该是脱离了文档流吧
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

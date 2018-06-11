@@ -1,0 +1,32 @@
+<script>
+	//1. 第一种方式就是，利用双重循环，检测一个数组中的元素是否出现在另一个数组中，具体的实现是：
+	function distinct(arr){
+		var rs = [arr[0]];//先定义一个数组rs，将原数组arr中的第一个元素放到rs中
+		for(var i=1; i<arr.length; i++){
+			for(var j=0; j<rs.length; j++){
+				if(arr[i] == rs[j]){
+					break;
+				}
+			}
+			//在内层循环的下面判断，如果j到达了rs数据的最大长度
+			if(j == rs.length){//这个是因为如果j能到达rs数组的最大长度，这就说明前面的循环没有被打断，也就说明没有相同的元素，这样就把该元素放到rs中
+				rs.push(arr[i]);
+			}
+		}
+		return rs;
+	}
+
+	//2. 利用js对象的键值唯一性，具体的实现是：
+	function unique(arr){
+		var rs = [];//定义一个新数组rs，来保存去重后的元素
+		var obj = {};//定义一个空对象obj，它的属性是原数组arr中的每一个元素
+		for(var i=0; i<arr.length; i++){
+			if(!obj[arr[i]]){//判断arr中的元素是否出现在obj对象的属性中，如果没有出现，说明这个元素不重复
+				obj[arr[i]] = true;//将该元素做为obj对象的属性存到obj中
+				rs.push(arr[i]);//然后将该元素存到rs数组中
+			}
+		}
+		return rs;
+	}
+
+</script>

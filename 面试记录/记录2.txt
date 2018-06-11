@@ -1,0 +1,161 @@
+require.js
+
+angular.js
+
+node.js
+
+作品展示
+
+发布文章
+
+没有，就是我自己个人博客
+
+
+？？
+
+还可以
+
+static:默认
+relative：相对定位，相对自己初始位置
+absolute：绝对，相对最近也定了位的祖先元素
+fixed：固定，相对浏览器
+
+float浮动，空间会释放，就是脱离文档流，一般的情况下可以用float将一些块级元素水平排列，
+有的时候也可以用它将一些行级元素变成块，这样可以设置宽和高了，差不多就是这样
+
+
+有几种：
+1. 在浮动的元素后面插入一个空div，设置div的clear:both;
+2. 添加一个伪类：.clearfix
+.clearfix:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+ie6不行，
+
+2可以让父元素overflow: hidden;
+3,也可以让父元素float
+
+!important>内联>id>class>tag标签
+
+？？display: none/block/inline/inline-block/table/box（css3的弹性盒模型）
+
+inline:行，水平分布，不可以设置宽和高，宽和高是内容撑开的
+block:块，重直分布，可以设置宽和高，占满整个一行
+
+我需要三个div
+
+<div id='left'></div>
+<div id='right'></div>
+<div id='center'></div>
+
+left和right一个左浮动一个右浮动
+
+可以使用css3的弹性盒模型，比如左和右宽度固定，content设置为flex: 1;
+
+父元素也需要设置display: box;
+
+大点声
+
+border-radius
+
+可以将宽和高设为0，然后只设置四个border，然后其中三个边框颜色设为透明transparent
+
+???
+
+s
+
+用三个span元素，其中一个作为容器，另一个做为变量就是那个下面的数字，最后一个做为那个角标，然后定位，
+这个角标相对于容器absolute定位，外面的容器relative定位
+
+可以使用css3的trasnform: translate移位
+
+
+split是字符串中的方法，用来将一个字符串按一个指定的分隔符，分隔成一个数组
+
+
+
+有冒泡和捕获，当单击一个元素的时候，先捕获，后冒泡
+
+有三种事件绑定机制：
+1. on方式
+
+2. addEventListener：标准
+
+3. attachEvent: ie
+
+不是，ie8和ie8以前只支持冒泡
+
+
+？？？
+
+0级是用onclick这种方式绑定，多次绑定，后面会将前面fugai
+
+2级： addEventListener而且还支持事件捕获
+
+
+有好多种类的函数
+
+不要说绑定
+
+
+on()这个是现在标准的方法，on函数的第二个参数用来指定一个选择器，这个就可
+
+事件委托
+
+以前还有直接click
+
+还有
+live：专门是用来给后生成的元素绑定的，就是不是页面加载时生成的，用js动态生成的
+
+, one只执行一次
+, delegate：事件代理
+, bind：就是正常的绑定
+
+
+
+数据量大，尤其是图片，加载的时候很耗费性能
+
+
+
+
+可以适当的时候图片懒加载
+
+
+比如类似于瀑布流的方式，可以滚动条滚动到相应的位置再去加载
+是的，当加载多了，我知道可以使用doucment.createFragment，就是创建文档碎片，我知道这种方式，具体没有实施过
+
+还有一些图片，一开始只使用固定的小图来占位，然后当真正显示这个图片的时候再去加载真正的大图，
+具体方法是在img的src属性中加载小图，当需要显示大图的
+
+
+我想了解一下，咱们主要偏 向移动还是pc端
+
+还有就是前后端都做，还是只是前端
+
+谢谢
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

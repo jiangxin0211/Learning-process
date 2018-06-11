@@ -1,0 +1,16 @@
+call和apply区别
+
+
+call和apply都可以用来改变函数里的this指向
+区别是:
+call从第二个参数开始有多个参数，用来代表函数的实参
+apply第二个参数是一个数组，数组中的每一个元素对应一个实参
+<!-- 
+function aa(name, age){
+	alert(this)
+}
+
+aa.call({name: 'lisi'}, 'lisi', 23);
+aa.apply({name: 'lisi'}, ['lisi', 23]);
+ -->
+

@@ -1,0 +1,17 @@
+水平居中：
+(一) 块级元素：
+	1. 直接margin: 0 auto;
+	2. 定位：position: absolute; left: 50%; margin-left: 负的宽度一半，这种方式适合于知道宽度的情况；
+	3. css3 transform: translateX(-50%);
+	4. css3弹性盒模型：justify-content: center
+(二) 行级元素
+	1. 直接  text-align: center;
+	2. 和上面的块级元素一样
+
+重直居中：
+(一) 块级元素：
+	1. 定位：position: absolute; top: 50%; margin-top: 负的高度一半，这种方式适合于知道高度的情况；
+	2. css3 transform: traslateY(-50%);
+	3. css3弹性盒模型：align-items: center
+(二) 行级元素
+	1. 和上面的块级元素一样

@@ -1,0 +1,36 @@
+ajax
+ajax是什么：客户端与服务器端异步的通信的技术
+原理：
+第一步：创建XMLHttpRequest 对象
+	   xmlhttp=new XMLHttpRequest();（它有兼容性问题，在ie中用的是new ActiveXObject）
+第二步：向服务器发送请求
+		xmlhttp.open("GET/POST",url,true);
+		//xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");//POST时要加这句话
+		xmlhttp.send();
+第三步：执行回调，在回调函数中进行相应的dom操作
+	xmlhttp.onreadystatechange=function()
+	  {
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	    {
+	    //就可以执行相应的dom操作
+	    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+	    }
+	  }
+
+readyState有5种值：
+	0: 请求未初始化
+	1: 服务器连接已建立
+	2: 请求已接收
+	3: 请求处理中
+	4: 请求已完成，且响应已就绪
+
+staus状态码常见的有：
+	200 服务器成功返回
+	301 永久重定向
+	302 临时重定向
+	304 缓存
+	404 资源找不到
+	500 服务器错误
+
+
+
