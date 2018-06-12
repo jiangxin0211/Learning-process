@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html>
+<head>
+    <title>验证器</title>
+    <script src="jquery-1.11.2.js"></script>
+    <script language="javascript">
+        <!--编写dom操作的相关代码-->
+//        var mydoc=new ActiveXObject("Msxml2.DOMDocument.5.0");
+        <!--声明一个DOMDocument对象-->
+//        var filename;
+        <!--存放xml文件名-->
+        <!--指定为同步装载-->
+//        mydoc.async=false;
+        <!--定义读入xml文档的函数-->
+        var xmlDoc;
+
+        function readfile() {
+            try{ //IE
+                xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+            }catch(e){ //firefox,opera
+                xmlDoc = document.implementation.createDocument("","",null);
+            }
+            try{
+                xmlDoc.asyc = false; //是否异步调用
+                xmlDoc.load("xxx.xml"); //文件路径
+            }catch(e){ //chrome
+                var xmlhttp = new window.XMLHttpRequest();
+                xmlhttp.open("GET","xxx.xml",false); //创建一个新的http请求，并指定此请求的方法、URL以及验证信息
+                xmlDoc = xmlhttp.responseXML;
+            }
+            return xmlDoc;
+        }
+        <!--编写显示文档的代码-->
+        function display(e)
+        {
+            if(xmlDoc==""){alert("请先装入xml文档");}
+            else
+            {
+//                texta.value=xmlDoc.documentElement.xml;
+                texta.value = document.getElementById("texta")[0].innerHTML;
+                //这里无声明区。否则，前者mydoc.xml为dom树的源代码，则有声明区的显示。
+                <!--dom树的源代码显示在文本域中-->
+            }
+        }
+        <!--编写添加元素的代码-->
+        function addelement()
+        {
+            if(mydoc.xml==""){alert("请先装入xml文档");}
+            else
+            {
+                <!--提示输入新元素的名字-->
+                var newe=prompt("请输入要添加的新元素：","");//两个参数，后一个表示默认为空
+                if(newe!="")
+                {
+                    var olde=prompt("请输入要添加到哪个元素之前：","");
+                    if(olde!="")
+                    {
+                        var nodelist=mydoc.getElementsByTagName(olde);
+                        <!--获得所有olde所指的元素的列表，调用的是DOMDocument对象的方法-->
+                        <!--然后让用户输入旧元素的位置-->
+                        var num=prompt(olde+"元素共有"+nodelist.length+"个,请输入0-"+(nodelist.length-1)+"的数","");
+                        <!--先创建一个名为newe里存放的内容的新节点-->
+                        var ele=mydoc.createElement(newe);
+                        nodelist.item(num).parentNode.insertBefore(ele,nodelist.item(num));
+                        texta.value=mydoc.xml;
+                        alert("新元素插入成功");
+                        var k=confirm("是否要添加内容");
+                        if(k==true)
+                        {
+                            var v=prompt("请输入元素内容","");
+                            ele.text=v;
+                            texta.value=mydoc.xml;//还有选a全部添加，循环实现。
+                        }
+                    }
+                }
+            }
+        }
+        <!--添加属性的代码-->
+        function addattribute()
+        {
+            <!--输入一个添加属性的元素-->
+            var n=prompt("请输入要添加属性的元素名","");
+            nodelist=mydoc.getElementsByTagName(n);
+            var num=prompt(n+"元素共有"+nodelist.length+"个,请输入0-"+(nodelist.length-1)+"的数","");
+            var attr=prompt("请输入要添加的属性名","");
+            var avalue=prompt("请输入要添加的属性值","");
+            nodelist.item(num).setAttribute(attr,avalue);
+            alert("属性添加成功");
+            texta.value=mydoc.xml;
+        }
+        <!--删除元素的代码-->
+        function deleteelement()
+        {
+            var n=prompt("请输入要删除的元素名","");
+            nodelist=mydoc.getElementsByTagName(n);
+            var num=prompt(n+"元素共有"+nodelist.length+"个,请输入0-"+(nodelist.length-1)+"的数","");
+            nodelist.item(num).parentNode.removeChild(nodelist.item(num));
+            alert("删除成功");
+            texta.value=mydoc.xml;
+        }
+        <!--修改元素的代码-->
+        function modielement()
+        {
+            <!--修改元素名，要先新建一个元素，再执行替换操作-->
+            var k=confirm("确定要修改么?");
+            if(k==true)
+            {
+                <!--获得要修改的元素-->
+                var ele=prompt("请输入要修改的元素名","");
+                nodelist=mydoc.getElementsByTagName(ele);
+                <!--获得要修改的元素的位置-->
+                var num=prompt(ele+"元素共有"+nodelist.length+"个,请输入0-"+(nodelist.length-1)+"的数","");
+                <!--获得新的元素名-->
+                var newe=prompt("请输入新的元素名","");
+                <!--创建一个新元素-->
+                var node=mydoc.createElement(newe);
+                node.text="adasasdfasdf";
+                <!--执行替换操作-->
+                nodelist.item(num).parentNode.replaceChild(node,nodelist.item(num));
+                alert("修改成功");
+                texta.value=mydoc.xml;
+            }
+        }
+        <!--修改元素值的代码-->
+        function modivalue()
+        {
+            <!--获得要修改的元素-->
+            var ele=prompt("请输入要修改的元素名","");
+            nodelist=mydoc.getElementsByTagName(ele);
+            <!--获得要修改的元素的位置-->
+            var num=prompt(ele+"元素共有"+nodelist.length+"个,请输入0-"+(nodelist.length-1)+"的数","");
+            <!--获得新的元素值-->
+            var v=prompt("请输入新的元素值","");
+            nodelist.item(num).text=v;
+            texta.value=mydoc.xml;
+        }
+
+        <!--编写退出代码-->
+        function quit()
+        {
+            window.opener=true;//直接关闭窗口，不跳出询问是否关闭窗口的对话框。
+            window.close();
+        }
+        <!--编写清空代码-->
+        function clear1(){texta.value="";}
+    </script>
+</head>
+<body>
+<table border="1" width="100%" height="276" bgcolor="#FFCCCC">
+    <tr>
+        <td width="100%" height="5" colspan="2" bgcolor="#FF9999">
+            <p align="center">
+                <b>
+                    <font size="6">XML文档操作</font>
+                </b>
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td width="100%" height="12" colspan="2" bgcolor="#FFCCFF">
+            <b>
+                <font size="2">请选择XML文档：</font>
+            </b>
+            <input type="file" id="T1" onchange="readfile(this.files)"/>
+        </td>
+    </tr>
+    <tr>
+        <td width="20%" height="393" bgcolor="#CCFFFF">
+            <table width="100%" bgColor="#00ffff" border="0">
+                <tbody>
+                <tr>
+                    <td width="100%">
+                        <p align="center">
+                            <b>
+                                <font size="3">XML文档操作</font>
+                            </b>
+                        </p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <p align="center">
+                <input onclick="readfile()" type="button" value="读入文档" name="B10"/>
+            </p>
+            <p align="center">
+                <input onclick="display()" type="button" value="显示文档" name="B3"/>
+            </p>
+            <p align="center">
+                <input onclick="addelement()" type="button" value="添加元素" name="B4"/>
+            </p>
+            <p align="center">
+                <input onclick="addattribute()" type="button" value="添加属性" name="B12"/>
+            </p>
+            <p align="center">
+                <input onclick="deleteelement()" type="button" value="删除元素" name="B5"/>
+            </p>
+            <p align="center">
+                <input onclick="modielement()" type="button" value="修改元素" name="B6"/>
+            </p>
+            <p align="center">
+                <input onclick="modivalue()" type="button" value="修改元值" name="B9"/>
+            </p>
+            <p align="center">
+                <input onclick="quit()" type="button" value="退出系统" name="B9"/>
+            </p>
+        </td>
+        <td width="80%" height="393" bgcolor="#CCFFFF">
+            <p align="center">
+                <textarea rows="15" id="texta" cols="70"></textarea>
+            </p>
+            <p align="center">
+                <input name="b1" type="button" id="b1" onClick="clear1()" value="清空"/>
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td width="100%" height="10" bgcolor="#CCFFFF" colspan="2"></td>
+    </tr>
+</table>
+</body>
+</html>

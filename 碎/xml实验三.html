@@ -1,0 +1,194 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+    <style type="text/css">
+        .wrap{
+            border: 1px dotted;
+            background-color: #99999f;
+            height: 50px;
+            line-height: 50px;
+        }
+        .wrap_in{
+            width: 560px;
+            margin: 10px auto;
+            height: 30px;
+        }
+        .file {
+            position: relative;
+            display: inline-block;
+            background: #D0EEFF;
+            border: 1px solid #99D3F5;
+            border-radius: 4px;
+            padding: 4px 12px;
+            overflow: hidden;
+            color: #1E88C7;
+            text-decoration: none;
+            text-indent: 0;
+            line-height: 20px;
+        }
+        .file input {
+            position: absolute;
+            font-size: 100px;
+            right: 0;
+            top: 0;
+            opacity: 0;
+        }
+        .file:hover {
+            background: #AADFFD;
+            border-color: #78C3F3;
+            color: #004974;
+            text-decoration: none;
+        }
+    </style>
+    <script language="javascript">
+
+        var mydoc=new ActiveXObject("Microsoft.XMLDOM");
+        var filename="123.xml";
+        mydoc.async=false;
+
+        //载入xml文档
+        function readfile()
+        {
+            mydoc.load(filename);
+            if(mydoc.parseError!="")
+                alert("载入失败！");
+            else
+                alert("载入成功!");
+
+            display();
+        }
+        //显示文档
+        function display()
+        {
+            texta.value=mydoc.documentElement.xml;
+        }
+        //清空
+        function clear_all()
+        {
+            texta.value="";
+        }
+        //增加元素
+        function Add_E()
+        {
+            if(mydoc.xml=="")
+            {
+                alert("未载入xml文档");
+            }
+            else
+            {
+                var newe=prompt("请输入要添加的新元素：","");
+                if(newe!="")
+                {
+                    var olde=prompt("请输入要添加到哪个元素之前：","");
+                    if(olde!="")
+                    {
+                        var nodelist=mydoc.getElementsByTagName(olde);
+                        var num=prompt(olde+"元素共有"+nodelist.length+"个,请输入0-"+(nodelist.length-1)+"的数","");
+
+                        var ele=mydoc.createElement(newe);
+                        nodelist.item(num).parentNode.insertBefore(ele,nodelist.item(num));
+                        texta.value=mydoc.xml;
+                        alert("新元素插入成功");
+                        var k=confirm("是否要添加内容");
+                        if(k==true)
+                        {
+                            var v=prompt("请输入元素内容","");
+                            ele.text=v;
+                            texta.value=mydoc.xml;
+                        }
+                    }
+                }
+            }
+        }
+        //添加属性的代码
+        function Add_A()
+        {
+            if(mydoc.xml=="")
+            {
+                alert("未载入xml文档");
+            }
+            else
+            {
+                var n=prompt("请输入要添加属性的元素名","");
+                nodelist=mydoc.getElementsByTagName(n);
+                var num=prompt(n+"元素共有"+nodelist.length+"个,请输入0-"+(nodelist.length-1)+"的数","");
+                var attr=prompt("请输入要添加的属性名","");
+                var avalue=prompt("请输入要添加的属性值","");
+                nodelist.item(num).setAttribute(attr,avalue);
+                alert("属性添加成功");
+                texta.value=mydoc.xml;
+            }
+
+        }
+        //删除元素的代码-->
+        function Del_E()
+        {
+            var n=prompt("请输入要删除的元素名","");
+            nodelist=mydoc.getElementsByTagName(n);
+            var num=prompt(n+"元素共有"+nodelist.length+"个,请输入0-"+(nodelist.length-1)+"的数","");
+            nodelist.item(num).parentNode.removeChild(nodelist.item(num));
+            alert("删除成功");
+            texta.value=mydoc.xml;
+        }
+        //修改元素的代码-->
+        function Update_E()
+        {
+            var k=confirm("确定要修改么?");
+            if(k==true)
+            {
+                var ele=prompt("请输入要修改的元素名","");
+                nodelist=mydoc.getElementsByTagName(ele);
+                var num=prompt(ele+"元素共有"+nodelist.length+"个,请输入0-"+(nodelist.length-1)+"的数","");
+                var newe=prompt("请输入新的元素名","");
+                var node=mydoc.createElement(newe);
+                node.text="新元素的值";
+                nodelist.item(num).parentNode.replaceChild(node,nodelist.item(num));
+                alert("修改成功");
+                texta.value=mydoc.xml;
+            }
+        }
+        //修改元素值的代码
+        function Update_E_value()
+        {
+            var ele=prompt("请输入要修改的元素名","");
+            nodelist=mydoc.getElementsByTagName(ele);
+            var num=prompt(ele+"元素共有"+nodelist.length+"个,请输入0-"+(nodelist.length-1)+"的数","");
+            var v=prompt("请输入新的元素值","");
+            nodelist.item(num).text=v;
+            texta.value=mydoc.xml;
+        }
+
+    </script>
+</head>
+<body>
+<div class="wrap" scoll="true">
+    <div class="wrap_in">
+        <a href="javascript:;" class="file">载入文件
+            <input type="button" name="input_xml" id="input_xml" onclick="readfile()">
+        </a>
+        <a href="javascript:;" class="file">增加元素
+            <input type="button" name="" id="" onclick="Add_E()">
+        </a>
+        <a href="javascript:;" class="file">增加属性
+            <input type="button" name="" id="" onclick="Add_A()">
+        </a>
+        <a href="javascript:;" class="file">删除元素
+            <input type="button" name="" id="" onclick="Del_E()">
+        </a>
+        <a href="javascript:;" class="file" onclick="Update_E()">修改元素
+            <input type="button" name="" id="">
+        </a>
+        <a href="javascript:;" class="file" onclick="Update_E_value()">修改元值
+            <input type="button" name="" id="">
+        </a>
+    </div>
+</div>
+<div align="center">
+    <textarea rows="40" name="texta" cols="120"></textarea>
+    <br><a href="javascript:;" class="file">清空
+    <input type="button" onclick="clear_all()" name="" id="">
+</a>
+</div>
+</body>
+</html>

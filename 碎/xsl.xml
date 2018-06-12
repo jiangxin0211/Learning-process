@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="stu.xsl"?>
+<stu>
+<student id="03091386">
+		<name>张明</name>
+		<sex>男</sex>
+		<brithday>1991-04-03</brithday>
+		<sorce>
+			<marth>100</marth>
+			<physics>55</physics>
+			<chemistry>90</chemistry>
+		</sorce>
+		<contact tel="13572900386" email="Zhangm@163.com">
+			<address>6号楼</address>
+			<zip>710016</zip>
+		</contact>
+	</student>
+<student id="03091301">
+		<name>李梅</name>
+		<sex>女</sex>
+		<brithday>1990-03-19</brithday>
+		<sorce>
+			<marth>59</marth>
+			<physics>90</physics>
+			<chemistry>92</chemistry>
+		</sorce>
+		<contact tel="15892876358" email="Limei@sina.com">
+			<address>5号楼</address>
+			<zip>710001</zip>
+		</contact>
+</student>
+	<student id="03091301">
+		<name>李莉</name>
+		<sex>女</sex>
+		<brithday>1992-09-28</brithday>
+		<sorce>
+			<marth>87</marth>
+			<physics>92</physics>
+			<chemistry>51</chemistry>
+		</sorce>
+		<contact tel="15892876358" email="Lili@sina.com">
+			<address>3号楼</address>
+			<zip>710001</zip>
+		</contact>
+	</student>
+</stu>

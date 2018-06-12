@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证器</title>
+    <script language="javascript">
+        var mydoc = new ActiveXObject("Microsoft.XMLDOM");
+        var filename;
+        mydoc.async=false;
+        function readfile(){
+            filename=T1.value;
+            if(filename==""){alert("请选择xml文档");}
+            else{
+                mydoc.load(filename);
+                if(mydoc.parseError!=""){alert("装载过程中出错");}
+                else{alert("装载成功，请进行其他操作");}
+            }
+        }
+        function display(){
+            if(mydoc.xml==""){alert("请先装入xml文档");}
+            else{texta.value=mydoc.documentElement.xml;}
+        }
+
+        function clear1()
+        {
+            texta.value="";
+        }
+    </script>
+</head>
+<body>
+<table border="1" width="100%" height="10%" bgcolor="red">
+    <tr align="center">
+        <td>文档操作</td>
+    </tr>
+</table>
+<table border="1" width="100%" height="30%" bgcolor="orange">
+    <tr align="center">
+        <td>请选择XML文档
+            <input type="file" id="T1" value="选择文件"/>
+        </td>
+        <td>请选择XSD文档
+            <input type="file" id="T2" value="选择文件"/>
+        </td>
+        <td>请选择XSL文档
+            <input type="file" id="T3" value="选择文件"/>
+        </td>
+    </tr>
+</table>
+<table border="1" width="100%" height="10%" bgcolor="yellow">
+    <tr align="center">
+        <td>
+            <input onclick="readfile()" type="button" value="读入文档" name="B10"/>
+        </td>
+        <td>
+            <input onclick="display()" type="button" value="显示文档" name="B3"/>
+        </td>
+        <td>
+            <input onclick="addelement()" type="button" value="添加元素" name="B4"/>
+        </td>
+        <td>
+            <input onclick="addattribute()" type="button" value="添加属性" name="B12"/>
+        </td>
+        <td>
+            <input onclick="deleteelement()" type="button" value="删除元素" name="B5"/>
+        </td>
+        <td>
+            <input onclick="deleteattribute()" type="button" value="删除属性" name="a6"/>
+        </td>
+    </tr>
+    <tr align="center">
+        <td>
+            <input onclick="modiattribute()" type="button" value="修改属性值" name="B6"/>
+        </td>
+        <td>
+            <input onclick="createattribute()" type="button" value="创建属性" name="a8"/>
+        </td>
+        <td>
+            <input onclick="modivalue()" type="button" value="修改元值" name="B9"/>
+        </td>
+        <!--<td>-->
+        <!--<input onclick="yanzheng()" type="button" value="校验 XSD" name="B10"/>-->
+        <!--</td>-->
+        <!--<td>-->
+        <!--<input onclick="show()" type="button" value="XSLT处理" name="B11"/>-->
+        <!--</td>-->
+        <td>
+            <input onclick="quit()" type="button" value="退出系统" name="B9"/>
+        </td>
+    </tr>
+</table>
+<table border="1" width="100%" height="40%" bgcolor="green">
+    <tr align="center">
+        <td>
+            <p><textarea rows="20" id="texta" cols="100"></textarea></p>
+            <p><input onclick="clear1()" type="button" value="清空" name="b1" id="b1"/></p>　
+        </td>
+    </tr>
+</table>
+</body>
+</html>
